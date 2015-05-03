@@ -114,13 +114,13 @@
                               <Insets />
                            </GridPane.margin>
                         </HBox>
-                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="5.0" GridPane.columnIndex="5" GridPane.columnSpan="3" GridPane.rowIndex="4">
+                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="5.0" GridPane.columnSpan="3" GridPane.rowIndex="6">
                            <children>
                               <CheckBox fx:id="chkCrossCheque" mnemonicParsing="false" text="Cross Cheque" />
                               <CheckBox fx:id="chkRemoveDate" layoutX="10.0" layoutY="16.0" mnemonicParsing="false" text="Remove Date" />
                            </children>
                            <GridPane.margin>
-                              <Insets left="10.0" />
+                              <Insets left="10.0" top="31.0" />
                            </GridPane.margin>
                         </HBox>
                      </children>

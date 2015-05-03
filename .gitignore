@@ -13,3 +13,5 @@ nbproject/private/private.properties
 nbproject/private/private.xml
 
 build/classes/com/cheque/main/ChequePrint.fxml
+
+build/built-jar.properties
