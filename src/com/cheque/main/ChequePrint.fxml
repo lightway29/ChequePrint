@@ -47,19 +47,19 @@
                               <Insets bottom="15.0" />
                            </padding>
                         </AnchorPane>
-                        <HBox alignment="CENTER_LEFT" spacing="5.0" GridPane.columnSpan="7" GridPane.rowIndex="2">
+                        <HBox alignment="CENTER_LEFT" spacing="5.0" GridPane.columnSpan="8" GridPane.rowIndex="2">
                            <children>
                               <Label prefWidth="100.0" text="Pay" GridPane.rowIndex="2" />
-                              <TextField fx:id="txtPay" prefWidth="400.0" promptText="Pay" text="Cash" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                              <TextField fx:id="txtPay" prefWidth="550.0" promptText="Pay" text="Cash" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                            </children>
                            <GridPane.margin>
                               <Insets left="10.0" />
                            </GridPane.margin>
                         </HBox>
-                        <HBox alignment="CENTER_LEFT" spacing="5.0" GridPane.columnSpan="4" GridPane.rowIndex="4">
+                        <HBox alignment="CENTER_LEFT" spacing="5.0" GridPane.columnIndex="4" GridPane.columnSpan="4" GridPane.rowIndex="3">
                            <children>
                               <Label prefWidth="100.0" text="Amount" GridPane.rowIndex="4" />
-                              <TextField fx:id="txtAmount" prefWidth="200.0" promptText="Amount" text="0.00" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                              <TextField fx:id="txtAmount" prefWidth="210.0" promptText="Amount" text="0.00" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                            </children>
                            <GridPane.margin>
                               <Insets left="10.0" />
@@ -74,7 +74,7 @@
                               <Insets left="10.0" />
                            </GridPane.margin>
                         </HBox>
-                        <HBox alignment="CENTER_LEFT" spacing="5.0" GridPane.columnIndex="4" GridPane.columnSpan="4" GridPane.rowIndex="6" GridPane.rowSpan="2">
+                        <HBox alignment="CENTER_LEFT" spacing="5.0" GridPane.columnIndex="3" GridPane.columnSpan="5" GridPane.rowIndex="6" GridPane.rowSpan="2">
                            <children>
                               <Button fx:id="btnPrint" mnemonicParsing="false" onAction="#btnPrintOnAction" text="Print" GridPane.columnIndex="3" GridPane.rowIndex="9">
                                  <graphic>
@@ -84,6 +84,9 @@
                                        </image>
                                     </ImageView>
                                  </graphic>
+                                 <HBox.margin>
+                                    <Insets left="70.0" />
+                                 </HBox.margin>
                               </Button>
                               <Button fx:id="btnCancel" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#btnCancelOnAction" text="Cancel">
                                  <graphic>
@@ -102,13 +105,16 @@
                                        </image>
                                     </ImageView>
                                  </graphic>
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
                               </Button>
                            </children>
                            <GridPane.margin>
                               <Insets />
                            </GridPane.margin>
                         </HBox>
-                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="5.0" GridPane.columnSpan="3" GridPane.rowIndex="5">
+                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="5.0" GridPane.columnIndex="5" GridPane.columnSpan="3" GridPane.rowIndex="4">
                            <children>
                               <CheckBox fx:id="chkCrossCheque" mnemonicParsing="false" text="Cross Cheque" />
                               <CheckBox fx:id="chkRemoveDate" layoutX="10.0" layoutY="16.0" mnemonicParsing="false" text="Remove Date" />
