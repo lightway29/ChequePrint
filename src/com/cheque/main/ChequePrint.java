@@ -24,7 +24,7 @@ public class ChequePrint extends Application {
     public void start(Stage primaryStage) {
 
         FxmlUiLauncher.launchOnNewStageWait(
-                    "/com/cheque/main/ChequePrint.fxml",
+                    "/com/cheque/main/Home.fxml",
                     "Cheque Print", null);
     }
 
