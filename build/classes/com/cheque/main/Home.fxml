@@ -80,21 +80,27 @@
                               <Insets />
                            </GridPane.margin>
                         </HBox>
-                        <Button fx:id="ChequePrint" contentDisplay="BOTTOM" graphicTextGap="0.0" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#ChequePrintOnAction" prefHeight="120.0" prefWidth="136.0" text="Cheque&#10;Print" textAlignment="CENTER" textOverrun="CLIP" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="1" GridPane.rowSpan="2">
+                        <Button fx:id="ChequePrint" contentDisplay="BOTTOM" ellipsisString="" graphicTextGap="0.0" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#ChequePrintOnAction" prefHeight="130.0" prefWidth="114.0" styleClass="button-clr-red" textAlignment="CENTER" textOverrun="CLIP" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="1" GridPane.rowSpan="2">
                            <graphic>
-                              <ImageView fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="86.0" fitWidth="86.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../res/Printer.png" />
                                  </image>
+                                 <cursor>
+                                    <Cursor fx:constant="WAIT" />
+                                 </cursor>
+                                 <viewport>
+                                    <Rectangle2D />
+                                 </viewport>
                               </ImageView>
                            </graphic>
                            <font>
                               <Font size="10.0" />
                            </font>
                         </Button>
-                        <Button fx:id="BankRegistration" contentDisplay="BOTTOM" ellipsisString="Bank Register" graphicTextGap="0.0" layoutX="75.0" layoutY="70.0" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#BankRegistrationOnAction" prefHeight="120.0" prefWidth="131.0" text="Bank&#10;Register" textAlignment="CENTER" GridPane.columnIndex="4" GridPane.columnSpan="2" GridPane.rowIndex="1" GridPane.rowSpan="2">
+                        <Button fx:id="BankRegistration" contentDisplay="BOTTOM" ellipsisString="Bank Register" graphicTextGap="0.0" layoutX="75.0" layoutY="70.0" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#BankRegistrationOnAction" prefHeight="120.0" prefWidth="131.0" styleClass="button-clr-dodgerblue" textAlignment="CENTER" GridPane.columnIndex="4" GridPane.columnSpan="2" GridPane.rowIndex="1" GridPane.rowSpan="2">
                            <graphic>
-                              <ImageView fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="86.0" fitWidth="86.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../res/TextEdit.png" />
                                  </image>
@@ -104,33 +110,57 @@
                               <Font size="10.0" />
                            </font>
                         </Button>
-                        <Button fx:id="ChequeRegister" alignment="CENTER" contentDisplay="BOTTOM" graphicTextGap="0.0" layoutX="270.0" layoutY="70.0" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" mouseTransparent="true" onAction="#ChequeRegisterOnAction" prefHeight="123.0" prefWidth="136.0" text="Cheque&#10;Register&#10;" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="7" GridPane.columnSpan="2" GridPane.rowIndex="1" GridPane.rowSpan="2">
+                        <Button fx:id="ChequeRegister" alignment="CENTER" contentDisplay="BOTTOM" graphicTextGap="0.0" layoutX="270.0" layoutY="70.0" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" mouseTransparent="true" onAction="#ChequeRegisterOnAction" prefHeight="123.0" prefWidth="136.0" styleClass="button-clr-coral" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="7" GridPane.columnSpan="2" GridPane.rowIndex="1" GridPane.rowSpan="2">
                            <graphic>
-                              <ImageView fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="86.0" fitWidth="86.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../res/iBooks.png" />
                                  </image>
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button fx:id="Settings" contentDisplay="BOTTOM" graphicTextGap="20.0" layoutX="75.0" layoutY="70.0" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#SettingsOnAction" prefHeight="121.0" prefWidth="131.0" text="Settings" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="4" GridPane.rowSpan="2">
+                        <Button fx:id="Settings" contentDisplay="CENTER" graphicTextGap="20.0" layoutX="75.0" layoutY="70.0" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#SettingsOnAction" prefHeight="121.0" prefWidth="131.0" styleClass="button-clr-turquoise" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="4" GridPane.rowSpan="2">
                            <graphic>
-                              <ImageView fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="86.0" fitWidth="86.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../res/ColorSync.png" />
                                  </image>
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button fx:id="PrinterConfig" contentDisplay="BOTTOM" graphicTextGap="0.0" layoutX="75.0" layoutY="70.0" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#PrinterConfigOnAction" prefHeight="120.0" prefWidth="130.0" text="Printer&#10;Config" textAlignment="CENTER" GridPane.columnIndex="4" GridPane.columnSpan="2" GridPane.rowIndex="4" GridPane.rowSpan="2">
+                        <Button fx:id="PrinterConfig" contentDisplay="BOTTOM" graphicTextGap="0.0" layoutX="75.0" layoutY="70.0" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#PrinterConfigOnAction" prefHeight="120.0" prefWidth="130.0" styleClass="dark-blue-background" textAlignment="CENTER" GridPane.columnIndex="4" GridPane.columnSpan="2" GridPane.rowIndex="4" GridPane.rowSpan="2">
                            <graphic>
-                              <ImageView fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="86.0" fitWidth="86.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../res/SystemPref.png" />
                                  </image>
                               </ImageView>
                            </graphic>
                         </Button>
+                        <Label alignment="CENTER" contentDisplay="CENTER" graphicTextGap="0.0" prefHeight="17.0" prefWidth="133.0" text="Cheque Print" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="3">
+                           <GridPane.margin>
+                              <Insets bottom="40.0" />
+                           </GridPane.margin></Label>
+                        <Label alignment="CENTER" contentDisplay="CENTER" graphicTextGap="0.0" layoutX="75.0" layoutY="192.0" prefHeight="17.0" prefWidth="133.0" text="Bank Register" textAlignment="CENTER" GridPane.columnIndex="4" GridPane.columnSpan="2" GridPane.rowIndex="3">
+                           <GridPane.margin>
+                              <Insets bottom="40.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <Label alignment="CENTER" contentDisplay="CENTER" graphicTextGap="0.0" layoutX="270.0" layoutY="212.0" prefHeight="17.0" prefWidth="133.0" text="Cheque Register" textAlignment="CENTER" GridPane.columnIndex="7" GridPane.columnSpan="2" GridPane.rowIndex="3">
+                           <GridPane.margin>
+                              <Insets bottom="40.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <Label alignment="CENTER" contentDisplay="CENTER" graphicTextGap="0.0" layoutX="465.0" layoutY="212.0" prefHeight="17.0" prefWidth="133.0" text="Settings" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="6">
+                           <GridPane.margin>
+                              <Insets bottom="40.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <Label alignment="CENTER" contentDisplay="CENTER" graphicTextGap="0.0" layoutX="75.0" layoutY="392.0" prefHeight="17.0" prefWidth="133.0" text="Printer Config" textAlignment="CENTER" GridPane.columnIndex="4" GridPane.columnSpan="2" GridPane.rowIndex="6">
+                           <GridPane.margin>
+                              <Insets bottom="40.0" />
+                           </GridPane.margin>
+                        </Label>
                      </children>
                   </GridPane>
                </children>
