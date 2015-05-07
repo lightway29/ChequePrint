@@ -27,9 +27,6 @@ public class HomeController extends AnchorPane implements Initializable {
     private Button btnLogOut;
 
     @FXML
-    private Button btnClose;
-
-    @FXML
     private Button ChequeRegister;
 
     @FXML
@@ -51,11 +48,6 @@ public class HomeController extends AnchorPane implements Initializable {
 
     @FXML
     void btnLogOutOnAction(ActionEvent event) {
-
-    }
-
-    @FXML
-    void btnCloseOnAction(ActionEvent event) {
 
     }
 
