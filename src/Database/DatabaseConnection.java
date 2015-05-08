@@ -22,7 +22,7 @@ public class DatabaseConnection {
             Connection connection = DriverManager.getConnection("jdbc:sqlite:ChequePrint.sqlite");
        return connection;
         } catch (Exception e) {
-            
+            e.printStackTrace();
             return null;
         }
     
