@@ -1,16 +1,8 @@
 *.class
 
-dist/ChequePrint.jnlp
+dist/
 
-dist/ChequePrint.html
-
-dist/ChequePrint.jar
-
-dist/web-files/dtjava.js
-
-nbproject/private/private.properties
-
-nbproject/private/private.xml
+nbproject/
 
 build/
-nbproject/private/configs/Run_in_Browser.properties
+
