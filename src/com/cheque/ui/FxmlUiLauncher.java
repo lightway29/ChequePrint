@@ -18,6 +18,11 @@ import javafx.stage.StageStyle;
  */
 public class FxmlUiLauncher {
 
+    public static void launchOnNewStage(String comchequemainHomefxml,
+            String cheque_Print) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     //=========================================================================
     //          Internal Classes,Interfaces
     //=========================================================================

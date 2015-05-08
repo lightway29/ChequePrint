@@ -128,12 +128,13 @@
     -fx-background-color: derive(gray,-30%);
 
 
-    -fx-font-size: 8pt;
+    
     -fx-text-fill: white;
 }
 
 .button:hover{
     -fx-background-color: derive(gray,-25%);
+    
 }
 
 .button:pressed
@@ -276,7 +277,7 @@
 //-----------------------------------------
 //coral
 .button-clr-coral {
-    -fx-background-color: derive(coral,-30%)
+    -fx-background-color: derive(coral,-30%);
 }
 
 .button-clr-coral:hover{
@@ -284,6 +285,23 @@
 }
 
 .button-clr-coral:pressed
+{
+    -fx-background-color: derive(coral,-20%);
+}
+//----------------------------------------------
+//-----------------------------------------
+//coral
+.button-clrx-coral {
+    -fx-background-color: derive(coral,-30%);
+    -fx-font-size: 7pt;
+}
+
+.button-clrx-coral:hover{
+    -fx-background-color: derive(coral,-25%);
+    -fx-font-size: 8pt;
+}
+
+.button-clrx-coral:pressed
 {
     -fx-background-color: derive(coral,-20%);
 }
@@ -320,6 +338,26 @@
     -fx-background-color: derive(darkcyan,-20%);
 }
 //----------------------------------------------
+//-----------------------------------------
+//darkcyan
+.button-clrx-darkcyan {
+    -fx-background-color: derive(darkcyan,-50%);
+    -fx-font-size: 7pt;
+}
+
+.button-clrx-darkcyan:hover{
+    -fx-background-color: derive(darkcyan,-40%);
+    -fx-font-size: 8pt;
+}
+
+.button-clrx-darkcyan:pressed
+{
+    -fx-background-color: derive(darkcyan,-35%);
+}
+//----------------------------------------------
+
+
+
 
 //-----------------------------------------
 //darkorange
@@ -336,11 +374,13 @@
     -fx-background-color: derive(darkorange,-20%);
 }
 .button-clrx-darkorange {
-    -fx-background-color: derive(darkorange,-30%)
+    -fx-background-color: derive(darkorange,-30%);
+    -fx-font-size: 7pt;
 }
 
 .button-clrx-darkorange:hover{
     -fx-background-color: derive(darkorange,-25%);
+    -fx-font-size: 8pt;
 }
 
 .button-clrx-darkorange:pressed
@@ -395,11 +435,13 @@
 }
 
 .button-clrx-dodgerblue {
-    -fx-background-color: derive(dodgerblue,-30%)
+    -fx-background-color: derive(dodgerblue,-30%);
+    -fx-font-size: 7pt;
 }
 
 .button-clrx-dodgerblue:hover{
     -fx-background-color: derive(dodgerblue,-25%);
+    -fx-font-size: 8pt;
 }
 
 .button-clrx-dodgerblue:pressed
@@ -515,6 +557,23 @@
 }
 //----------------------------------------------
 
+//red
+.button-clrx-red {
+    -fx-background-color: derive(red,-30%);
+    -fx-font-size: 7pt;
+}
+
+.button-clrx-red:hover{
+    -fx-background-color: derive(red,-25%);
+    -fx-font-size: 8pt;
+}
+
+.button-clrx-red:pressed
+{
+    -fx-background-color: derive(red,-20%);
+}
+//----------------------------------------------
+
 //-----------------------------------------
 //plum
 .button-clr-plum {
@@ -530,7 +589,7 @@
     -fx-background-color: derive(plum,-20%);
 }
 //----------------------------------------------
-
+ 
 //-----------------------------------------
 //turquoise
 .button-clr-turquoise {
@@ -544,6 +603,23 @@
 .button-clr-turquoise:pressed
 {
     -fx-background-color: derive(turquoise,-20%);
+}
+//----------------------------------------------
+
+//DarkGray
+.button-clrx-darkgray {
+    -fx-background-color: derive(darkgray,-30%);
+    -fx-font-size: 7pt;
+}
+
+.button-clrx-darkgray:hover{
+    -fx-background-color: derive(darkgray,-25%);
+    -fx-font-size: 8pt;
+}
+
+.button-clrx-darkgray:pressed
+{
+    -fx-background-color: derive(darkgray,-20%);
 }
 //----------------------------------------------
 

@@ -5,6 +5,7 @@
  */
 package com.cheque.main;
 
+import com.cheque.ui.FxmlUiLauncher;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -34,7 +35,7 @@ public class HomeController extends AnchorPane implements Initializable {
 
     @FXML
     private Button BankRegistration;
-    
+
     @FXML
     private Button Settings;
 //</editor-fold>
@@ -42,17 +43,30 @@ public class HomeController extends AnchorPane implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
+       
+        btnLogOut.getStyleClass().add("button-clrx-darkorange");
+
+       ChequePrint.getStyleClass().add("button-clrx-red");
+       BankRegistration.getStyleClass().add("button-clrx-dodgerblue");
+       ChequeRegister.getStyleClass().add("button-clrx-coral");
+       Settings.getStyleClass().add("button-clrx-darkcyan");
+       PrinterConfig.getStyleClass().add("button-clrx-darkgray");
+       
     }
-    
-    
 
     @FXML
     void btnLogOutOnAction(ActionEvent event) {
+
+        System.exit(1);
 
     }
 
     @FXML
     void ChequePrintOnAction(ActionEvent event) {
+
+        FxmlUiLauncher.launchOnNewStageWait(
+                "/com/cheque/main/ChequePrint.fxml",
+                "Cheque Print", null);
 
     }
 

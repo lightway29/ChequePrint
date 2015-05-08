@@ -18,7 +18,7 @@ import javafx.scene.layout.AnchorPane;
  *
  * @author Miren
  */
-public class DefaltSettingsController extends AnchorPane implements Initializable {
+public class DefaultSettingsController extends AnchorPane implements Initializable {
 
     //<editor-fold defaultstate="collapsed" desc="initcomponents">
     @FXML
