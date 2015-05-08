@@ -8,22 +8,20 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="300.0" prefWidth="680.0" stylesheets="@../res/JMetroLightTheme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cheque.main.DefaultSettingsController">
+<AnchorPane id="AnchorPane" prefHeight="300.0" prefWidth="400.0" stylesheets="@../res/JMetroLightTheme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cheque.main.DefaultSettingsController">
    <children>
-      <StackPane layoutX="1.0" layoutY="34.0" prefHeight="260.0" prefWidth="680.0">
+      <StackPane layoutX="1.0" layoutY="34.0" prefHeight="260.0" prefWidth="400.0">
          <children>
             <AnchorPane prefHeight="200.0" prefWidth="200.0">
                <children>
                   <GridPane prefHeight="360.0" prefWidth="680.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <columnConstraints>
-                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="20.0" />
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="20.0" />
                     </columnConstraints>
                     <rowConstraints>
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -36,9 +34,9 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnSpan="8">
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.columnSpan="4">
                            <children>
-                              <Label alignment="CENTER" contentDisplay="CENTER" layoutX="11.0" prefHeight="31.0" prefWidth="656.0" styleClass="header-label" text="Defalt Settings" />
+                              <Label alignment="CENTER" contentDisplay="CENTER" layoutX="3.0" layoutY="14.0" prefHeight="31.0" prefWidth="364.0" styleClass="header-label" text="Defalt Settings" />
                            </children>
                            <GridPane.margin>
                               <Insets />
@@ -47,7 +45,7 @@
                               <Insets bottom="15.0" />
                            </padding>
                         </AnchorPane>
-                        <HBox alignment="CENTER" spacing="5.0" GridPane.columnSpan="8" GridPane.rowIndex="6" GridPane.rowSpan="2">
+                        <HBox alignment="CENTER" spacing="5.0" GridPane.columnSpan="6" GridPane.rowIndex="6" GridPane.rowSpan="2">
                            <children>
                               <Button fx:id="btnSave" mnemonicParsing="false" onAction="#btnSaveOnAction" prefWidth="150.0" text="Save" GridPane.columnIndex="3" GridPane.rowIndex="9">
                                  <graphic>
@@ -78,28 +76,37 @@
                               <Insets />
                            </GridPane.margin>
                         </HBox>
-                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="5.0" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="2">
+                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="5.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="2">
                            <children>
                               <CheckBox fx:id="chkCrossCheque" mnemonicParsing="false" text="Cross Cheque" />
                            </children>
                            <GridPane.margin>
-                              <Insets />
+                              <Insets left="40.0" />
                            </GridPane.margin>
                         </HBox>
-                        <HBox alignment="CENTER_LEFT" layoutX="275.0" layoutY="76.0" prefHeight="100.0" prefWidth="200.0" spacing="5.0" GridPane.columnIndex="4" GridPane.columnSpan="2" GridPane.rowIndex="2">
+                        <HBox alignment="CENTER_LEFT" layoutX="275.0" layoutY="76.0" prefHeight="100.0" prefWidth="200.0" spacing="5.0" GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.rowIndex="2">
                            <children>
                               <CheckBox fx:id="chkDateWithYear" mnemonicParsing="false" text="Date with Year" />
                            </children>
+                           <GridPane.margin>
+                              <Insets left="40.0" />
+                           </GridPane.margin>
                         </HBox>
-                        <HBox alignment="CENTER_LEFT" layoutX="180.0" layoutY="76.0" prefHeight="100.0" prefWidth="200.0" spacing="5.0" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="3">
+                        <HBox alignment="CENTER_LEFT" layoutX="180.0" layoutY="76.0" prefHeight="100.0" prefWidth="200.0" spacing="5.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="3">
                            <children>
                               <CheckBox fx:id="chkprintPreview" mnemonicParsing="false" text="Print Preview" />
                            </children>
+                           <GridPane.margin>
+                              <Insets left="40.0" />
+                           </GridPane.margin>
                         </HBox>
-                        <HBox alignment="CENTER_LEFT" layoutX="350.0" layoutY="76.0" prefHeight="100.0" prefWidth="200.0" spacing="5.0" GridPane.columnIndex="4" GridPane.columnSpan="2" GridPane.rowIndex="3">
+                        <HBox alignment="CENTER_LEFT" layoutX="350.0" layoutY="76.0" prefHeight="100.0" prefWidth="200.0" spacing="5.0" GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.rowIndex="3">
                            <children>
                               <CheckBox fx:id="chkPrint" mnemonicParsing="false" text="Print" />
                            </children>
+                           <GridPane.margin>
+                              <Insets left="40.0" />
+                           </GridPane.margin>
                         </HBox>
                      </children>
                   </GridPane>

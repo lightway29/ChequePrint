@@ -82,7 +82,9 @@ public class HomeController extends AnchorPane implements Initializable {
 
     @FXML
     void SettingsOnAction(ActionEvent event) {
-
+        FxmlUiLauncher.launchOnNewStageWait(
+                "/com/cheque/main/DefaultSettings.fxml",
+                "Default Settings", null);
     }
 
     @FXML

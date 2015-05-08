@@ -211,10 +211,8 @@ public class ChequePrintController extends AnchorPane implements Initializable {
 
     @FXML
     void btnCloseOnAction(ActionEvent event) {
-//        Stage stage = (Stage) btnClose.getScene().getWindow();
-//        stage.close();
-        
-        System.err.println("Test One : "+chequePrint.getBank("BNK0001"));
+        Stage stage = (Stage) btnClose.getScene().getWindow();
+        stage.close();
     }
     
     
