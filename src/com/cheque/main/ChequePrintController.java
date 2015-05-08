@@ -5,6 +5,7 @@
  */
 package com.cheque.main;
 
+import com.cheque.mainDAO.ChequePrintDAO;
 import com.cheque.msgbox.MessageBox;
 import com.cheque.msgbox.SimpleMessageBoxFactory;
 import com.cheque.ui.ReportGenerator;
@@ -72,6 +73,9 @@ public class ChequePrintController extends AnchorPane implements Initializable {
             = new EnglishNumberToWords();
 //</editor-fold>
 
+    
+    ChequePrintDAO chequePrint = new ChequePrintDAO();
+    
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         mb = SimpleMessageBoxFactory.createMessageBox();
@@ -207,8 +211,10 @@ public class ChequePrintController extends AnchorPane implements Initializable {
 
     @FXML
     void btnCloseOnAction(ActionEvent event) {
-        Stage stage = (Stage) btnClose.getScene().getWindow();
-        stage.close();
+//        Stage stage = (Stage) btnClose.getScene().getWindow();
+//        stage.close();
+        
+        System.err.println("Test One : "+chequePrint.getBank("BNK0001"));
     }
     
     

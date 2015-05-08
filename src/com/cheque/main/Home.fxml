@@ -88,7 +88,7 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button fx:id="BankRegistration1" contentDisplay="BOTTOM" graphicTextGap="0.0" layoutX="270.0" layoutY="70.0" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#BankRegistrationOnAction" prefHeight="130.0" prefWidth="130.0" styleClass="button-clr-coral" text="Cheque Register" textAlignment="CENTER" GridPane.columnIndex="7" GridPane.columnSpan="2" GridPane.rowIndex="2" GridPane.rowSpan="2">
+                        <Button fx:id="ChequeRegister" contentDisplay="BOTTOM" graphicTextGap="0.0" layoutX="270.0" layoutY="70.0" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#ChequeRegisterOnAction" prefHeight="130.0" prefWidth="130.0" styleClass="button-clr-coral" text="Cheque Register" textAlignment="CENTER" GridPane.columnIndex="7" GridPane.columnSpan="2" GridPane.rowIndex="2" GridPane.rowSpan="2">
                            <font>
                               <Font size="10.0" />
                            </font>
