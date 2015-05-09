@@ -8,7 +8,9 @@ import javafx.stage.Stage;
  */
 public interface MessageBox {
     public static enum MessageOutput{
+  
         MSG_OK,MSG_YES,MSG_NO,MSG_CANCEL
+        
     }
     public static enum MessageIcon{
         MSG_ICON_SUCCESS,MSG_ICON_FAIL,MSG_ICON_NONE
