@@ -186,6 +186,7 @@ public class ChequePrintController extends AnchorPane implements Initializable {
                     param.put("Y3", Y3);
                     param.put("Y4", Y4);
                 }
+                
 
                 String ReportParth = null;
                 if (chkCrossCheque.isSelected()) {
