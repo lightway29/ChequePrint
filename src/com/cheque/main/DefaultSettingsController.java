@@ -5,14 +5,19 @@
  */
 package com.cheque.main;
 
+import com.cheque.mainDAO.DefaultSettingsDAO;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 /**
  *
@@ -39,20 +44,60 @@ public class DefaultSettingsController extends AnchorPane implements Initializab
     @FXML
     private CheckBox chkprintPreview;
 //</editor-fold>
-
+    
+    DefaultSettingsDAO defaultSettingsDAO = new DefaultSettingsDAO();
+    
+    
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
+        loadSettings();
     }
 
     @FXML
     void btnSaveOnAction(ActionEvent event) {
 
+        boolean updateStatus = defaultSettingsDAO.updateSettings(
+                chkCrossCheque.isSelected(),
+                chkprintPreview.isSelected(),
+                chkDateWithYear.isSelected(),
+                chkPrint.isSelected(),
+                "SET0001");
+        
+        
+        
     }
 
     @FXML
     void btnCloseOnAction(ActionEvent event) {
-
+ Stage stage = (Stage) btnClose.getScene().getWindow();
+        stage.close();
     }
+    
+    //<editor-fold defaultstate="collapsed" desc="Method">
+    
+    private void loadSettings(){
+    
+     ArrayList<Boolean> list = null;
+        list = defaultSettingsDAO.loadSettings("SET0001");
+        if (list != null) {
+            try {
+                
+                chkCrossCheque.setSelected(list.get(0));
+                chkprintPreview.setSelected(list.get(1));
+                chkDateWithYear.setSelected(list.get(2));
+                chkPrint.setSelected(list.get(3));
+                
+            } catch (Exception e) {
+
+            }
+
+        }
+    
+    
+    
+    }
+    
+//</editor-fold>
 
 }

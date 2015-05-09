@@ -14,3 +14,7 @@ build/built-jar.properties
 build/classes/com/cheque/res/JMetroLightTheme.css
 
 build/built-jar.properties
+
+build/classes/com/cheque/main/Home.fxml
+
+build/classes/com/cheque/main/DefaltSettings.fxml

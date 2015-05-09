@@ -5,6 +5,7 @@
  */
 package com.cheque.mainDAO;
 
+import com.cheque.main.HomeController;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -18,13 +19,13 @@ import java.sql.ResultSet;
 
 public class ChequePrintDAO {
     
-    Connection connection = Database.DatabaseConnection.Connect();
+
     public String getBank(String bankId) {
 
 
         String bank = null;
 
-        if (connection == null) {
+        if (HomeController.connection == null) {
             System.out.println("Databse connection failiure.");
            
             return null;
@@ -33,7 +34,7 @@ public class ChequePrintDAO {
             try {
                 String query
                         = "SELECT bank_name FROM bank where bank_id=? ";
-                PreparedStatement pstmt = connection.prepareStatement(query);
+                PreparedStatement pstmt = HomeController.connection.prepareStatement(query);
                 pstmt.setString(1, bankId);
 
                 ResultSet r = pstmt.executeQuery();

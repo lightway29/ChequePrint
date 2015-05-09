@@ -7,6 +7,7 @@ package com.cheque.main;
 
 import com.cheque.ui.FxmlUiLauncher;
 import java.net.URL;
+import java.sql.Connection;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -39,6 +40,8 @@ public class HomeController extends AnchorPane implements Initializable {
     @FXML
     private Button Settings;
 //</editor-fold>
+    
+    public static Connection connection = Database.DatabaseConnection.Connect();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
