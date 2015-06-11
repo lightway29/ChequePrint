@@ -3,12 +3,3 @@
 dist/
 
 
-
-build/
-
-build/classes/com/cheque/res/JMetroLightTheme.css
-
-build/classes/com/cheque/main/Home.fxml
-
-build/classes/com/cheque/main/DefaltSettings.fxml
-
