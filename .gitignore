@@ -10,3 +10,5 @@ dist/ChequePrint.jnlp
 dist/ChequePrint.jar
 
 dist/ChequePrint.html
+build/
+/build/
