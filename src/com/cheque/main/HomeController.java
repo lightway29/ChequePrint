@@ -75,7 +75,9 @@ public class HomeController extends AnchorPane implements Initializable {
 
     @FXML
     void BankRegistrationOnAction(ActionEvent event) {
-
+        FxmlUiLauncher.launchOnNewStageWait(
+                "/com/cheque/main/BankRegistration.fxml",
+                "Bank Registration", null);
     }
 
     @FXML
