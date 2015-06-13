@@ -25,7 +25,7 @@ public class ChequePrintDAO {
 
         String bank = null;
 
-        if (HomeController.connection == null) {
+        if (HomeController.con == null) {
             System.out.println("Databse connection failiure.");
            
             return null;
@@ -34,7 +34,7 @@ public class ChequePrintDAO {
             try {
                 String query
                         = "SELECT bank_name FROM bank where bank_id=? ";
-                PreparedStatement pstmt = HomeController.connection.prepareStatement(query);
+                PreparedStatement pstmt = HomeController.con.prepareStatement(query);
                 pstmt.setString(1, bankId);
 
                 ResultSet r = pstmt.executeQuery();

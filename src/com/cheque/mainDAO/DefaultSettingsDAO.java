@@ -25,7 +25,7 @@ public class DefaultSettingsDAO {
         boolean print = false;
         ArrayList list = new ArrayList();
 
-        if (HomeController.connection == null) {
+        if (HomeController.con == null) {
             System.out.println("Database connection failiure.");
             return null;
 
@@ -34,7 +34,7 @@ public class DefaultSettingsDAO {
 
                 String query
                         = "SELECT * FROM default_settings where id=? ";
-                PreparedStatement pstmt = HomeController.connection.prepareStatement(query);
+                PreparedStatement pstmt = HomeController.con.prepareStatement(query);
                 pstmt.setString(1, id);
                 ResultSet r = pstmt.executeQuery();
 
@@ -70,14 +70,14 @@ public class DefaultSettingsDAO {
 
         
 
-        if (HomeController.connection == null) {
+        if (HomeController.con == null) {
 
              System.out.println("Database connection failiure.");
             return false;
         } else {
             try {
 
-                PreparedStatement ps = HomeController.connection.prepareStatement(
+                PreparedStatement ps = HomeController.con.prepareStatement(
                         "Update default_settings set cross_cheque=? ,"
                                 + "print_preview=?,date_with_year=?,"
                                 + "print=? where id=?");

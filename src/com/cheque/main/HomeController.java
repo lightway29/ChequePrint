@@ -41,7 +41,7 @@ public class HomeController extends AnchorPane implements Initializable {
     private Button Settings;
 //</editor-fold>
     
-    public static Connection connection = Database.DatabaseConnection.Connect();
+    public static Connection con = com.cheque.database.DatabaseConnection.Connect();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
