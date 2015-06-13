@@ -11,3 +11,5 @@ Logs/logger.log
 .DS_Store
 /Logs/
 build/classes/
+
+*.class
