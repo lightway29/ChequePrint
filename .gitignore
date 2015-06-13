@@ -7,6 +7,6 @@ nbproject/project.properties
 nbproject/private/private.xml
 nbproject/private/private.properties
 Logs/logger.log
-build/
+/build/
 .DS_Store
 /Logs/
