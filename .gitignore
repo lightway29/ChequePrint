@@ -10,3 +10,4 @@ Logs/logger.log
 /build/
 .DS_Store
 /Logs/
+build/classes/
