@@ -10,5 +10,18 @@ dist/ChequePrint.jnlp
 dist/ChequePrint.jar
 
 dist/ChequePrint.html
+<<<<<<< Updated upstream
 build/
 /build/
+=======
+
+*.class
+
+build/classes/.netbeans_automatic_build
+
+build/classes/.netbeans_update_resources
+
+build/classes/com/cheque/main/ChequePrint.class
+
+build/classes/com/cheque/main/ChequePrint.class
+>>>>>>> Stashed changes
