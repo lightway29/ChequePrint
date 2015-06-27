@@ -5,6 +5,7 @@
  */
 package com.cheque.main;
 
+import com.cheque.Report.SimpleAdhocReport;
 import com.cheque.mainDAO.ChequePrintDAO;
 import com.cheque.msgbox.MessageBox;
 import com.cheque.msgbox.SimpleMessageBoxFactory;
@@ -212,8 +213,10 @@ public class ChequePrintController extends AnchorPane implements Initializable {
 
     @FXML
     void btnCloseOnAction(ActionEvent event) {
-        Stage stage = (Stage) btnClose.getScene().getWindow();
-        stage.close();
+        
+        new SimpleAdhocReport();
+//        Stage stage = (Stage) btnClose.getScene().getWindow();
+//        stage.close();
     }
     
     
