@@ -35,6 +35,7 @@ import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Control;
 import javafx.scene.control.Label;
 import javafx.scene.control.SingleSelectionModel;
 import javafx.scene.control.Tab;
@@ -55,6 +56,7 @@ import org.controlsfx.control.PopOver;
 import org.controlsfx.dialog.Dialogs;
 import org.controlsfx.validation.ValidationResult;
 import org.controlsfx.validation.ValidationSupport;
+import org.controlsfx.validation.Validator;
 
 /**
  * FXML Controller class
@@ -158,6 +160,40 @@ public class BankRegistrationController extends AnchorPane implements
         tblBankSearch.setItems(bankSearchData);
         
         txtBankID.setText(bankRegistrationDAO.generateBankId());
+        
+        //<editor-fold defaultstate="collapsed" desc="validation">
+        validationSupport.registerValidator(txtBank,
+                Validator.combine(
+                        Validator.createEmptyValidator("Empty"),
+                        (Control c, String newValue) -> ValidationResult.
+                        fromErrorIf(txtBank,
+                                "Invalid Banck",
+                                !fav.validName(txtBank.getText()))));
+
+        validationSupport.registerValidator(txtBranchCode,
+                Validator.combine(
+                        Validator.createEmptyValidator("Empty"),
+                        (Control c, String newValue) -> ValidationResult.
+                        fromErrorIf(txtBranchCode,
+                                "Invalid Branch Code",
+                                !fav.validName(txtBranchCode.getText()))));
+        
+        validationSupport.registerValidator(txtBranch,
+                Validator.combine(
+                        Validator.createEmptyValidator("Empty"),
+                        (Control c, String newValue) -> ValidationResult.
+                        fromErrorIf(txtBranch,
+                                "Invalid Branch",
+                                !fav.validName(txtBranch.getText()))));
+        
+        validationSupport.registerValidator(txtAccountNo,
+                Validator.combine(
+                        Validator.createEmptyValidator("Empty"),
+                        (Control c, String newValue) -> ValidationResult.
+                        fromErrorIf(txtAccountNo,
+                                "Invalid Account",
+                                !fav.validName(txtAccountNo.getText()))));
+//</editor-fold>
 
     }
 
