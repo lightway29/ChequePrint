@@ -65,7 +65,7 @@ public class BankRegistrationController extends AnchorPane implements
         Initializable, Validatable, StagePassable {
 
     //<editor-fold defaultstate="collapsed" desc="InitComponents">
-      @FXML
+    @FXML
     private Button btnClose;
 
     @FXML
@@ -122,6 +122,9 @@ public class BankRegistrationController extends AnchorPane implements
     @FXML
     private TableColumn<Bank, String> tcBranchCode;
     
+    @FXML
+    private Button btnRefresh;
+    
     //</editor-fold>
     private Bank bank = new Bank();
     private Stage stage;
@@ -132,6 +135,8 @@ public class BankRegistrationController extends AnchorPane implements
     //Validations--------------
     private final ValidationSupport validationSupport = new ValidationSupport();
     private final FormatAndValidate fav = FormatAndValidate.getInstance();
+    
+    BankRegistrationDAO bankRegistrationDAO = new BankRegistrationDAO();
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -151,6 +156,8 @@ public class BankRegistrationController extends AnchorPane implements
                 "colAccountNo"));
 
         tblBankSearch.setItems(bankSearchData);
+        
+        txtBankID.setText(bankRegistrationDAO.generateBankId());
 
     }
 
@@ -161,7 +168,7 @@ public class BankRegistrationController extends AnchorPane implements
 
     @Override
     public void clearInput() {
-        
+        txtBankID.setText(bankRegistrationDAO.generateBankId());
 
     }
 
@@ -207,27 +214,33 @@ public class BankRegistrationController extends AnchorPane implements
     }
 
     @FXML
-    void btnBankSearchOnAction(ActionEvent event) {
-
-    }
-
-    @FXML
     void tblBankSearchOnMouseClicked(ActionEvent event) {
 
     }
 
     @FXML
-    void btnSaveOnAction(ActionEvent event) {
+    void txtAccountNoOnAction(ActionEvent event) {
 
     }
+    
+    @FXML
+    void btnRefreshSearchOnAction(ActionEvent event) {
 
+    }
+    
     @FXML
     void btnCloseOnAction(ActionEvent event) {
+        Stage stage = (Stage) btnClose.getScene().getWindow();
+        stage.close();
+    }
+    
+    @FXML
+    void btnBankSearchOnAction(ActionEvent event) {
 
     }
-
+    
     @FXML
-    void txtAccountNoOnAction(ActionEvent event) {
+    void btnSaveOnAction(ActionEvent event) {
 
     }
 

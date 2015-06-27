@@ -43,7 +43,16 @@
                         <HBox alignment="CENTER_LEFT" spacing="5.0" GridPane.columnSpan="3" GridPane.rowIndex="2">
                            <children>
                               <Label prefWidth="80.0" text="Bank ID" />
-                              <TextField fx:id="txtBankID" editable="false" onAction="#txtBankIdOnAction" prefWidth="310.0" promptText="Bank ID" GridPane.columnIndex="1" />
+                              <TextField fx:id="txtBankID" editable="false" onAction="#txtBankIdOnAction" prefWidth="280.0" promptText="Bank ID" GridPane.columnIndex="1" />
+                              <Button id="btnSearch" fx:id="btnRefresh" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" minHeight="24.0" minWidth="24.0" mnemonicParsing="false" onAction="#btnRefreshSearchOnAction" prefHeight="24.0" prefWidth="24.0" text="">
+                                 <graphic>
+                                    <ImageView fitHeight="18.0" fitWidth="18.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../res/img-refresh.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
                            </children>
                            <GridPane.margin>
                               <Insets />
