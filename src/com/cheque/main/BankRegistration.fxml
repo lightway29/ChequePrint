@@ -39,12 +39,12 @@
                         <RowConstraints maxHeight="44.0" minHeight="44.0" prefHeight="44.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="31.0" prefWidth="975.0" styleClass="header-label" text="Bank Registration" GridPane.columnSpan="7" />
+                        <Label alignment="CENTER" contentDisplay="CENTER" focusTraversable="false" prefHeight="31.0" prefWidth="975.0" styleClass="header-label" text="Bank Registration" GridPane.columnSpan="7" />
                         <HBox alignment="CENTER_LEFT" spacing="5.0" GridPane.columnSpan="3" GridPane.rowIndex="2">
                            <children>
-                              <Label prefWidth="80.0" text="Bank ID" />
-                              <TextField fx:id="txtBankID" editable="false" onAction="#txtBankIdOnAction" prefWidth="280.0" promptText="Bank ID" GridPane.columnIndex="1" />
-                              <Button id="btnSearch" fx:id="btnRefresh" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" minHeight="24.0" minWidth="24.0" mnemonicParsing="false" onAction="#btnRefreshSearchOnAction" prefHeight="24.0" prefWidth="24.0" text="">
+                              <Label focusTraversable="false" prefWidth="80.0" text="Bank ID" />
+                              <TextField fx:id="txtBankID" editable="false" focusTraversable="false" prefWidth="280.0" promptText="Bank ID" GridPane.columnIndex="1" />
+                              <Button id="btnSearch" fx:id="btnRefresh" contentDisplay="GRAPHIC_ONLY" focusTraversable="false" graphicTextGap="0.0" minHeight="24.0" minWidth="24.0" mnemonicParsing="false" onAction="#btnRefreshSearchOnAction" prefHeight="24.0" prefWidth="24.0" text="">
                                  <graphic>
                                     <ImageView fitHeight="18.0" fitWidth="18.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
                                        <image>
@@ -60,8 +60,8 @@
                         </HBox>
                         <HBox alignment="CENTER_LEFT" spacing="5.0" GridPane.columnSpan="3" GridPane.rowIndex="3">
                            <children>
-                              <Label prefWidth="80.0" text="Bank" GridPane.rowIndex="1" />
-                              <TextField fx:id="txtBank" onAction="#txtBankOnAction" prefWidth="310.0" promptText="Bank" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <Label focusTraversable="false" prefWidth="80.0" text="Bank" GridPane.rowIndex="1" />
+                              <TextField fx:id="txtBank" prefWidth="310.0" promptText="Bank" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                            </children>
                            <GridPane.margin>
                               <Insets />
@@ -69,8 +69,8 @@
                         </HBox>
                         <HBox alignment="CENTER_LEFT" spacing="5.0" GridPane.columnSpan="3" GridPane.rowIndex="4">
                            <children>
-                              <Label prefWidth="80.0" text="Branch Code" GridPane.rowIndex="2" />
-                              <TextField fx:id="txtBranch" onAction="#txtBranchOnAction" prefWidth="310.0" promptText="Branch Code" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                              <Label focusTraversable="false" prefWidth="80.0" text="Branch" GridPane.rowIndex="2" />
+                              <TextField fx:id="txtBranch" prefWidth="310.0" promptText="Branch" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                            </children>
                            <GridPane.margin>
                               <Insets />
@@ -78,8 +78,17 @@
                         </HBox>
                         <HBox alignment="CENTER_LEFT" spacing="5.0" GridPane.columnSpan="3" GridPane.rowIndex="5">
                            <children>
-                              <Label prefWidth="80.0" text="Branch Code" GridPane.rowIndex="2" />
-                              <TextField fx:id="txtBranchCode" onAction="#txtBranchCodeOnAction" prefWidth="310.0" promptText="Branch Code" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                              <Label focusTraversable="false" prefWidth="80.0" text="Branch Code" GridPane.rowIndex="2" />
+                              <TextField fx:id="txtBranchCode" prefWidth="310.0" promptText="Branch Code" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                           </children>
+                           <GridPane.margin>
+                              <Insets />
+                           </GridPane.margin>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" spacing="5.0" GridPane.columnSpan="3" GridPane.rowIndex="6">
+                           <children>
+                              <Label focusTraversable="false" prefWidth="80.0" text="Account No" GridPane.rowIndex="2" />
+                              <TextField fx:id="txtAccountNo" prefWidth="310.0" promptText="Account No" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                            </children>
                            <GridPane.margin>
                               <Insets />
@@ -87,17 +96,8 @@
                         </HBox>
                         <HBox alignment="CENTER_LEFT" spacing="5.0" GridPane.columnIndex="3" GridPane.columnSpan="4" GridPane.rowIndex="2">
                            <children>
-                              <Label fx:id="lblSearchBank" prefWidth="80.0" text="Search" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                              <TextField id="txtRentCost" fx:id="txtBankSearch" onAction="#txtBankSearchOnAction" onKeyReleased="#txtBankSearchOnKeyRelesed" prefHeight="25.0" prefWidth="437.0" promptText="Search" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-                              <Button id="btnSearch" fx:id="btnBankSearch" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" minHeight="24.0" minWidth="24.0" mnemonicParsing="false" onAction="#btnBankSearchOnAction" prefHeight="24.0" prefWidth="24.0" text="" GridPane.columnIndex="4" GridPane.rowIndex="1">
-                                 <graphic>
-                                    <ImageView fitHeight="10.000000178813929" fitWidth="13.333333969116211" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@../res/img-search.png" />
-                                       </image>
-                                    </ImageView>
-                                 </graphic>
-                              </Button>
+                              <Label fx:id="lblSearchBank" focusTraversable="false" prefWidth="80.0" text="Search" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                              <TextField id="txtRentCost" fx:id="txtBankSearch" focusTraversable="false" onKeyReleased="#txtBankSearchOnKeyRelesed" prefHeight="25.0" prefWidth="470.0" promptText="Search" GridPane.columnIndex="3" GridPane.rowIndex="1" />
                            </children>
                            <GridPane.margin>
                               <Insets right="5.0" />
@@ -105,7 +105,7 @@
                         </HBox>
                         <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.columnSpan="4" GridPane.rowIndex="3" GridPane.rowSpan="6">
                            <children>
-                              <TableView fx:id="tblBankSearch" layoutX="-27.0" layoutY="-78.0" onMouseClicked="#tblBankSearchOnMouseClicked" prefHeight="122.0" prefWidth="173.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                              <TableView fx:id="tblBankSearch" focusTraversable="false" layoutX="-27.0" layoutY="-78.0" onMouseClicked="#tblBankSearchOnMouseClicked" prefHeight="122.0" prefWidth="173.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                 <columns>
                                   <TableColumn fx:id="tcBankID" prefWidth="131.0" text="Bank ID" />
                                   <TableColumn fx:id="tcBank" minWidth="6.0" prefWidth="200.0" text="Bank" />
@@ -120,7 +120,7 @@
                         </AnchorPane>
                         <AnchorPane minHeight="64.0" prefHeight="64.0" prefWidth="638.0" GridPane.columnSpan="3" GridPane.rowIndex="1">
                            <children>
-                              <Label alignment="CENTER" contentDisplay="CENTER" layoutY="19.0" prefHeight="31.0" prefWidth="395.0" styleClass="header-label" text="Bank Details" />
+                              <Label alignment="CENTER" contentDisplay="CENTER" focusTraversable="false" layoutY="19.0" prefHeight="31.0" prefWidth="395.0" styleClass="header-label" text="Bank Details" />
                            </children>
                            <padding>
                               <Insets left="10.0" right="10.0" fx:id="x3" />
@@ -131,7 +131,7 @@
                         </AnchorPane>
                         <AnchorPane minHeight="64.0" prefHeight="64.0" prefWidth="638.0" GridPane.columnIndex="3" GridPane.columnSpan="4" GridPane.rowIndex="1">
                            <children>
-                              <Label alignment="CENTER" contentDisplay="CENTER" layoutX="-28.0" layoutY="19.0" prefHeight="31.0" prefWidth="552.0" styleClass="header-label" text="Search Bank Details" />
+                              <Label alignment="CENTER" contentDisplay="CENTER" focusTraversable="false" layoutX="-28.0" layoutY="19.0" prefHeight="31.0" prefWidth="552.0" styleClass="header-label" text="Search Bank Details" />
                            </children>
                            <padding>
                               <Insets left="10.0" right="10.0" fx:id="x31" />
@@ -142,7 +142,7 @@
                         </AnchorPane>
                         <HBox alignment="CENTER_RIGHT" spacing="5.0" GridPane.columnIndex="5" GridPane.columnSpan="2" GridPane.rowIndex="9" GridPane.rowSpan="2">
                            <children>
-                              <Button id="btnNext" fx:id="btnSave" layoutX="740.0" layoutY="438.0" mnemonicParsing="false" onAction="#btnSaveOnAction" prefHeight="31.0" prefWidth="118.0" text="Save">
+                              <Button id="btnNext" fx:id="btnSave" focusTraversable="false" layoutX="740.0" layoutY="438.0" mnemonicParsing="false" onAction="#btnSaveOnAction" prefHeight="31.0" prefWidth="118.0" text="Save">
                                  <graphic>
                                     <ImageView fx:id="imgNext" fitHeight="16.0" fitWidth="16.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
                                        <image>
@@ -151,7 +151,7 @@
                                     </ImageView>
                                  </graphic>
                               </Button>
-                              <Button id="btnCancel" fx:id="btnClose" layoutX="868.0" layoutY="438.0" mnemonicParsing="false" onAction="#btnCloseOnAction" prefHeight="31.0" prefWidth="118.0" text="Close">
+                              <Button id="btnCancel" fx:id="btnClose" focusTraversable="false" layoutX="868.0" layoutY="438.0" mnemonicParsing="false" onAction="#btnCloseOnAction" prefHeight="31.0" prefWidth="118.0" text="Close">
                                  <graphic>
                                     <ImageView fitHeight="16.0" fitWidth="16.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
                                        <image>
@@ -165,18 +165,9 @@
                               <Insets left="6.0" />
                            </padding>
                         </HBox>
-                        <HBox alignment="CENTER_LEFT" spacing="5.0" GridPane.columnSpan="3" GridPane.rowIndex="6">
-                           <children>
-                              <Label prefWidth="80.0" text="Account No" GridPane.rowIndex="2" />
-                              <TextField fx:id="txtAccountNo" onAction="#txtAccountNoOnAction" prefWidth="310.0" promptText="Account No" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                           </children>
-                           <GridPane.margin>
-                              <Insets />
-                           </GridPane.margin>
-                        </HBox>
                         <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="9" GridPane.rowSpan="2">
                            <children>
-                              <Button fx:id="btnDelete" mnemonicParsing="false" onAction="#btnDeleteOnAction" prefHeight="29.0" prefWidth="118.0" text="Delete">
+                              <Button fx:id="btnDelete" focusTraversable="false" mnemonicParsing="false" onAction="#btnDeleteOnAction" prefHeight="29.0" prefWidth="118.0" text="Delete">
                                  <graphic>
                                     <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                                        <image>

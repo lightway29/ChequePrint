@@ -18,6 +18,7 @@ import com.cheque.validations.CustomTableViewValidationImpl;
 import com.cheque.validations.CustomTextFieldValidationImpl;
 import com.cheque.validations.ErrorMessages;
 import com.cheque.validations.FormatAndValidate;
+import com.cheque.validations.MessageBoxTitle;
 import com.cheque.validations.OptionalMessage;
 import com.cheque.validations.Validatable;
 import java.net.URL;
@@ -74,9 +75,6 @@ public class BankRegistrationController extends AnchorPane implements
     private TextField txtBranch;
 
     @FXML
-    private Button btnBankSearch;
-
-    @FXML
     private ImageView imgNext;
 
     @FXML
@@ -123,21 +121,20 @@ public class BankRegistrationController extends AnchorPane implements
 
     @FXML
     private TableColumn<Bank, String> tcBranchCode;
-    
+
     @FXML
     private Button btnRefresh;
-    
+
     //</editor-fold>
     private Bank bank = new Bank();
     private Stage stage;
     private MessageBox mb;
     private ObservableList bankSearchData = FXCollections.observableArrayList();
 
-
     //Validations--------------
     private final ValidationSupport validationSupport = new ValidationSupport();
     private final FormatAndValidate fav = FormatAndValidate.getInstance();
-    
+
     BankRegistrationDAO bankRegistrationDAO = new BankRegistrationDAO();
 
     @Override
@@ -153,14 +150,14 @@ public class BankRegistrationController extends AnchorPane implements
 
         tcBranchCode.setCellValueFactory(new PropertyValueFactory<Bank, String>(
                 "colBranchCode"));
-        
+
         tcAccountNo.setCellValueFactory(new PropertyValueFactory<Bank, String>(
                 "colAccountNo"));
 
         tblBankSearch.setItems(bankSearchData);
-        
+
         txtBankID.setText(bankRegistrationDAO.generateBankId());
-        
+
         //<editor-fold defaultstate="collapsed" desc="validation">
         validationSupport.registerValidator(txtBank,
                 Validator.combine(
@@ -177,7 +174,7 @@ public class BankRegistrationController extends AnchorPane implements
                         fromErrorIf(txtBranchCode,
                                 "Invalid Branch Code",
                                 !fav.validName(txtBranchCode.getText()))));
-        
+
         validationSupport.registerValidator(txtBranch,
                 Validator.combine(
                         Validator.createEmptyValidator("Empty"),
@@ -185,7 +182,7 @@ public class BankRegistrationController extends AnchorPane implements
                         fromErrorIf(txtBranch,
                                 "Invalid Branch",
                                 !fav.validName(txtBranch.getText()))));
-        
+
         validationSupport.registerValidator(txtAccountNo,
                 Validator.combine(
                         Validator.createEmptyValidator("Empty"),
@@ -195,6 +192,9 @@ public class BankRegistrationController extends AnchorPane implements
                                 !fav.validName(txtAccountNo.getText()))));
 //</editor-fold>
 
+        txtBank.requestFocus();
+        tableBankDataLoader("");
+        btnDelete.setVisible(false);
     }
 
     @Override
@@ -205,6 +205,14 @@ public class BankRegistrationController extends AnchorPane implements
     @Override
     public void clearInput() {
         txtBankID.setText(bankRegistrationDAO.generateBankId());
+        txtBank.clear();
+        txtBranch.clear();
+        txtBranchCode.clear();
+        txtAccountNo.clear();
+        txtBankSearch.clear();
+        btnDelete.setVisible(false);
+        tableBankDataLoader("");
+        txtBank.requestFocus();
 
     }
 
@@ -216,72 +224,179 @@ public class BankRegistrationController extends AnchorPane implements
     @Override
     public void setStage(Stage stage, Object[] obj) {
         this.stage = stage;
-        
-    }
-    
-    @FXML
-    void txtBankIdOnAction(ActionEvent event) {
 
     }
 
     @FXML
-    void txtBankOnAction(ActionEvent event) {
-
+    void txtBankSearchOnKeyRelesed(KeyEvent event) {
+        tableBankDataLoader(txtBankSearch.getText());
     }
 
     @FXML
-    void txtBranchOnAction(ActionEvent event) {
+    void tblBankSearchOnMouseClicked(javafx.scene.input.MouseEvent mouseEvent) {
+        if (mouseEvent.getClickCount() == 2) {
+            Bank itemData = (Bank) tblBankSearch.getSelectionModel().
+                    getSelectedItem();
+            String bankId = itemData.colBankID.get();
 
+            if (bankId != null) {
+                txtBankID.setText(itemData.getColBankId());
+                txtBank.setText(itemData.getColBank());
+                txtBranchCode.setText(itemData.getColBranchCode());
+                txtBranch.setText(itemData.getColBranch());
+                txtAccountNo.setText(itemData.getColAccountNo());
+                btnDelete.setVisible(true);
+            }
+
+        }
     }
 
-    @FXML
-    void txtBranchCodeOnAction(ActionEvent event) {
-
-    }
-
-    @FXML
-    void txtBankSearchOnAction(ActionEvent event) {
-
-    }
-
-    @FXML
-    void txtBankSearchOnKeyRelesed(ActionEvent event) {
-
-    }
-
-    @FXML
-    void tblBankSearchOnMouseClicked(ActionEvent event) {
-
-    }
-
-    @FXML
-    void txtAccountNoOnAction(ActionEvent event) {
-
-    }
-    
     @FXML
     void btnRefreshSearchOnAction(ActionEvent event) {
-
+        clearInput();
     }
-    
+
     @FXML
     void btnCloseOnAction(ActionEvent event) {
         Stage stage = (Stage) btnClose.getScene().getWindow();
         stage.close();
     }
-    
-    @FXML
-    void btnBankSearchOnAction(ActionEvent event) {
 
-    }
-    
     @FXML
     void btnSaveOnAction(ActionEvent event) {
+        boolean ValidationSupport = false;
 
+        boolean Inserted = false;
+        boolean alreadyExist = false;
+
+        ValidationResult v = validationSupport.getValidationResult();
+
+        if (v != null) {
+            ValidationSupport = validationSupport.isInvalid();
+
+            if (ValidationSupport == true) {
+                mb.ShowMessage(stage, ErrorMessages.MandatoryError, "Error",
+                        MessageBox.MessageIcon.MSG_ICON_FAIL,
+                        MessageBox.MessageType.MSG_OK);
+
+            } else if (ValidationSupport == false) {
+                if (bankRegistrationDAO.checkAccountNoAvailability(txtBank.getText(), txtAccountNo.getText()) == false) {
+                    if (bankRegistrationDAO.checkingBankIdAvailability(txtBankID.getText())) {
+                        Inserted = bankRegistrationDAO.updateBankDetails(txtBankID.getText(),
+                                txtBank.getText(), txtBranchCode.getText(), txtBranch.getText(), txtAccountNo.getText());
+                    } else {
+                        Inserted = bankRegistrationDAO.insertBankDetails(txtBankID.getText(),
+                                txtBank.getText(), txtBranchCode.getText(), txtBranch.getText(), txtAccountNo.getText());
+                    }
+                } else {
+                    if (bankRegistrationDAO.checkAccountNoAvailabilityUpdate(txtBank.getText(), txtAccountNo.getText(),txtBankID.getText()) == false) {
+                            Inserted = bankRegistrationDAO.updateBankDetails(txtBankID.getText(),
+                                    txtBank.getText(), txtBranchCode.getText(), txtBranch.getText(), txtAccountNo.getText());
+                    } else {
+                        mb.ShowMessage(stage, ErrorMessages.InvalidAccNo, "Error",
+                                MessageBox.MessageIcon.MSG_ICON_FAIL,
+                                MessageBox.MessageType.MSG_OK);
+                        alreadyExist = true;
+                    }
+
+                }
+                if (Inserted == true) {
+
+                    mb.ShowMessage(stage,
+                            ErrorMessages.SuccesfullyCreated,
+                            MessageBoxTitle.INFORMATION.toString(),
+                            MessageBox.MessageIcon.MSG_ICON_SUCCESS,
+                            MessageBox.MessageType.MSG_OK);
+
+                    clearInput();
+
+                } else if (alreadyExist == false) {
+                    mb.ShowMessage(stage,
+                            ErrorMessages.NotSuccesfullyCreated,
+                            MessageBoxTitle.INFORMATION.toString(),
+                            MessageBox.MessageIcon.MSG_ICON_SUCCESS,
+                            MessageBox.MessageType.MSG_OK);
+                }
+
+            }
+
+        }
     }
 
     @FXML
     void btnDeleteOnAction(ActionEvent event) {
+        boolean ValidationSupport = false;
+
+        boolean Deleted = false;
+
+        ValidationResult v = validationSupport.getValidationResult();
+
+        if (v != null) {
+            ValidationSupport = validationSupport.isInvalid();
+
+            if (ValidationSupport == true) {
+                mb.ShowMessage(stage, ErrorMessages.MandatoryError, "Error",
+                        MessageBox.MessageIcon.MSG_ICON_FAIL,
+                        MessageBox.MessageType.MSG_OK);
+
+            } else if (ValidationSupport == false) {
+
+                Deleted = bankRegistrationDAO.deleteBank(txtBankID.getText());
+
+                if (Deleted == true) {
+
+                    mb.ShowMessage(stage,
+                            ErrorMessages.SuccesfullyDeleted,
+                            MessageBoxTitle.INFORMATION.toString(),
+                            MessageBox.MessageIcon.MSG_ICON_SUCCESS,
+                            MessageBox.MessageType.MSG_OK);
+
+                    clearInput();
+
+                } else {
+                    mb.ShowMessage(stage,
+                            ErrorMessages.NotSuccesfullyDeleted,
+                            MessageBoxTitle.INFORMATION.toString(),
+                            MessageBox.MessageIcon.MSG_ICON_SUCCESS,
+                            MessageBox.MessageType.MSG_OK);
+                }
+
+            }
+
+        }
+    }
+
+    private void tableBankDataLoader(String keyword) {
+        bankSearchData.clear();
+
+        ArrayList<ArrayList<String>> custInfo
+                = new ArrayList<ArrayList<String>>();
+        ArrayList<ArrayList<String>> list = bankRegistrationDAO.
+                searchBankDetails(keyword);
+
+        if (list != null) {
+
+            for (int i = 0; i < list.size(); i++) {
+
+                custInfo.add(list.get(i));
+            }
+
+            if (custInfo != null && custInfo.size() > 0) {
+                for (int i = 0; i < custInfo.size(); i++) {
+
+                    bank = new Bank();
+
+                    bank.colBankID.setValue(custInfo.get(i).get(0));
+                    bank.colBank.setValue(custInfo.get(i).get(1));
+                    bank.colBranchCode.setValue(custInfo.get(i).get(2));
+                    bank.colBranch.setValue(custInfo.get(i).get(3));
+                    bank.colAccountNo.setValue(custInfo.get(i).get(4));
+
+                    bankSearchData.add(bank);
+                }
+            }
+
+        }
 
     }
 
@@ -293,15 +408,21 @@ public class BankRegistrationController extends AnchorPane implements
                 "tcBank");
         public SimpleStringProperty colBranchCode = new SimpleStringProperty(
                 "tcBranchCode");
+        public SimpleStringProperty colBranch = new SimpleStringProperty(
+                "tcBranch");
         public SimpleStringProperty colAccountNo = new SimpleStringProperty(
                 "tcAccountNo");
 
         public String getColBankId() {
             return colBankID.get();
         }
-        
+
         public String getColBank() {
             return colBank.get();
+        }
+
+        public String getColBranch() {
+            return colBranch.get();
         }
 
         public String getColBranchCode() {
@@ -313,5 +434,5 @@ public class BankRegistrationController extends AnchorPane implements
         }
 
     }
-    
+
 }

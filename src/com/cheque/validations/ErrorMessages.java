@@ -337,5 +337,6 @@ public class ErrorMessages {
     public static final String uptoDate = "Applcation is upto date.";
     public static final String newUpdateFound = "New update found.";
     
+    public static final String InvalidAccNo = "Account number already exist.";
 
 }
