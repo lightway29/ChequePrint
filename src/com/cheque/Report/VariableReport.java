@@ -128,7 +128,7 @@ public class VariableReport {
 
                 //           .setDataSource(createDataSource())
 
-                .setPageFormat(PageType.A4, PageOrientation.LANDSCAPE).show();
+                .setPageFormat(252,595, PageOrientation.LANDSCAPE).show();
 
     }
 

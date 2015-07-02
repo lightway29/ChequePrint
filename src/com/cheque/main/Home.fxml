@@ -40,7 +40,7 @@
                         <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <Button fx:id="ChequePrint" contentDisplay="BOTTOM" graphicTextGap="0.0" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#ChequePrintOnAction" prefHeight="130.0" prefWidth="130.0" styleClass="button-clr-red" text="Cheque Print" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="2" GridPane.rowSpan="2">
+                        <Button fx:id="ChequePrint" contentDisplay="BOTTOM" graphicTextGap="0.0" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#ChequePrintOnAction" onMouseDragged="#ChequePrintOnMouseDragged" prefHeight="130.0" prefWidth="130.0" styleClass="button-clr-red" text="Cheque Print" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="2" GridPane.rowSpan="2">
                            <graphic>
                               <ImageView fitHeight="86.0" fitWidth="86.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -115,7 +115,7 @@
             </AnchorPane>
          </children>
       </StackPane>
-      <ImageView fx:id="imgViewChequeManager" fitHeight="55.0" fitWidth="445.0" layoutX="22.0" layoutY="17.0" onDragOver="#imgViewChequeManagerOnDragOver" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="imgViewChequeManager" fitHeight="55.0" fitWidth="445.0" layoutX="22.0" layoutY="17.0" onDragDone="#imgViewChequeManagerOnDragDone" onDragEntered="#imgViewChequeManagerOnDragEntered" onDragOver="#imgViewChequeManagerOnDragOver" onMouseDragOver="#imgViewChequeManagerOnMouseDragOver" onMouseDragged="#imgViewChequeManagerOnMouseDragged" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../res/logo.png" />
          </image>

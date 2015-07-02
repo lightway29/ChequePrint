@@ -15,6 +15,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.DragEvent;
+import javafx.scene.input.MouseDragEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 
 /**
@@ -104,9 +106,36 @@ public class HomeController extends AnchorPane implements Initializable {
 
     @FXML
     private void imgViewChequeManagerOnDragOver(DragEvent event) {
+    
         
-        System.out.println("X coordinate");
+    }
+
+    @FXML
+    private void imgViewChequeManagerOnMouseDragOver(MouseDragEvent event) {
+
+    }
+
+    @FXML
+    private void imgViewChequeManagerOnDragEntered(DragEvent event) {
+
         
+    }
+
+    @FXML
+    private void imgViewChequeManagerOnDragDone(DragEvent event) {
+        
+
+    }
+
+    @FXML
+    private void imgViewChequeManagerOnMouseDragged(MouseEvent event) {
+  
+        
+    }
+
+    @FXML
+    private void ChequePrintOnMouseDragged(MouseEvent event) {
+
     }
 
 }
