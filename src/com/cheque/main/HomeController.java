@@ -13,6 +13,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.DragEvent;
 import javafx.scene.layout.AnchorPane;
 
 /**
@@ -42,10 +44,13 @@ public class HomeController extends AnchorPane implements Initializable {
 //</editor-fold>
     
     public static Connection con = com.cheque.database.DatabaseConnection.Connect();
+    @FXML
+    private ImageView imgViewChequeManager;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
+       
        
         btnLogOut.getStyleClass().add("button-clrx-darkorange");
 
@@ -95,6 +100,13 @@ public class HomeController extends AnchorPane implements Initializable {
     @FXML
     void PrinterConfigOnAction(ActionEvent event) {
 
+    }
+
+    @FXML
+    private void imgViewChequeManagerOnDragOver(DragEvent event) {
+        
+        System.out.println("X coordinate");
+        
     }
 
 }

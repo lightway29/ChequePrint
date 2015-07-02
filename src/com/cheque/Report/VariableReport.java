@@ -29,6 +29,8 @@ import net.sf.dynamicreports.report.builder.expression.AbstractComplexExpression
 import net.sf.dynamicreports.report.constant.Calculation;
 
 import net.sf.dynamicreports.report.constant.Evaluation;
+import net.sf.dynamicreports.report.constant.PageOrientation;
+import net.sf.dynamicreports.report.constant.PageType;
 
 import net.sf.dynamicreports.report.datasource.DRDataSource;
 
@@ -126,7 +128,7 @@ public class VariableReport {
 
                 //           .setDataSource(createDataSource())
 
-                .show();
+                .setPageFormat(PageType.A4, PageOrientation.LANDSCAPE).show();
 
     }
 

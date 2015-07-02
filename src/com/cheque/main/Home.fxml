@@ -115,7 +115,7 @@
             </AnchorPane>
          </children>
       </StackPane>
-      <ImageView fitHeight="55.0" fitWidth="445.0" layoutX="22.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="imgViewChequeManager" fitHeight="55.0" fitWidth="445.0" layoutX="22.0" layoutY="17.0" onDragOver="#imgViewChequeManagerOnDragOver" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../res/logo.png" />
          </image>
