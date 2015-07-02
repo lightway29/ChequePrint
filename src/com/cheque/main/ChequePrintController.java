@@ -225,7 +225,7 @@ public class ChequePrintController extends AnchorPane implements Initializable {
 //        amountWidth 
 //        amountRow
         
-        new VariableReport(200, 0, 400, 0, 50, 0, 50, 0, 300, 0);
+        new VariableReport(200, 0, 400, 0, 46, 3, 50, 0, 330, 0);
 //        Stage stage = (Stage) btnClose.getScene().getWindow();
 //        stage.close();
     }
