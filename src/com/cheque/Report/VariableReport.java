@@ -104,20 +104,17 @@ public class VariableReport {
                 .variables(quantitySum)
                 .title(
                         cmp.horizontalList(cmp.text("").setFixedWidth(accountWidth).
-                                setFixedRows(accountRow), cmp.text("A/C PAYEE ONLY").
+                                setFixedRows(accountRow), cmp.text("A/C PAYEE ONLY").setHeight(accountRow).
                                 setFixedWidth(100)),
-                        cmp.horizontalList(cmp.text("").setFixedWidth(dateWidth).
-                                setFixedRows(dateRow), cmp.text("2015-10-10").
+                        cmp.horizontalList(cmp.text("").setFixedWidth(dateWidth)
+                               , cmp.text("2015-10-10").setHeight(dateRow).
                                 setFixedWidth(100)),
-                        cmp.horizontalList(cmp.text("").setFixedWidth(cashWidth).
-                                setFixedRows(cashRow), cmp.text("**CASH**").
+                        cmp.horizontalList(cmp.text("").setFixedWidth(cashWidth), cmp.text("**CASH**").setHeight(cashRow).
                                 setFixedWidth(100)),
-                        cmp.horizontalList(cmp.text("").setFixedWidth(amountWordWidth).
-                                setFixedRows(amountWordRow), cmp.text("**Zero**").
+                        cmp.horizontalList(cmp.text("").setFixedWidth(amountWordWidth), cmp.text("**Zero**").setHeight(amountWordRow).
                                 setFixedWidth(100)),
-                        cmp.horizontalList(cmp.text("").setFixedWidth(amountWidth).
-                                setFixedRows(amountRow), cmp.text("0.00").setFixedWidth(
-                                        100)))
+                        cmp.horizontalList(cmp.text("").setFixedWidth(amountWidth), cmp.text("0.00").setFixedWidth(
+                                        100).setHeight(amountRow)))
                 //                   cmp.text(new QuantitySumTextExpression()).setEvaluationTime(Evaluation.REPORT),
                 //                   
                 //                   cmp.text(new UnitPriceSumTextExpression(unitPriceColumn)),
