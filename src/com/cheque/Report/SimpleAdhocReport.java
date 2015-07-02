@@ -48,6 +48,8 @@ public class SimpleAdhocReport {
   
    private void build() {
        
+       
+       
         AdhocConfiguration configuration = new AdhocConfiguration();
        
         AdhocReport report = new AdhocReport();

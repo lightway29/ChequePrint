@@ -6,6 +6,7 @@
 package com.cheque.main;
 
 import com.cheque.Report.SimpleAdhocReport;
+import com.cheque.Report.VariableReport;
 import com.cheque.mainDAO.ChequePrintDAO;
 import com.cheque.msgbox.MessageBox;
 import com.cheque.msgbox.SimpleMessageBoxFactory;
@@ -74,9 +75,8 @@ public class ChequePrintController extends AnchorPane implements Initializable {
             = new EnglishNumberToWords();
 //</editor-fold>
 
-    
     ChequePrintDAO chequePrint = new ChequePrintDAO();
-    
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         mb = SimpleMessageBoxFactory.createMessageBox();
@@ -152,7 +152,7 @@ public class ChequePrintController extends AnchorPane implements Initializable {
                 String part1 = parts[0];
                 String part2 = parts[1];
                 String part3 = parts[2];
-                
+
                 String Y1 = part1.substring(0, 1);
                 String Y2 = part1.substring(1, 2);
                 String Y3 = part1.substring(2, 3);
@@ -167,7 +167,8 @@ public class ChequePrintController extends AnchorPane implements Initializable {
                 HashMap param = new HashMap();
                 param.put("pay", "**" + txtPay.getText() + "**");
                 param.put("amount", Double.parseDouble(txtAmount.getText()));
-                param.put("rupees", "**" + convertToWords(txtAmount.getText()) + "**");
+                param.put("rupees", "**" + convertToWords(txtAmount.getText())
+                        + "**");
                 if (chkRemoveDate.isSelected()) {
                     param.put("D1", D1);
                     param.put("D2", D2);
@@ -187,7 +188,6 @@ public class ChequePrintController extends AnchorPane implements Initializable {
                     param.put("Y3", Y3);
                     param.put("Y4", Y4);
                 }
-                
 
                 String ReportParth = null;
                 if (chkCrossCheque.isSelected()) {
@@ -213,23 +213,31 @@ public class ChequePrintController extends AnchorPane implements Initializable {
 
     @FXML
     void btnCloseOnAction(ActionEvent event) {
+
+//        accountWidth
+//        accountRow
+//        dateWidth 
+//        dateRow
+//        cashWidth 
+//        cashRow
+//        amountWordWidth 
+//        amountWordRow
+//        amountWidth 
+//        amountRow
         
-        new SimpleAdhocReport();
+        new VariableReport(200, 0, 400, 0, 50, 0, 50, 0, 300, 0);
 //        Stage stage = (Stage) btnClose.getScene().getWindow();
 //        stage.close();
     }
-    
-    
+
     private String convertToWords(String value) {
 
-       
         double amount = 0;
         double cents = 0;
         String[] valueTxt = null;
         String amountTxt = null;
         String inWords = null;
         String centsTxt = null;
-
 
         if (value.contains(".")) {
 
@@ -245,16 +253,16 @@ public class ChequePrintController extends AnchorPane implements Initializable {
 
         if (centsTxt != null) {
             cents = Double.parseDouble(centsTxt);
-            
+
         }
 
-        if (cents !=0) {
-             
+        if (cents != 0) {
+
             inWords = EnglishNumberToWords.convert((long) amount) + " And "
                     + EnglishNumberToWords.convert((long) cents)
                     + " Cents Only.";
         } else {
-            
+
             inWords = englishNumberToWords.convert(
                     (long) Double.parseDouble(value));
 
