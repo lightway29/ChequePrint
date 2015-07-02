@@ -29,6 +29,7 @@ import net.sf.dynamicreports.report.builder.expression.AbstractComplexExpression
 import net.sf.dynamicreports.report.constant.Calculation;
 
 import net.sf.dynamicreports.report.constant.Evaluation;
+import net.sf.dynamicreports.report.constant.HorizontalAlignment;
 import net.sf.dynamicreports.report.constant.PageOrientation;
 import net.sf.dynamicreports.report.constant.PageType;
 
@@ -88,33 +89,37 @@ public class VariableReport {
         VariableBuilder<Integer> priceSum = variable(new PriceExpression(
                 quantityColumn, unitPriceColumn), Calculation.SUM);
 
-        
-        
-
- 
-
- 
-
- 
-
- 
-
-        
         report()
                 .variables(quantitySum)
                 .title(
-                        cmp.horizontalList(cmp.text("").setFixedWidth(accountWidth).
-                                setFixedRows(accountRow), cmp.text("A/C PAYEE ONLY").setHeight(accountRow).
+                        cmp.horizontalList(cmp.text("").setFixedWidth(
+                                        accountWidth),
+                                cmp.text("A/C PAYEE ONLY").
+                                setHeight(accountRow).
                                 setFixedWidth(100)),
-                        cmp.horizontalList(cmp.text("").setFixedWidth(dateWidth)
-                               , cmp.text("2015-10-10").setHeight(dateRow).
+                        cmp.
+                        horizontalList(cmp.text("").setFixedWidth(dateWidth),
+                                cmp.text("2015-10-10").
+                                setHeight(dateRow).
                                 setFixedWidth(100)),
-                        cmp.horizontalList(cmp.text("").setFixedWidth(cashWidth), cmp.text("**CASH**").setHeight(cashRow).
-                                setFixedWidth(100)),
-                        cmp.horizontalList(cmp.text("").setFixedWidth(amountWordWidth), cmp.text("**Zero**").setHeight(amountWordRow).
-                                setFixedWidth(100)),
-                        cmp.horizontalList(cmp.text("").setFixedWidth(amountWidth), cmp.text("0.00").setFixedWidth(
-                                        100).setHeight(amountRow)))
+                        cmp.
+                        horizontalList(cmp.text("").setFixedWidth(cashWidth),
+                                cmp.text("**CASH**").
+                                setHeight(cashRow).
+                                setFixedWidth(444)),
+                        cmp.horizontalList(cmp.text("").setFixedWidth(
+                                        amountWordWidth),
+                                cmp.text(
+                                        "**Five Hundred and sixty sevent thousand two hundred and fifty only**").
+                                setHorizontalAlignment(HorizontalAlignment.LEFT).
+                                setHeight(amountWordRow).
+                                setFixedWidth(257)),
+                        cmp.horizontalList(cmp.text("").setFixedWidth(
+                                        amountWidth),
+                                cmp.text("0.00").
+                                setHorizontalAlignment(HorizontalAlignment.LEFT).
+                                setFixedWidth(
+                                        146).setHeight(amountRow)))
                 //                   cmp.text(new QuantitySumTextExpression()).setEvaluationTime(Evaluation.REPORT),
                 //                   
                 //                   cmp.text(new UnitPriceSumTextExpression(unitPriceColumn)),
@@ -125,7 +130,7 @@ public class VariableReport {
 
                 //           .setDataSource(createDataSource())
 
-                .setPageFormat(252,595, PageOrientation.LANDSCAPE).show();
+                .setPageFormat(252, 595, PageOrientation.LANDSCAPE).show();
 
     }
 
