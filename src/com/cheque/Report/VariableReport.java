@@ -95,24 +95,24 @@ public class VariableReport {
                         cmp.horizontalList(cmp.text("").setFixedWidth(
                                         accountWidth),
                                 cmp.text("A/C PAYEE ONLY").
-                                setHeight(accountRow).
+                                setFixedHeight(accountRow).
                                 setFixedWidth(100)),
                         cmp.
                         horizontalList(cmp.text("").setFixedWidth(dateWidth),
                                 cmp.text("2015-10-10").
-                                setHeight(dateRow).
+                                setFixedHeight(dateRow).
                                 setFixedWidth(100)),
                         cmp.
                         horizontalList(cmp.text("").setFixedWidth(cashWidth),
                                 cmp.text("**CASH**").
-                                setHeight(cashRow).
+                                setFixedHeight(cashRow).
                                 setFixedWidth(444)),
                         cmp.horizontalList(cmp.text("").setFixedWidth(
                                         amountWordWidth),
                                 cmp.text(
                                         "**Five Hundred and sixty sevent thousand two hundred and fifty only**").
                                 setHorizontalAlignment(HorizontalAlignment.LEFT).
-                                setHeight(amountWordRow).
+                                setFixedHeight(amountWordRow).
                                 setFixedWidth(257)),
                         cmp.horizontalList(cmp.text("").setFixedWidth(
                                         amountWidth),
