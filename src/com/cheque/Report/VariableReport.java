@@ -41,6 +41,9 @@ import net.sf.dynamicreports.report.exception.DRException;
 
 import net.sf.jasperreports.engine.JRDataSource;
 
+
+
+
 public class VariableReport {
 
     public VariableReport(
@@ -91,7 +94,7 @@ public class VariableReport {
 
         report()
                 .variables(quantitySum)
-                .title(
+                 .title(
                         cmp.horizontalList(cmp.text("").setFixedWidth(
                                         accountWidth),
                                 cmp.text("A/C PAYEE ONLY").
@@ -113,13 +116,12 @@ public class VariableReport {
                                         "**Five Hundred and sixty sevent thousand two hundred and fifty only**").
                                 setHorizontalAlignment(HorizontalAlignment.LEFT).
                                 setFixedHeight(amountWordRow).
-                                setFixedWidth(257)),
-                        cmp.horizontalList(cmp.text("").setFixedWidth(
-                                        amountWidth),
-                                cmp.text("0.00").
+                                setFixedWidth(257),cmp.gap(100,20),cmp.text("0.00").
                                 setHorizontalAlignment(HorizontalAlignment.LEFT).
                                 setFixedWidth(
-                                        146).setHeight(amountRow)))
+                                        146).setHeight(amountRow))
+                        )
+                
                 //                   cmp.text(new QuantitySumTextExpression()).setEvaluationTime(Evaluation.REPORT),
                 //                   
                 //                   cmp.text(new UnitPriceSumTextExpression(unitPriceColumn)),

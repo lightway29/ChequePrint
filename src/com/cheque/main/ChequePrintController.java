@@ -5,6 +5,7 @@
  */
 package com.cheque.main;
 
+import com.cheque.Report.BandReport;
 import com.cheque.Report.SimpleAdhocReport;
 import com.cheque.Report.VariableReport;
 import com.cheque.mainDAO.ChequePrintDAO;
@@ -226,6 +227,7 @@ public class ChequePrintController extends AnchorPane implements Initializable {
 //        amountRow
         
         new VariableReport(200, 0, 400, 0, 46, 30, 50, 72, 330, 43);
+//        new BandReport();
 //        Stage stage = (Stage) btnClose.getScene().getWindow();
 //        stage.close();
     }
