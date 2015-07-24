@@ -17,6 +17,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
@@ -44,33 +45,31 @@ public class ChequeDesignerController extends AnchorPane implements Initializabl
     private Button btnRefresh;
     @FXML
     private Pane paneDisplay;
+    
+    Stage stage;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         
         SwingNode swingNode = new SwingNode();
-        
-//       paneDisplay.sets
+        swingNode.setLayoutX(30);
          paneDisplay.getChildren().add(swingNode); // Adding swing node
-//         .setScene(new Scene(paneDisplay, 100, 50));
+//         stage.setScene(new Scene(paneDisplay, 100, 50));
+//         stage.show();
          
           SwingUtilities.invokeLater(new Runnable() {
              @Override
              public void run() {
-//                 JPanel panel = new JPanel();
-//                 panel.setBounds(0, 0, 500, 500);
+
                  String path = ".//Reports//HNBCheqe.jasper";
                  
                  
                  JasperPrint jasperPrint;
                  try {
                      jasperPrint = JasperFillManager.fillReport(path, null);
-//                     JRViewer jrViewer = new JRViewer(jasperPrint);
-//                     jrViewer.setBounds(0,
-//                             0, 400, 400);
+
                      swingNode.setContent(new JRViewer(jasperPrint));
-//                     panel.add(new JRViewer(jasperPrint));
-//                     swingNode.setContent(panel);
+
                  } catch (JRException ex) {
                      ex.printStackTrace();
                  }
