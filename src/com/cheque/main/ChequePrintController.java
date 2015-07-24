@@ -13,6 +13,7 @@ import com.cheque.msgbox.MessageBox;
 import com.cheque.msgbox.SimpleMessageBoxFactory;
 import com.cheque.ui.ReportGenerator;
 import com.cheque.validations.FormatAndValidate;
+import java.awt.Color;
 import java.io.File;
 import java.net.URL;
 import java.time.LocalDate;
@@ -242,7 +243,8 @@ public class ChequePrintController extends AnchorPane implements Initializable {
 //        Stage stage = (Stage) btnClose.getScene().getWindow();
 //        stage.close();
         
-        String path = ".//Reports//HNBCheqeCross.jrxml";
+//        String path = ".//Reports//HNBCheqeCross.jrxml";
+        String path = ".//Reports//HNBCheqe.jrxml";
         if (new File(path).exists()) {
             System.out.println("Exists");
                try {
@@ -251,21 +253,23 @@ public class ChequePrintController extends AnchorPane implements Initializable {
             JasperDesign d = JRXmlLoader.load(path);
                    JRElement[] field = d.getSummary().getElements();
                    
-                   for (JRElement t : field) {
-                       System.out.println("Field : "+t.getUUID());
-                       
-                   }
+                   System.out.println("Count : "+field.length);
                    
-                   JRElement t = field[0];
-                   System.out.println("Height : "+t.getX());
-                   t.setX(70);
+                   JRElement rtxtCash = field[0];//Cash
                    
-                    System.out.println("Height : "+t.getX());
-                    JRReport jRReport = d;
-                    JasperCompileManager.writeReportToXmlFile(jRReport, path);
-                    
-                    
                    
+//                   System.out.println("Height : "+rtxtCash.getX()+"-"+rtxtCash.getPositionTypeValue().name());
+//                   rtxtCash.setX(70);
+//                   rtxtCash.setForecolor(Color.RED);
+//                   
+//                  ;
+//                    System.out.println("Height : "+rtxtCash.getX()+" "+ rtxtCash.getY());
+//                    JRReport jRReport = d;
+//                    JasperCompileManager.writeReportToXmlFile(jRReport, path);
+//                    JasperCompileManager.compileReportToFile( path);
+//                    
+//                    
+//                   
                    
                    
                    

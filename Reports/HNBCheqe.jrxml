@@ -20,14 +20,14 @@
 	<summary>
 		<band height="252" splitType="Stretch">
 			<textField>
-				<reportElement x="41" y="43" width="444" height="20" uuid="4ef59fd1-1eb1-47c1-842f-f7f16121ba27"/>
+				<reportElement key="rtxtPay" x="41" y="43" width="444" height="20" uuid="4ef59fd1-1eb1-47c1-842f-f7f16121ba27"/>
 				<textElement verticalAlignment="Bottom">
 					<font fontName="Times New Roman" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{pay}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="53" y="78" width="257" height="72" uuid="43152769-5030-48bd-a471-020806c64792"/>
+				<reportElement key="rtxtAmountInWords" x="53" y="78" width="257" height="72" uuid="43152769-5030-48bd-a471-020806c64792"/>
 				<textElement>
 					<font fontName="Times New Roman" size="12"/>
 					<paragraph lineSpacing="Fixed" lineSpacingSize="20.0"/>
@@ -35,7 +35,7 @@
 				<textFieldExpression><![CDATA[$P{rupees}]]></textFieldExpression>
 			</textField>
 			<textField pattern="**#,##0.00**">
-				<reportElement x="341" y="86" width="146" height="43" uuid="9f7493d4-187b-4d86-833d-de91b88dfa79"/>
+				<reportElement key="rtxtAmount" x="341" y="86" width="146" height="43" uuid="9f7493d4-187b-4d86-833d-de91b88dfa79"/>
 				<textElement verticalAlignment="Middle">
 					<font size="12" isBold="true"/>
 				</textElement>
