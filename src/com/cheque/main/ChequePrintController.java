@@ -42,6 +42,7 @@ import net.sf.jasperreports.engine.JRReport;
 import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.design.JRDesignTextField;
 import net.sf.jasperreports.engine.design.JasperDesign;
 import net.sf.jasperreports.engine.util.JRLoader;
 import net.sf.jasperreports.engine.xml.JRXmlLoader;
@@ -62,22 +63,15 @@ public class ChequePrintController extends AnchorPane implements Initializable {
     @FXML
     private Button btnClose;
 
-    @FXML
     private DatePicker dtpDate;
 
-    @FXML
-    private Button btnPrint;
 
-    @FXML
     private TextField txtAmount;
 
-    @FXML
     private TextField txtPay;
 
-    @FXML
     private CheckBox chkCrossCheque;
 
-    @FXML
     private CheckBox chkRemoveDate;
 
     private Stage stage;
@@ -89,6 +83,12 @@ public class ChequePrintController extends AnchorPane implements Initializable {
 //</editor-fold>
 
     ChequePrintDAO chequePrint = new ChequePrintDAO();
+    @FXML
+    private Button btnSave;
+    @FXML
+    private Button btnSearchRoom;
+    @FXML
+    private Button btnRefresh;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -143,7 +143,6 @@ public class ChequePrintController extends AnchorPane implements Initializable {
 
     }
 
-    @FXML
     void btnPrintOnAction(ActionEvent event) {
         boolean validationSupportResult = false;
         ValidationResult v = validationSupport.getValidationResult();
@@ -256,7 +255,10 @@ public class ChequePrintController extends AnchorPane implements Initializable {
                    System.out.println("Count : "+field.length);
                    
                    JRElement rtxtCash = field[0];//Cash
-                   
+                   JRDesignTextField rtxtAmountInWords = (JRDesignTextField) d.getSummary().getElementByKey(
+                           "rtxtAmountInWords");
+                   rtxtAmountInWords.setY(90);
+                   System.out.println("X : "+rtxtAmountInWords.getX()+" - Y : "+rtxtAmountInWords.getY());;
                    
 //                   System.out.println("Height : "+rtxtCash.getX()+"-"+rtxtCash.getPositionTypeValue().name());
 //                   rtxtCash.setX(70);
@@ -322,6 +324,18 @@ public class ChequePrintController extends AnchorPane implements Initializable {
         }
 
         return inWords;
+    }
+
+    @FXML
+    private void btnSaveOnAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void btnSearchRoomOnAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void btnRefreshOnAction(ActionEvent event) {
     }
 
 }

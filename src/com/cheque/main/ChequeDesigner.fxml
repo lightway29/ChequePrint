@@ -8,7 +8,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="680.0" stylesheets="@../res/JMetroLightTheme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cheque.main.ChequePrintController">
+<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="680.0" stylesheets="@../res/JMetroLightTheme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cheque.main.ChequeDesignerController">
    <children>
       <StackPane layoutX="1.0" layoutY="34.0" prefHeight="260.0" prefWidth="680.0">
          <children>
@@ -115,7 +115,7 @@
                               <Insets left="30.0" />
                            </padding>
                         </HBox>
-                        <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnSpan="8" GridPane.rowIndex="4" GridPane.rowSpan="7">
+                        <Pane fx:id="paneDisplay" prefHeight="400.0" prefWidth="400.0" GridPane.columnSpan="8" GridPane.rowIndex="4" GridPane.rowSpan="7">
                            <GridPane.margin>
                               <Insets left="10.0" right="10.0" />
                            </GridPane.margin>
@@ -137,7 +137,7 @@
                                  <graphic>
                                     <ImageView fitHeight="10.000000178813929" fitWidth="13.333333969116211" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@../../../../../Avanra%20Beach/IHMS-Common-AvenraBeach/src/com/kasper/ihm/res/img-search.png" />
+                                          <Image url="@../res/img-search.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>
@@ -146,7 +146,7 @@
                                  <graphic>
                                     <ImageView fitHeight="12.0" fitWidth="14.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@../../../../../Avanra%20Beach/IHMS-Common-AvenraBeach/src/com/kasper/ihm/res/img-refreshNew.png" />
+                                          <Image url="@../res/img-refreshNew.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>

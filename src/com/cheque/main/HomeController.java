@@ -101,6 +101,10 @@ public class HomeController extends AnchorPane implements Initializable {
 
     @FXML
     void PrinterConfigOnAction(ActionEvent event) {
+        
+           FxmlUiLauncher.launchOnNewStageWait(
+                "/com/cheque/main/ChequeDesigner.fxml",
+                "Printer Config", null);
 
     }
 
