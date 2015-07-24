@@ -158,7 +158,7 @@
                         </HBox>
                         <HBox alignment="CENTER_LEFT" spacing="5.0" GridPane.columnIndex="4" GridPane.columnSpan="4" GridPane.rowIndex="1">
                            <children>
-                              <Label prefWidth="100.0" text="Design ID" GridPane.rowIndex="2" />
+                              <Label prefWidth="100.0" text="Profile Name" GridPane.rowIndex="2" />
                               <TextField prefWidth="210.0" />
                            </children>
                            <GridPane.margin>
