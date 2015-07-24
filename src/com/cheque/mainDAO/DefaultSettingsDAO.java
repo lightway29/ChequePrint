@@ -61,12 +61,44 @@ public class DefaultSettingsDAO {
 
     }
     
+    public String loadSetting(String id) {
+
+        String profileId=null;
+
+        if (HomeController.con == null) {
+            System.out.println("Database connection failiure.");
+            return null;
+
+        } else {
+            try {
+
+                String query
+                        = "SELECT * FROM default_settings where id=? ";
+                PreparedStatement pstmt = HomeController.con.prepareStatement(query);
+                pstmt.setString(1, id);
+                ResultSet r = pstmt.executeQuery();
+
+                while (r.next()) {
+                    profileId = r.getString("profile_name");
+                }
+
+            } catch (Exception e) {
+                System.out.println("Exception tag --> " + "Invalid sql statement "
+                            + e.getMessage());
+                
+                }
+        }
+        return profileId;
+
+    }
+    
     public boolean updateSettings(
             boolean crossCheque,
             boolean printPreview,
             boolean dateWithYear,
             boolean print,
-            String id) {
+            String id,
+            String profile) {
 
         
 
@@ -80,12 +112,13 @@ public class DefaultSettingsDAO {
                 PreparedStatement ps = HomeController.con.prepareStatement(
                         "Update default_settings set cross_cheque=? ,"
                                 + "print_preview=?,date_with_year=?,"
-                                + "print=? where id=?");
+                                + "print=?, profile_name=? where id=?");
                 ps.setInt(1, crossCheque?1:0);
                 ps.setInt(2, printPreview?1:0);
                 ps.setInt(3, dateWithYear?1:0);
                 ps.setInt(4, print?1:0);
-                ps.setString(5, id);
+                ps.setString(5, profile);
+                ps.setString(6, id);
 
                 int val = ps.executeUpdate();
                 if (val == 1) {
@@ -102,6 +135,47 @@ public class DefaultSettingsDAO {
         }
         
         
+    }
+    
+    public ArrayList loadTable() {
+
+        String profile = null;
+        ArrayList profileList = new ArrayList();
+
+        if (HomeController.con == null) {
+
+             System.out.println("Database connection failiure.");
+        } else {
+            try {
+
+                String query = "Select profile_name from cheque_design ";
+
+                PreparedStatement pre = HomeController.con.prepareStatement(query);
+                ResultSet r = pre.executeQuery();
+                while (r.next()) {
+                    profile = r.getString("profile_name");
+
+                    profileList.add(profile);
+                }
+
+            } catch (ArrayIndexOutOfBoundsException | SQLException |
+                    NullPointerException e) {
+                if (e instanceof ArrayIndexOutOfBoundsException) {
+                    System.out.println("Exception tag --> "
+                            + "Invalid entry location for list");
+                } else if (e instanceof SQLException) {
+                    System.out.println("Exception tag --> " + "Invalid sql statement "
+                            + e.getMessage());
+                } else if (e instanceof NullPointerException) {
+                    System.out.println("Exception tag --> " + "Empty entry for list");
+                }
+                return null;
+            } catch (Exception e) {
+                System.out.println("Exception tag --> " + "Error");
+                return null;
+            }
+        }
+        return profileList;
     }
     
    

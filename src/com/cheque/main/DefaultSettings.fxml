@@ -113,7 +113,7 @@
                               <Insets left="40.0" />
                            </GridPane.margin>
                            <children>
-                              <Label text="Defalt Profile" />
+                              <Label text="Default Profile" />
                               <ComboBox fx:id="cmbProfile" prefWidth="220.0" />
                            </children>
                         </HBox>
