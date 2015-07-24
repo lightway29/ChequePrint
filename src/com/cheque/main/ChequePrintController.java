@@ -18,7 +18,10 @@ import java.net.URL;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
+import java.util.List;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -30,9 +33,17 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.StringConverter;
+import net.sf.jasperreports.engine.JRBand;
+import net.sf.jasperreports.engine.JRElement;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JRField;
+import net.sf.jasperreports.engine.JRReport;
+import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.design.JasperDesign;
 import net.sf.jasperreports.engine.util.JRLoader;
+import net.sf.jasperreports.engine.xml.JRXmlLoader;
 import org.controlsfx.validation.ValidationResult;
 import org.controlsfx.validation.ValidationSupport;
 import org.controlsfx.validation.Validator;
@@ -226,10 +237,46 @@ public class ChequePrintController extends AnchorPane implements Initializable {
 //        amountWidth 
 //        amountRow
         
-        new VariableReport(200, 0, 400, 0, 46, 30, 50, 72, 330, 43);
+//        new VariableReport(200, 0, 400, 0, 46, 30, 50, 72, 330, 43);
 //        new BandReport();
 //        Stage stage = (Stage) btnClose.getScene().getWindow();
 //        stage.close();
+        
+        String path = ".//Reports//HNBCheqeCross.jrxml";
+        if (new File(path).exists()) {
+            System.out.println("Exists");
+               try {
+            
+                  
+            JasperDesign d = JRXmlLoader.load(path);
+                   JRElement[] field = d.getSummary().getElements();
+                   
+                   for (JRElement t : field) {
+                       System.out.println("Field : "+t.getUUID());
+                       
+                   }
+                   
+                   JRElement t = field[0];
+                   System.out.println("Height : "+t.getX());
+                   t.setX(70);
+                   
+                    System.out.println("Height : "+t.getX());
+                    JRReport jRReport = d;
+                    JasperCompileManager.writeReportToXmlFile(jRReport, path);
+                    
+                    
+                   
+                   
+                   
+                   
+        } catch (JRException ex) {
+            ex.printStackTrace();
+        }
+        }
+        
+     
+        
+        
     }
 
     private String convertToWords(String value) {

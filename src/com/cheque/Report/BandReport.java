@@ -95,7 +95,7 @@ public class BandReport {
 
                     
                     .summary(createTextField("A/C PAYEE ONLY")
-                            .setStyle(LabelbackgroundStyle))
+                            .setStyle(LabelbackgroundStyle),createTextField("2015-10-10").setStyle(dateStyle))
                     .summary(createTextField("2015-10-10")
                             .setStyle(dateStyle))
                     .summary(createTextField("**CASH**")
