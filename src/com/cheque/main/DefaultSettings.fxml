@@ -108,6 +108,15 @@
                               <Insets left="40.0" />
                            </GridPane.margin>
                         </HBox>
+                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="5.0" GridPane.columnIndex="1" GridPane.columnSpan="4" GridPane.rowIndex="4">
+                           <GridPane.margin>
+                              <Insets left="40.0" />
+                           </GridPane.margin>
+                           <children>
+                              <Label text="Defalt Profile" />
+                              <ComboBox fx:id="cmbProfile" prefWidth="220.0" />
+                           </children>
+                        </HBox>
                      </children>
                   </GridPane>
                </children>

@@ -18,6 +18,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.ComboBox;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
@@ -46,6 +47,9 @@ public class DefaultSettingsController extends AnchorPane implements
 
     @FXML
     private CheckBox chkprintPreview;
+    
+    @FXML
+    private ComboBox<String> cmbProfile;
 //</editor-fold>
 
     DefaultSettingsDAO defaultSettingsDAO = new DefaultSettingsDAO();
@@ -55,6 +59,8 @@ public class DefaultSettingsController extends AnchorPane implements
 
         loadSettings();
     }
+    
+    
 
     @FXML
     void btnSaveOnAction(ActionEvent event) {
