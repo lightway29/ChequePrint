@@ -126,43 +126,25 @@ public class ChequeDesignerController extends AnchorPane implements
     @FXML
     private void sdRupeesYOnMouseDragged(MouseEvent event) {
 
-        String value = String.valueOf(sdRupeesY.getValue());
-        txtRupeesY.setText(value.split("\\.")[0]);
-        
-        updateReport("HNBCheqe", Integer.parseInt(txtRupeesX.getText()),
-                Integer.parseInt(txtRupeesY.getText()));
-
+        refreshY();
     }
-
-    @FXML
     private void sdRupeesYOnMouseClicked(MouseEvent event) {
 
-        String value = String.valueOf(sdRupeesY.getValue());
-        txtRupeesY.setText(value.split("\\.")[0]);
-        
-        updateReport("HNBCheqe", Integer.parseInt(txtRupeesX.getText()),
-                Integer.parseInt(txtRupeesY.getText()));
+        refreshY();
 
     }
 
     @FXML
     private void sdRupeesXOnMouseClicked(MouseEvent event) {
 
-       String value = String.valueOf(sdRupeesX.getValue());
-        txtRupeesX.setText(value.split("\\.")[0]);
-        
-        updateReport("HNBCheqe", Integer.parseInt(txtRupeesX.getText()),
-                Integer.parseInt(txtRupeesY.getText()));
+      refreshX();
 
     }
 
     @FXML
     private void sdRupeesXOnMouseDragged(MouseEvent event) {
 
-        String value = String.valueOf(sdRupeesX.getValue());
-        txtRupeesX.setText(value.split("\\.")[0]);
-        
-        updateReport("HNBCheqe", Integer.parseInt(txtRupeesX.getText()), Integer.parseInt(txtRupeesY.getText()));
+       refreshX();
 
     }
 
@@ -244,6 +226,32 @@ public class ChequeDesignerController extends AnchorPane implements
             }
         }
 
+    }
+    
+    
+    private void refreshY(){
+    
+        String value = String.valueOf(sdRupeesY.getValue());
+        txtRupeesY.setText(value.split("\\.")[0]);
+        
+        updateReport("HNBCheqe", Integer.parseInt(txtRupeesX.getText()),
+                Integer.parseInt(txtRupeesY.getText()));
+    
+    
+    
+    
+    }
+    
+     private void refreshX(){
+    
+         String value = String.valueOf(sdRupeesX.getValue());
+        txtRupeesX.setText(value.split("\\.")[0]);
+        
+        updateReport("HNBCheqe", Integer.parseInt(txtRupeesX.getText()), 
+                Integer.parseInt(txtRupeesY.getText()));
+
+    
+    
     }
 
 //</editor-fold>
