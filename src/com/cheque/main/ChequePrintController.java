@@ -63,15 +63,20 @@ public class ChequePrintController extends AnchorPane implements Initializable {
     @FXML
     private Button btnClose;
 
+    @FXML
     private DatePicker dtpDate;
 
 
+    @FXML
     private TextField txtAmount;
 
+    @FXML
     private TextField txtPay;
 
+    @FXML
     private CheckBox chkCrossCheque;
 
+    @FXML
     private CheckBox chkRemoveDate;
 
     private Stage stage;
@@ -84,11 +89,7 @@ public class ChequePrintController extends AnchorPane implements Initializable {
 
     ChequePrintDAO chequePrint = new ChequePrintDAO();
     @FXML
-    private Button btnSave;
-    @FXML
-    private Button btnSearchRoom;
-    @FXML
-    private Button btnRefresh;
+    private Button btnPrint;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -143,6 +144,7 @@ public class ChequePrintController extends AnchorPane implements Initializable {
 
     }
 
+    @FXML
     void btnPrintOnAction(ActionEvent event) {
         boolean validationSupportResult = false;
         ValidationResult v = validationSupport.getValidationResult();
@@ -326,16 +328,5 @@ public class ChequePrintController extends AnchorPane implements Initializable {
         return inWords;
     }
 
-    @FXML
-    private void btnSaveOnAction(ActionEvent event) {
-    }
-
-    @FXML
-    private void btnSearchRoomOnAction(ActionEvent event) {
-    }
-
-    @FXML
-    private void btnRefreshOnAction(ActionEvent event) {
-    }
 
 }
