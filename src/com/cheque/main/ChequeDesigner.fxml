@@ -8,7 +8,6 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
 <AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="680.0" stylesheets="@../res/JMetroLightTheme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cheque.main.ChequeDesignerController">
 
    <children>
@@ -60,7 +59,7 @@
                            <children>
                               <Label prefWidth="100.0" text="A/C Payee Top" GridPane.rowIndex="2" />
                               <Slider prefWidth="155.0" />
-                              <TextField prefWidth="50.0" />
+                              <TextField editable="false" prefWidth="50.0" text="0" />
                            </children>
                            <GridPane.margin>
                               <Insets left="10.0" />
@@ -68,9 +67,9 @@
                         </HBox>
                         <HBox alignment="CENTER_LEFT" spacing="5.0" GridPane.columnIndex="4" GridPane.columnSpan="4" GridPane.rowIndex="2">
                            <children>
-                              <Label prefWidth="100.0" text="A/C Payee Height" GridPane.rowIndex="4" />
+                              <Label prefWidth="100.0" text="A/C Payee Left" GridPane.rowIndex="4" />
                               <Slider prefWidth="155.0" />
-                              <TextField prefWidth="50.0" />
+                              <TextField editable="false" prefWidth="50.0" text="0" />
                            </children>
                            <GridPane.margin>
                               <Insets left="10.0" />
@@ -164,7 +163,7 @@
                            <children>
                               <Label prefWidth="100.0" text="Pay Top" GridPane.rowIndex="2" />
                               <Slider prefWidth="155.0" />
-                              <TextField prefWidth="50.0" />
+                              <TextField editable="false" prefWidth="50.0" text="0" />
                            </children>
                            <GridPane.margin>
                               <Insets left="10.0" />
@@ -172,9 +171,9 @@
                         </HBox>
                         <HBox alignment="CENTER_LEFT" layoutX="360.0" layoutY="80.0" spacing="5.0" GridPane.columnIndex="4" GridPane.columnSpan="4" GridPane.rowIndex="3">
                            <children>
-                              <Label prefWidth="100.0" text="Pay Height" GridPane.rowIndex="4" />
+                              <Label prefWidth="100.0" text="Pay Left" GridPane.rowIndex="4" />
                               <Slider prefWidth="155.0" />
-                              <TextField prefWidth="50.0" />
+                              <TextField editable="false" prefWidth="50.0" text="0" />
                            </children>
                            <GridPane.margin>
                               <Insets left="10.0" />
@@ -183,8 +182,8 @@
                         <HBox alignment="CENTER_LEFT" layoutX="20.0" layoutY="115.0" spacing="5.0" GridPane.columnSpan="4" GridPane.rowIndex="4">
                            <children>
                               <Label prefWidth="100.0" text="Rupees Top" GridPane.rowIndex="2" />
-                              <Slider prefWidth="155.0" />
-                              <TextField prefWidth="50.0" />
+                              <Slider fx:id="sdRupeesY" onMouseClicked="#sdRupeesYOnMouseClicked" onMouseDragged="#sdRupeesYOnMouseDragged" prefWidth="155.0" />
+                              <TextField fx:id="txtRupeesY" prefWidth="50.0" text="0" />
                            </children>
                            <GridPane.margin>
                               <Insets left="10.0" />
@@ -192,9 +191,9 @@
                         </HBox>
                         <HBox alignment="CENTER_LEFT" layoutX="360.0" layoutY="115.0" spacing="5.0" GridPane.columnIndex="4" GridPane.columnSpan="4" GridPane.rowIndex="4">
                            <children>
-                              <Label prefWidth="100.0" text="Rupees Height" GridPane.rowIndex="4" />
-                              <Slider prefWidth="155.0" />
-                              <TextField prefWidth="50.0" />
+                              <Label prefWidth="100.0" text="Rupees Left" GridPane.rowIndex="4" />
+                              <Slider fx:id="sdRupeesX" onDragDetected="#sdRupeesXOnDragDetected" onMouseClicked="#sdRupeesXOnMouseClicked" onMouseDragged="#sdRupeesXOnMouseDragged" prefWidth="155.0" />
+                              <TextField fx:id="txtRupeesX" prefWidth="50.0" text="0" />
                            </children>
                            <GridPane.margin>
                               <Insets left="10.0" />
@@ -204,7 +203,7 @@
                            <children>
                               <Label prefWidth="100.0" text="Amount Top" GridPane.rowIndex="2" />
                               <Slider prefWidth="155.0" />
-                              <TextField prefWidth="50.0" />
+                              <TextField editable="false" prefWidth="50.0" text="0" />
                            </children>
                            <GridPane.margin>
                               <Insets left="10.0" />
@@ -212,9 +211,9 @@
                         </HBox>
                         <HBox alignment="CENTER_LEFT" layoutX="360.0" layoutY="158.0" spacing="5.0" GridPane.columnIndex="4" GridPane.columnSpan="4" GridPane.rowIndex="5">
                            <children>
-                              <Label prefWidth="100.0" text="Amount Height" GridPane.rowIndex="4" />
+                              <Label prefWidth="100.0" text="Amount Left" GridPane.rowIndex="4" />
                               <Slider prefWidth="155.0" />
-                              <TextField prefWidth="50.0" />
+                              <TextField editable="false" prefWidth="50.0" text="0" />
                            </children>
                            <GridPane.margin>
                               <Insets left="10.0" />
