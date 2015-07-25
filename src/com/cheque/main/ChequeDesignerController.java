@@ -183,7 +183,7 @@ public class ChequeDesignerController extends AnchorPane implements
                 try {
                     jasperPrint = JasperFillManager.fillReport(path, null);
                     JRViewer jr = new JRViewer(jasperPrint);
-                    Dimension d = new Dimension(655, 250);
+                    Dimension d = new Dimension(880, 420);
 
                     pageWidth = jasperPrint.getPageWidth();
                     pageHeight = jasperPrint.getPageHeight();

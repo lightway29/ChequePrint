@@ -27,7 +27,7 @@
 				<textFieldExpression><![CDATA[$P{pay}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement key="rtxtAmountInWords" x="192" y="36" width="257" height="72" uuid="43152769-5030-48bd-a471-020806c64792"/>
+				<reportElement key="rtxtAmountInWords" x="0" y="80" width="257" height="72" uuid="43152769-5030-48bd-a471-020806c64792"/>
 				<textElement>
 					<font fontName="Times New Roman" size="12"/>
 					<paragraph lineSpacing="Fixed" lineSpacingSize="20.0"/>
