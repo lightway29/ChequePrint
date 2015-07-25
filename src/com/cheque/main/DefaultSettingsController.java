@@ -18,6 +18,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.ComboBox;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
@@ -46,14 +47,36 @@ public class DefaultSettingsController extends AnchorPane implements
 
     @FXML
     private CheckBox chkprintPreview;
+    
+    @FXML
+    private ComboBox<String> cmbProfile;
 //</editor-fold>
 
     DefaultSettingsDAO defaultSettingsDAO = new DefaultSettingsDAO();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
+        loadTableToCombobox();
         loadSettings();
+    }
+    
+    private void loadTableToCombobox() {
+
+        cmbProfile.setItems(null);
+        ArrayList<String> professionList = null;
+        professionList = defaultSettingsDAO.loadTable();
+        if (professionList != null) {
+            try {
+                ObservableList<String> List = FXCollections.observableArrayList(
+                        professionList);
+                cmbProfile.setItems(List);
+                cmbProfile.setValue(List.get(0));
+            } catch (Exception e) {
+
+            }
+
+        }
+
     }
 
     @FXML
@@ -64,7 +87,8 @@ public class DefaultSettingsController extends AnchorPane implements
                 chkprintPreview.isSelected(),
                 chkDateWithYear.isSelected(),
                 chkPrint.isSelected(),
-                "SET0001");
+                "SET0001",
+                cmbProfile.getValue());
         if (updateStatus) {
 
             Alert alert = new Alert(AlertType.INFORMATION);
@@ -96,6 +120,7 @@ public class DefaultSettingsController extends AnchorPane implements
                 chkprintPreview.setSelected(list.get(1));
                 chkDateWithYear.setSelected(list.get(2));
                 chkPrint.setSelected(list.get(3));
+                cmbProfile.setValue(defaultSettingsDAO.loadSetting("SET0001"));
 
             } catch (Exception e) {
 
