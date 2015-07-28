@@ -11,9 +11,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
-/**
- * @author Sumudu De Zoysa
- */
+
 public class BranchPopUp {
 
     public SimpleStringProperty colId = new SimpleStringProperty("tcId");

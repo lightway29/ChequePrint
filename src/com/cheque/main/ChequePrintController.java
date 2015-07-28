@@ -5,9 +5,7 @@
  */
 package com.cheque.main;
 
-import com.cheque.Report.BandReport;
-import com.cheque.Report.SimpleAdhocReport;
-import com.cheque.Report.VariableReport;
+
 import com.cheque.mainDAO.ChequePrintDAO;
 import com.cheque.msgbox.MessageBox;
 import com.cheque.msgbox.SimpleMessageBoxFactory;
@@ -228,23 +226,7 @@ public class ChequePrintController extends AnchorPane implements Initializable {
     @FXML
     void btnCloseOnAction(ActionEvent event) {
 
-//        accountWidth
-//        accountRow
-//        dateWidth 
-//        dateRow
-//        cashWidth 
-//        cashRow
-//        amountWordWidth 
-//        amountWordRow
-//        amountWidth 
-//        amountRow
-        
-//        new VariableReport(200, 0, 400, 0, 46, 30, 50, 72, 330, 43);
-//        new BandReport();
-//        Stage stage = (Stage) btnClose.getScene().getWindow();
-//        stage.close();
-        
-//        String path = ".//Reports//HNBCheqeCross.jrxml";
+
         String path = ".//Reports//HNBCheqe.jrxml";
         if (new File(path).exists()) {
             System.out.println("Exists");
