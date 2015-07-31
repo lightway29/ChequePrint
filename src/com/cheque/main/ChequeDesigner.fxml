@@ -128,7 +128,7 @@
                         <HBox alignment="CENTER_LEFT" spacing="5.0" GridPane.columnSpan="4" GridPane.rowIndex="1">
                            <children>
                               <Label prefWidth="100.0" text="Design ID" GridPane.rowIndex="2" />
-                              <TextField prefWidth="250.0" />
+                              <TextField fx:id="txtDesignerId" prefWidth="250.0" />
                               <Button id="btnSearch" fx:id="btnSearchRoom" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" minHeight="24.0" minWidth="24.0" mnemonicParsing="false" onAction="#btnSearchRoomOnAction" prefHeight="24.0" prefWidth="24.0" text="">
                                  <graphic>
                                     <ImageView fitHeight="10.000000178813929" fitWidth="13.333333969116211" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
@@ -155,7 +155,7 @@
                         <HBox alignment="CENTER_LEFT" spacing="5.0" GridPane.columnIndex="5" GridPane.columnSpan="4" GridPane.rowIndex="1">
                            <children>
                               <Label prefWidth="100.0" text="Profile Name" GridPane.rowIndex="2" />
-                              <TextField prefWidth="300.0" />
+                              <TextField fx:id="txtProfileName" prefWidth="300.0" />
                            </children>
                            <GridPane.margin>
                               <Insets right="10.0" />

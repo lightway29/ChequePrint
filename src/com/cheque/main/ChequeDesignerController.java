@@ -5,6 +5,9 @@
  */
 package com.cheque.main;
 
+import com.cheque.mainDAO.ChequeDesignerDAO;
+import com.cheque.msgbox.MessageBox;
+import com.cheque.msgbox.SimpleMessageBoxFactory;
 import java.awt.Dimension;
 import java.awt.Rectangle;
 import java.io.File;
@@ -112,9 +115,17 @@ public class ChequeDesignerController extends AnchorPane implements
     private Slider sdAmountY;
     @FXML
     private Slider sdAmountX;
+    @FXML
+    private TextField txtDesignerId;
+    @FXML
+    private TextField txtProfileName;
+
+    private ChequeDesignerDAO chequeDesignerDAO = new ChequeDesignerDAO();
+    private MessageBox mb;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        mb = SimpleMessageBoxFactory.createMessageBox();
         currentReportName = "HNBCheqeCross";
         loadReport(currentReportName);
 
@@ -122,6 +133,36 @@ public class ChequeDesignerController extends AnchorPane implements
 
     @FXML
     private void btnSaveOnAction(ActionEvent event) {
+
+        boolean isSaved = chequeDesignerDAO.
+                insertProfile(txtDesignerId.getText(),
+                        txtProfileName.getText(),
+                        txtAccountPayeeX.getText(),
+                        txtAccountPayeeY.getText(),
+                        txtPayX.getText(),
+                        txtPayY.getText(),
+                        txtRupeesX.getText(),
+                        txtRupeesY.getText(),
+                        txtAmountX.getText(),
+                        txtAmountY.getText(),
+                        txtDateX.getText(),
+                        txtDateY.getText());
+
+        if (isSaved == true) {
+
+            mb.ShowMessage(stage, "Profile saved successfully.", "Information",
+                    MessageBox.MessageIcon.MSG_ICON_SUCCESS,
+                    MessageBox.MessageType.MSG_OK);
+
+        } else {
+
+            mb.ShowMessage(stage, "Profile not saved successfully.",
+                    "Information",
+                    MessageBox.MessageIcon.MSG_ICON_FAIL,
+                    MessageBox.MessageType.MSG_OK);
+
+        }
+
     }
 
     @FXML
@@ -411,26 +452,24 @@ public class ChequeDesignerController extends AnchorPane implements
                     JRDesignElement rtxtPayee = (JRDesignStaticText) d.
                             getSummary().getElementByKey(
                                     "rtxtPayee");
-                    
+
                     JRDesignElement lineTop = (JRDesignLine) d.
                             getSummary().getElementByKey(
                                     "lineTop");
-                    
+
                     JRDesignElement lineBottom = (JRDesignLine) d.
                             getSummary().getElementByKey(
                                     "lineBottom");
 
                     rtxtPayee.setX(payeeX);
                     rtxtPayee.setY(payeeY);
-                    
-                     lineTop.setX(payeeX);
-                    lineTop.setY(payeeY+1);
-                    
-                     lineBottom.setX(payeeX);
-                    lineBottom.setY(payeeY+13);
-                }
 
-                
+                    lineTop.setX(payeeX);
+                    lineTop.setY(payeeY + 1);
+
+                    lineBottom.setX(payeeX);
+                    lineBottom.setY(payeeY + 13);
+                }
 
                 JRReport jRReport = d;
 

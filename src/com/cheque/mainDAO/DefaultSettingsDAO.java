@@ -129,7 +129,7 @@ public class DefaultSettingsDAO {
 
            } catch (Exception e) {
                 System.out.println("Exception tag --> " + "Invalid sql statement "
-                            + e.getMessage());
+                            );
                 return false;
            }  
         }
