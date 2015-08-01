@@ -7,6 +7,10 @@ package com.cheque.mainDAO;
 
 import com.cheque.main.HomeController;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import org.owasp.esapi.ESAPI;
 
 /**
  *
@@ -78,6 +82,168 @@ public class ChequeDesignerDAO {
             }
         }
 
+    }
+
+    public ArrayList<ArrayList<String>> searchProfileDetailsInfo(String date) {
+
+        String rowId = null;
+        String profileName = null;
+        String summeryId = null;
+        String cusId = null;
+        String pax = null;
+
+        ArrayList<ArrayList<String>> Mainlist
+                = new ArrayList<ArrayList<String>>();
+
+        if (HomeController.con == null) {
+
+            System.out.println("Database connection failiure.");
+            return null;
+
+        } else {
+            try {
+
+                String query
+                        = "SELECT * FROM cheque_design WHERE design_id LIKE ? OR profile_name LIKE ? ";
+
+                PreparedStatement pstmt = HomeController.con.prepareStatement(
+                        query);
+                pstmt.setString(1, date + "%");
+                pstmt.setString(2, date + "%");
+                ResultSet r = pstmt.executeQuery();
+
+                while (r.next()) {
+
+                    ArrayList<String> list = new ArrayList<String>();
+
+                    rowId = r.getString("design_id");
+
+                    profileName = r.getString("profile_name");
+
+                    list.add(rowId);
+                    list.add(profileName);
+
+                    Mainlist.add(list);
+
+                }
+
+            } catch (ArrayIndexOutOfBoundsException | SQLException |
+                    NullPointerException e) {
+
+                if (e instanceof ArrayIndexOutOfBoundsException) {
+
+                    System.out.println("Exception tag --> "
+                            + "Invalid entry location for list");
+
+                } else if (e instanceof SQLException) {
+
+                    System.out.println("Exception tag --> "
+                            + "Invalid sql statement " + e);
+
+                } else if (e instanceof NullPointerException) {
+
+                    System.out.println("Exception tag --> "
+                            + "Empty entry for list");
+
+                }
+                return null;
+            } catch (Exception e) {
+
+                System.out.println("Exception tag --> " + "Error");
+
+                return null;
+            }
+        }
+        return Mainlist;
+    }
+
+    public ArrayList<String> loadProfileDetail(String profileId) {
+
+        String acPayeeX = null;
+        String acPayeeY = null;
+        String payX = null;
+        String payY = null;
+        String rupeeX = null;
+        String rupeeY = null;
+        String amountX = null;
+        String amountY = null;
+        String dateX = null;
+        String dateY = null;
+
+        ArrayList<String> list
+                = new ArrayList<String>();
+
+        if (HomeController.con == null) {
+
+            System.out.println("Database connection failiure.");
+            return null;
+
+        } else {
+            try {
+
+                String query
+                        = "SELECT * FROM cheque_design WHERE design_id = ? ";
+
+                PreparedStatement pstmt = HomeController.con.prepareStatement(
+                        query);
+                pstmt.setString(1, profileId);
+
+                ResultSet r = pstmt.executeQuery();
+
+                while (r.next()) {
+
+                    acPayeeX = r.getString("ac_payee_only_top");
+                    acPayeeY = r.getString("ac_payee_only_hight");
+                    payX = r.getString("pay_top");
+                    payY = r.getString("pay_hight");
+                    rupeeX = r.getString("rupees_top");
+                    rupeeY = r.getString("rupees_hight");
+                    amountX = r.getString("amount_top");
+                    amountY = r.getString("amount_hight");
+                    dateX = r.getString("date_top");
+                    dateY = r.getString("date_hight");
+
+                    list.add(acPayeeX);
+                    list.add(acPayeeY);
+                    list.add(payX);
+                    list.add(payY);
+                    list.add(rupeeX);
+                    list.add(rupeeY);
+                    list.add(amountX);
+                    list.add(amountY);
+                    list.add(dateX);
+                    list.add(dateY);
+
+                }
+
+            } catch (ArrayIndexOutOfBoundsException | SQLException |
+                    NullPointerException e) {
+
+                if (e instanceof ArrayIndexOutOfBoundsException) {
+
+                    System.out.println("Exception tag --> "
+                            + "Invalid entry location for list");
+
+                } else if (e instanceof SQLException) {
+
+                    System.out.println("Exception tag --> "
+                            + "Invalid sql statement " + e);
+
+                } else if (e instanceof NullPointerException) {
+
+                    System.out.println("Exception tag --> "
+                            + "Empty entry for list");
+
+                }
+                return null;
+            } catch (Exception e) {
+
+                System.out.println("Exception tag --> " + "Error");
+
+                return null;
+            }
+        }
+        return list;
     }
 
 }

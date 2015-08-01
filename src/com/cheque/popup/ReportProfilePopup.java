@@ -39,7 +39,7 @@ public class ReportProfilePopup {
                 new PropertyValueFactory<>("colProfileId"));
 
     TableColumn tcProfileName = new TableColumn("Profile Name");
-        tcProfileName.setMinWidth(100);
+        tcProfileName.setMinWidth(145);
         tcProfileName.setCellValueFactory(
                 new PropertyValueFactory<>("colProfileName"));
 

@@ -8,14 +8,19 @@ package com.cheque.main;
 import com.cheque.mainDAO.ChequeDesignerDAO;
 import com.cheque.msgbox.MessageBox;
 import com.cheque.msgbox.SimpleMessageBoxFactory;
+import com.cheque.popup.ReportProfilePopup;
+import com.cheque.ui.StagePassable;
 import java.awt.Dimension;
 import java.awt.Rectangle;
 import java.io.File;
 import java.io.InputStream;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.embed.swing.SwingNode;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -23,8 +28,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Slider;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.DragEvent;
+import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseDragEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -49,13 +56,14 @@ import net.sf.jasperreports.engine.design.JasperDesign;
 import net.sf.jasperreports.engine.xml.JRXmlLoader;
 import net.sf.jasperreports.view.JRViewer;
 import net.sf.jasperreports.view.JasperViewer;
+import org.controlsfx.control.PopOver;
 
 /**
  *
  * @author lightway
  */
 public class ChequeDesignerController extends AnchorPane implements
-        Initializable {
+        Initializable ,StagePassable{
 
     @FXML
     private Button btnSave;
@@ -119,12 +127,26 @@ public class ChequeDesignerController extends AnchorPane implements
     private TextField txtDesignerId;
     @FXML
     private TextField txtProfileName;
+    
+     //Profile info popup---------------------------------------
+    private TableView profileTable = new TableView();
+    private PopOver profilePop;
+    private ObservableList<ReportProfilePopup> profileData = FXCollections.
+            observableArrayList();
+    private ReportProfilePopup reportProfilePopup = new ReportProfilePopup();
+
 
     private ChequeDesignerDAO chequeDesignerDAO = new ChequeDesignerDAO();
     private MessageBox mb;
+    
+
+    
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+         
+          //room popup------------------------
+      
         mb = SimpleMessageBoxFactory.createMessageBox();
         currentReportName = "HNBCheqeCross";
         loadReport(currentReportName);
@@ -175,6 +197,14 @@ public class ChequeDesignerController extends AnchorPane implements
 
     @FXML
     private void btnSearchRoomOnAction(ActionEvent event) {
+        
+        profileTableDataLoader();
+        profileTable.setItems(profileData);
+        if (!profileData.isEmpty()) {
+            profilePop.show(btnSearchRoom);
+        }
+        
+        
     }
 
     @FXML
@@ -290,6 +320,65 @@ public class ChequeDesignerController extends AnchorPane implements
     }
 
     //<editor-fold defaultstate="collapsed" desc="Methods">
+    
+    private void loadProfile(String designId) {
+
+        
+        ArrayList<String> list = null;
+        list = chequeDesignerDAO.loadProfileDetail(designId);
+        if (list != null) {
+            try {
+             txtAccountPayeeX.setText(list.get(0));
+             txtAccountPayeeY.setText(list.get(1));
+             txtPayX.setText(list.get(2));
+             txtPayY.setText(list.get(3));
+             txtRupeesX.setText(list.get(4));
+             txtRupeesY.setText(list.get(5));
+             txtAmountX.setText(list.get(6));
+             txtAmountY.setText(list.get(7));
+             txtDateX.setText(list.get(8));
+             txtDateY.setText(list.get(9));
+             
+            } catch (Exception e) {
+
+            }
+
+        }
+    }
+    
+     private void profileTableDataLoader() {
+
+        profileData.clear();
+        ArrayList<ArrayList<String>> profileInfo
+                = new ArrayList<ArrayList<String>>();
+        ArrayList<ArrayList<String>> list = chequeDesignerDAO.searchProfileDetailsInfo(txtDesignerId.getText());
+                
+
+        if (list != null) {
+
+            for (int i = 0; i < list.size(); i++) {
+
+                profileInfo.add(list.get(i));
+            }
+
+            if (profileInfo != null && profileInfo.size() > 0) {
+                for (int i = 0; i < profileInfo.size(); i++) {
+
+                    System.out.println("Profie : "+profileInfo.get(i).get(0));
+                    reportProfilePopup = new ReportProfilePopup();
+
+                    reportProfilePopup.colProfileId.setValue(profileInfo.get(i).get(0));
+                    reportProfilePopup.colProfileName.setValue(profileInfo.get(i).get(1));
+                    
+                    profileData.add(reportProfilePopup);
+                }
+            }
+
+        }
+
+    }
+
+    
     private void loadReport(String reportName) {
 
         String path = ".//Reports//" + reportName + ".jasper";
@@ -332,9 +421,6 @@ public class ChequeDesignerController extends AnchorPane implements
 
                     jr.setPreferredSize(d);
 
-                    System.out.println("X - " + jr.getPreferredSize().
-                            getHeight() + " Y - " + jr.getAlignmentY());
-
                     swingNode.setContent(jr);
 
                 } catch (Exception ex) {
@@ -361,9 +447,8 @@ public class ChequeDesignerController extends AnchorPane implements
                 JasperDesign d = JRXmlLoader.load(path);
                 JRElement[] field = d.getSummary().getElements();
 
-                System.out.println("Count : " + field.length);
-
-                JRElement rtxtCash = field[0];//Cash
+                
+               JRElement rtxtCash = field[0];//Cash
 
                 //Amount In Words Field
                 JRDesignTextField rtxtAmountInWords = (JRDesignTextField) d.
@@ -532,6 +617,94 @@ public class ChequeDesignerController extends AnchorPane implements
         );
 
     }
+    
+    private void configureSlider(){
+    
+    
+    sdPayeeY.setValue(Double.parseDouble(txtAccountPayeeY.getText()));
+    
+    sdPayeeX.setValue(Double.parseDouble(txtAccountPayeeX.getText()));
+    
+    sdPayY.setValue(Double.parseDouble(txtPayY.getText()));
+    
+    sdPayX.setValue(Double.parseDouble(txtPayX.getText()));
+    
+    sdDateY.setValue(Double.parseDouble(txtDateY.getText()));
+    
+    sdDateX.setValue(Double.parseDouble(txtDateX.getText()));
+    
+    sdAmountY.setValue(Double.parseDouble(txtAmountY.getText()));
+    
+    sdAmountX.setValue(Double.parseDouble(txtAmountX.getText()));
+    
+    sdRupeesY.setValue(Double.parseDouble(txtRupeesY.getText()));
+    
+    sdRupeesX.setValue(Double.parseDouble(txtRupeesX.getText()));
+    
+    
+    
+    }
 
 //</editor-fold>
+
+    @Override
+    public void setStage(Stage stage, Object[] obj) {
+        this.stage = stage;
+        
+         profileTable = reportProfilePopup.tableViewLoader(profileData);
+
+        profileTable.setOnMouseClicked(e -> {
+            if (e.getClickCount() == 2) {
+                try {
+                    ReportProfilePopup p = null;
+                    p = (ReportProfilePopup) profileTable.getSelectionModel().
+                            getSelectedItem();
+
+                    if (p.getColProfileId() != null) {
+                   
+                        //loading Part Here.
+                        loadProfile(p.getColProfileId());
+                        refreshX();
+                        refreshY();
+                        configureSlider();
+                        
+                    }
+
+                } catch (NullPointerException n) {
+
+                }
+
+                profilePop.hide();
+                
+
+            }
+
+        });
+        
+        profileTable.setOnMousePressed(e -> {
+
+            if (e.getButton() == MouseButton.SECONDARY) {
+
+                profilePop.hide();
+                
+
+            }
+
+        });
+        
+         profilePop = new PopOver(profileTable);
+
+        stage.setOnCloseRequest(e -> {
+
+            if (profilePop.isShowing() ) {
+
+                e.consume();
+                profilePop.hide();
+                
+
+            }
+        });
+        
+        
+    }
 }
