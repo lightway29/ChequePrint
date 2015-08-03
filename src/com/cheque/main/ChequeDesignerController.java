@@ -193,6 +193,10 @@ public class ChequeDesignerController extends AnchorPane implements
 
     @FXML
     private void btnCloseOnAction(ActionEvent event) {
+        
+        Stage stage = (Stage) btnClose.getScene().getWindow();
+        stage.close();
+        
     }
 
     @FXML
@@ -328,6 +332,7 @@ public class ChequeDesignerController extends AnchorPane implements
         list = chequeDesignerDAO.loadProfileDetail(designId);
         if (list != null) {
             try {
+                System.out.println("List item : "+list.get(0));
              txtAccountPayeeX.setText(list.get(0));
              txtAccountPayeeY.setText(list.get(1));
              txtPayX.setText(list.get(2));
@@ -340,6 +345,7 @@ public class ChequeDesignerController extends AnchorPane implements
              txtDateY.setText(list.get(9));
              
             } catch (Exception e) {
+                e.printStackTrace();
 
             }
 
@@ -571,7 +577,8 @@ public class ChequeDesignerController extends AnchorPane implements
     }
 
     private void refreshY() {
-
+ 
+        
         txtRupeesY.setText(String.valueOf(sdRupeesY.getValue()).split("\\.")[0]);
         txtPayY.setText(String.valueOf(sdPayY.getValue()).split("\\.")[0]);
         txtAmountY.setText(String.valueOf(sdAmountY.getValue()).split("\\.")[0]);
@@ -579,6 +586,8 @@ public class ChequeDesignerController extends AnchorPane implements
                 split("\\.")[0]);
         txtDateY.setText(String.valueOf(sdDateY.getValue()).split("\\.")[0]);
 
+        
+        
         updateReport(currentReportName,
                 Integer.parseInt(txtRupeesX.getText()), Integer.parseInt(
                         txtRupeesY.getText()),
@@ -592,6 +601,8 @@ public class ChequeDesignerController extends AnchorPane implements
                         txtAccountPayeeY.getText()), true
         );
 
+        
+        
     }
 
     private void refreshX() {
@@ -603,6 +614,8 @@ public class ChequeDesignerController extends AnchorPane implements
                 split("\\.")[0]);
         txtDateX.setText(String.valueOf(sdDateX.getValue()).split("\\.")[0]);
 
+        
+        
         updateReport(currentReportName,
                 Integer.parseInt(txtRupeesX.getText()), Integer.parseInt(
                         txtRupeesY.getText()),
@@ -644,9 +657,7 @@ public class ChequeDesignerController extends AnchorPane implements
     
     
     }
-
-//</editor-fold>
-
+    
     @Override
     public void setStage(Stage stage, Object[] obj) {
         this.stage = stage;
@@ -662,11 +673,27 @@ public class ChequeDesignerController extends AnchorPane implements
 
                     if (p.getColProfileId() != null) {
                    
+                        
+                        txtDesignerId.setText(p.getColProfileId());
+                        txtProfileName.setText(p.getColProfileName());
                         //loading Part Here.
                         loadProfile(p.getColProfileId());
-                        refreshX();
-                        refreshY();
-                        configureSlider();
+                        
+                          updateReport(currentReportName,
+                Integer.parseInt(txtRupeesX.getText()), Integer.parseInt(
+                        txtRupeesY.getText()),
+                Integer.parseInt(txtPayX.getText()), Integer.parseInt(txtPayY.
+                        getText()),
+                Integer.parseInt(txtAmountX.getText()), Integer.parseInt(
+                        txtAmountY.getText()),
+                Integer.parseInt(txtDateX.getText()), Integer.parseInt(txtDateY.
+                        getText()),
+                Integer.parseInt(txtAccountPayeeX.getText()), Integer.parseInt(
+                        txtAccountPayeeY.getText()), true
+        );
+                          
+                          configureSlider();
+
                         
                     }
 
@@ -707,4 +734,8 @@ public class ChequeDesignerController extends AnchorPane implements
         
         
     }
+
+//</editor-fold>
+
+    
 }

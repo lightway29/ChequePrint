@@ -5,7 +5,6 @@
  */
 package com.cheque.main;
 
-
 import com.cheque.mainDAO.ChequePrintDAO;
 import com.cheque.msgbox.MessageBox;
 import com.cheque.msgbox.SimpleMessageBoxFactory;
@@ -63,7 +62,6 @@ public class ChequePrintController extends AnchorPane implements Initializable {
 
     @FXML
     private DatePicker dtpDate;
-
 
     @FXML
     private TextField txtAmount;
@@ -226,47 +224,9 @@ public class ChequePrintController extends AnchorPane implements Initializable {
     @FXML
     void btnCloseOnAction(ActionEvent event) {
 
+        Stage stage = (Stage) btnClose.getScene().getWindow();
+        stage.close();
 
-        String path = ".//Reports//HNBCheqe.jrxml";
-        if (new File(path).exists()) {
-            System.out.println("Exists");
-               try {
-            
-                  
-            JasperDesign d = JRXmlLoader.load(path);
-                   JRElement[] field = d.getSummary().getElements();
-                   
-                   System.out.println("Count : "+field.length);
-                   
-                   JRElement rtxtCash = field[0];//Cash
-                   JRDesignTextField rtxtAmountInWords = (JRDesignTextField) d.getSummary().getElementByKey(
-                           "rtxtAmountInWords");
-                   rtxtAmountInWords.setY(90);
-                   System.out.println("X : "+rtxtAmountInWords.getX()+" - Y : "+rtxtAmountInWords.getY());;
-                   
-//                   System.out.println("Height : "+rtxtCash.getX()+"-"+rtxtCash.getPositionTypeValue().name());
-//                   rtxtCash.setX(70);
-//                   rtxtCash.setForecolor(Color.RED);
-//                   
-//                  ;
-//                    System.out.println("Height : "+rtxtCash.getX()+" "+ rtxtCash.getY());
-//                    JRReport jRReport = d;
-//                    JasperCompileManager.writeReportToXmlFile(jRReport, path);
-//                    JasperCompileManager.compileReportToFile( path);
-//                    
-//                    
-//                   
-                   
-                   
-                   
-        } catch (JRException ex) {
-            ex.printStackTrace();
-        }
-        }
-        
-     
-        
-        
     }
 
     private String convertToWords(String value) {
@@ -309,6 +269,5 @@ public class ChequePrintController extends AnchorPane implements Initializable {
 
         return inWords;
     }
-
 
 }
