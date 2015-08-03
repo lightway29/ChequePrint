@@ -161,7 +161,7 @@
                               <Insets right="10.0" />
                            </GridPane.margin>
                         </HBox>
-                        <HBox alignment="CENTER_LEFT" layoutX="20.0" layoutY="80.0" spacing="5.0" GridPane.columnSpan="4" GridPane.rowIndex="3">
+                        <HBox alignment="CENTER_LEFT" layoutX="20.0" layoutY="80.0" spacing="5.0" GridPane.columnSpan="4" GridPane.rowIndex="4">
                            <children>
                               <Label prefWidth="100.0" text="Pay Top" GridPane.rowIndex="2" />
                               <Slider fx:id="sdPayY" onMouseClicked="#sdPayYOnClicked" onMouseDragged="#sdPayYOnDragged" prefWidth="250.0" snapToTicks="true" />
@@ -171,7 +171,7 @@
                               <Insets left="10.0" />
                            </GridPane.margin>
                         </HBox>
-                        <HBox alignment="CENTER_LEFT" layoutX="360.0" layoutY="80.0" spacing="5.0" GridPane.columnIndex="5" GridPane.columnSpan="4" GridPane.rowIndex="3">
+                        <HBox alignment="CENTER_LEFT" layoutX="360.0" layoutY="80.0" spacing="5.0" GridPane.columnIndex="5" GridPane.columnSpan="4" GridPane.rowIndex="4">
                            <children>
                               <Label prefWidth="100.0" text="Pay Left" GridPane.rowIndex="4" />
                               <Slider fx:id="sdPayX" onMouseClicked="#sdPayXOnClicked" onMouseDragged="#sdPayXOnDragged" prefWidth="250.0" />
@@ -181,7 +181,7 @@
                               <Insets right="10.0" />
                            </GridPane.margin>
                         </HBox>
-                        <HBox alignment="CENTER_LEFT" layoutX="20.0" layoutY="115.0" spacing="5.0" GridPane.columnSpan="4" GridPane.rowIndex="4">
+                        <HBox alignment="CENTER_LEFT" layoutX="20.0" layoutY="115.0" spacing="5.0" GridPane.columnSpan="4" GridPane.rowIndex="5">
                            <children>
                               <Label prefWidth="100.0" text="Rupees Top" GridPane.rowIndex="2" />
                               <Slider fx:id="sdRupeesY" onMouseClicked="#sdRupeesYOnMouseClicked" onMouseDragged="#sdRupeesYOnMouseDragged" prefWidth="250.0" />
@@ -191,7 +191,7 @@
                               <Insets left="10.0" />
                            </GridPane.margin>
                         </HBox>
-                        <HBox alignment="CENTER_LEFT" layoutX="360.0" layoutY="115.0" spacing="5.0" GridPane.columnIndex="5" GridPane.columnSpan="4" GridPane.rowIndex="4">
+                        <HBox alignment="CENTER_LEFT" layoutX="360.0" layoutY="115.0" spacing="5.0" GridPane.columnIndex="5" GridPane.columnSpan="4" GridPane.rowIndex="5">
                            <children>
                               <Label prefWidth="100.0" text="Rupees Left" GridPane.rowIndex="4" />
                               <Slider fx:id="sdRupeesX" onMouseClicked="#sdRupeesXOnMouseClicked" onMouseDragged="#sdRupeesXOnMouseDragged" prefWidth="250.0" />
@@ -201,7 +201,7 @@
                               <Insets right="10.0" />
                            </GridPane.margin>
                         </HBox>
-                        <HBox alignment="CENTER_LEFT" layoutX="20.0" layoutY="158.0" spacing="5.0" GridPane.columnSpan="4" GridPane.rowIndex="5">
+                        <HBox alignment="CENTER_LEFT" layoutX="20.0" layoutY="158.0" spacing="5.0" GridPane.columnSpan="4" GridPane.rowIndex="6">
                            <children>
                               <Label prefWidth="100.0" text="Amount Top" GridPane.rowIndex="2" />
                               <Slider fx:id="sdAmountY" onMouseClicked="#sdAmountYOnClicked" onMouseDragged="#sdAmountYOnDragged" prefWidth="250.0" />
@@ -211,7 +211,7 @@
                               <Insets left="10.0" />
                            </GridPane.margin>
                         </HBox>
-                        <HBox alignment="CENTER_LEFT" layoutX="360.0" layoutY="158.0" spacing="5.0" GridPane.columnIndex="5" GridPane.columnSpan="4" GridPane.rowIndex="5">
+                        <HBox alignment="CENTER_LEFT" layoutX="360.0" layoutY="158.0" spacing="5.0" GridPane.columnIndex="5" GridPane.columnSpan="4" GridPane.rowIndex="6">
                            <children>
                               <Label prefWidth="100.0" text="Amount Left" GridPane.rowIndex="4" />
                               <Slider fx:id="sdAmountX" onMouseClicked="#sdAmountXOnClicked" onMouseDragged="#sdAmountXOnDragged" prefWidth="250.0" />
@@ -221,7 +221,7 @@
                               <Insets right="10.0" />
                            </GridPane.margin>
                         </HBox>
-                        <HBox alignment="CENTER_LEFT" layoutX="20.0" layoutY="210.0" spacing="5.0" GridPane.columnSpan="4" GridPane.rowIndex="6">
+                        <HBox alignment="CENTER_LEFT" layoutX="20.0" layoutY="210.0" spacing="5.0" GridPane.columnSpan="4" GridPane.rowIndex="3">
                            <children>
                               <Label prefWidth="100.0" text="Date Top" GridPane.rowIndex="2" />
                               <Slider fx:id="sdDateY" onMouseClicked="#sdDateYOnClicked" onMouseDragged="#sdDateYOnDragged" prefWidth="250.0" />
@@ -231,7 +231,7 @@
                               <Insets left="10.0" />
                            </GridPane.margin>
                         </HBox>
-                        <HBox alignment="CENTER_LEFT" layoutX="487.0" layoutY="210.0" spacing="5.0" GridPane.columnIndex="5" GridPane.columnSpan="4" GridPane.rowIndex="6">
+                        <HBox alignment="CENTER_LEFT" layoutX="487.0" layoutY="210.0" spacing="5.0" GridPane.columnIndex="5" GridPane.columnSpan="4" GridPane.rowIndex="3">
                            <children>
                               <Label prefWidth="100.0" text="Date Left" GridPane.rowIndex="4" />
                               <Slider fx:id="sdDateX" onMouseClicked="#sdDateXOnClicked" onMouseDragged="#sdDateXOnDragged" prefWidth="250.0" />
