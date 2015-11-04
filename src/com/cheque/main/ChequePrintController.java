@@ -5,9 +5,11 @@
  */
 package com.cheque.main;
 
+import com.cheque.mainDAO.ChequeDesignerDAO;
 import com.cheque.mainDAO.ChequePrintDAO;
 import com.cheque.msgbox.MessageBox;
 import com.cheque.msgbox.SimpleMessageBoxFactory;
+import com.cheque.ui.ManageReport;
 import com.cheque.ui.ReportGenerator;
 import com.cheque.validations.FormatAndValidate;
 import java.awt.Color;
@@ -90,7 +92,9 @@ public class ChequePrintController extends AnchorPane implements Initializable {
             = new EnglishNumberToWords();
 //</editor-fold>
 
-    ChequePrintDAO chequePrintDAO = new ChequePrintDAO();
+    private ChequePrintDAO chequePrintDAO = new ChequePrintDAO();
+    private ChequeDesignerDAO chequeDesignerDAO = new ChequeDesignerDAO();
+    private ManageReport manageReport = new ManageReport();
     @FXML
     private Button btnPrint;
     @FXML
@@ -101,7 +105,8 @@ public class ChequePrintController extends AnchorPane implements Initializable {
     private TextField txtDescription;
 
     private String defaultProfile = "SET0001";
-
+    private String currentReportName = "HNBCheqeCross";
+    
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         mb = SimpleMessageBoxFactory.createMessageBox();
@@ -190,14 +195,22 @@ public class ChequePrintController extends AnchorPane implements Initializable {
                 }
 
                 String ReportParth = null;
-                if (chkCrossCheque.isSelected()) {
+                
+                if (chkPrint.isSelected()==true) {
+                    
+                  
+                    loadProfile();
+                    
+                    
+                       if (chkCrossCheque.isSelected()) {
                     ReportParth = ".//Reports//HNBCheqeCross.jasper";
-                } else {
-                    ReportParth = ".//Reports//HNBCheqe.jasper";
-                }
+                } 
                 String path = new File(ReportParth).getAbsolutePath();
                 ReportGenerator r = new ReportGenerator(path, param);
                 r.setVisible(true);
+                }
+                
+             
             }
         }
     }
@@ -326,7 +339,7 @@ public class ChequePrintController extends AnchorPane implements Initializable {
     private void loadSettings() {
 
         ArrayList<Boolean> list = null;
-
+        
         list = chequePrintDAO.loadSettings(defaultProfile);
 
         if (list != null) {
@@ -341,9 +354,48 @@ public class ChequePrintController extends AnchorPane implements Initializable {
             } catch (Exception e) {
 
             }
+            
+            
 
         }
 
+    }
+    
+    
+       private void loadProfile() {
+
+        ArrayList<String> list = null;
+        list = chequeDesignerDAO.loadProfileDetailFromProfileName(chequePrintDAO.loadSetting(defaultProfile));
+        if (list != null) {
+            try {
+                System.out.println("List item : " + list.get(0));
+
+                 manageReport.updateReport(currentReportName,
+                                Integer.parseInt(list.get(4)), Integer.
+                                parseInt(
+                                        list.get(5)),
+                                Integer.parseInt(list.get(2)), Integer.
+                                parseInt(list.get(3)),
+                                Integer.parseInt(list.get(6)), Integer.
+                                parseInt(
+                                        list.get(7)),
+                                Integer.parseInt(list.get(8)), Integer.
+                                parseInt(list.get(9)),
+                                Integer.parseInt(list.get(0)),
+                                Integer.parseInt(
+                                        list.get(1)), true
+                        );
+                 
+                 
+                
+                
+
+            } catch (Exception e) {
+                e.printStackTrace();
+
+            }
+
+        }
     }
 
 //</editor-fold>

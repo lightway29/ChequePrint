@@ -75,9 +75,10 @@ public class ChequeDesignerDAO {
                 }
 
             } catch (Exception e) {
-                System.out.println("Exception tag --> "
+                System.out.println("Exception tag @ insertProfile --> "
                         + "Invalid sql statement "
                 );
+                System.out.println("Exception : "+e);
                 return false;
             }
         }
@@ -157,7 +158,7 @@ public class ChequeDesignerDAO {
         return Mainlist;
     }
 
-    public ArrayList<String> loadProfileDetail(String profileId) {
+    public ArrayList<String> loadProfileDetailFromProfileId(String profileId) {
 
         String acPayeeX = null;
         String acPayeeY = null;
@@ -246,7 +247,97 @@ public class ChequeDesignerDAO {
         return list;
     }
 
-     public String generateId() {
+    public ArrayList<String> loadProfileDetailFromProfileName(String profileName) {
+
+        String acPayeeX = null;
+        String acPayeeY = null;
+        String payX = null;
+        String payY = null;
+        String rupeeX = null;
+        String rupeeY = null;
+        String amountX = null;
+        String amountY = null;
+        String dateX = null;
+        String dateY = null;
+
+        ArrayList<String> list
+                = new ArrayList<String>();
+
+        if (HomeController.con == null) {
+
+            System.out.println("Database connection failiure.");
+            return null;
+
+        } else {
+            try {
+
+                String query
+                        = "SELECT * FROM cheque_design WHERE profile_name = ? ";
+
+                PreparedStatement pstmt = HomeController.con.prepareStatement(
+                        query);
+                pstmt.setString(1, profileName);
+
+                ResultSet r = pstmt.executeQuery();
+
+                while (r.next()) {
+
+                    acPayeeX = r.getString("ac_payee_only_top");
+                    acPayeeY = r.getString("ac_payee_only_hight");
+                    payX = r.getString("pay_top");
+                    payY = r.getString("pay_hight");
+                    rupeeX = r.getString("rupees_top");
+                    rupeeY = r.getString("rupees_hight");
+                    amountX = r.getString("amount_top");
+                    amountY = r.getString("amount_hight");
+                    dateX = r.getString("date_top");
+                    dateY = r.getString("date_hight");
+
+                    list.add(acPayeeX);
+                    list.add(acPayeeY);
+                    list.add(payX);
+                    list.add(payY);
+                    list.add(rupeeX);
+                    list.add(rupeeY);
+                    list.add(amountX);
+                    list.add(amountY);
+                    list.add(dateX);
+                    list.add(dateY);
+
+                }
+
+            } catch (ArrayIndexOutOfBoundsException | SQLException |
+                    NullPointerException e) {
+
+                if (e instanceof ArrayIndexOutOfBoundsException) {
+
+                    System.out.println("Exception tag --> "
+                            + "Invalid entry location for list");
+
+                } else if (e instanceof SQLException) {
+
+                    System.out.println("Exception tag --> "
+                            + "Invalid sql statement " + e);
+
+                } else if (e instanceof NullPointerException) {
+
+                    System.out.println("Exception tag --> "
+                            + "Empty entry for list");
+
+                }
+                return null;
+            } catch (Exception e) {
+
+                System.out.println("Exception tag --> " + "Error");
+
+                return null;
+            }
+        }
+        return list;
+    }
+
+    
+    public String generateId() {
 
         Integer id = null;
 
@@ -264,7 +355,7 @@ public class ChequeDesignerDAO {
             } else {
                 try {
 
-                    String query = "SELECT MAX(0) as ID FROM cheque_design";
+                    String query = "SELECT MAX(rowid) as ID FROM cheque_design";
 
                     PreparedStatement pstmt = HomeController.con .prepareStatement(query);
 
@@ -272,19 +363,23 @@ public class ChequeDesignerDAO {
 
                     while (r.next()) {
                         id = r.getInt(1);
+                        
                     }
                     String queryCurrentId
-                            = "SELECT design_id FROM cheque_design WHERE rowid=?";
+                            = "SELECT design_id FROM cheque_design WHERE rowid =? ";
 
                     PreparedStatement pstmtId = HomeController.con.prepareStatement(
                             queryCurrentId);
                     pstmtId.setInt(1, id);
+                    
 
                     ResultSet rss = pstmtId.executeQuery();
                     while (rss.next()) {
                         eid = rss.getString("design_id");
+                        
 
                     }
+                    
                     if (id != 0) {
                         String original = eid.split("G")[1];
                         int i = Integer.parseInt(original) + 1;
