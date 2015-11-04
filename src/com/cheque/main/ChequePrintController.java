@@ -15,16 +15,20 @@ import java.io.File;
 import java.net.URL;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Control;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
@@ -56,6 +60,9 @@ public class ChequePrintController extends AnchorPane implements Initializable {
     //<editor-fold defaultstate="collapsed" desc="initcomponents">
     @FXML
     private Button btnCancel;
+    
+    @FXML
+    private ComboBox<String> cmbProfile;
 
     @FXML
     private Button btnClose;
@@ -86,6 +93,10 @@ public class ChequePrintController extends AnchorPane implements Initializable {
     ChequePrintDAO chequePrint = new ChequePrintDAO();
     @FXML
     private Button btnPrint;
+    @FXML
+    private CheckBox chkPrint;
+    @FXML
+    private CheckBox chkprintPreview;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -111,6 +122,7 @@ public class ChequePrintController extends AnchorPane implements Initializable {
                                 !fav.chkPrice(txtAmount.getText()))));
 //</editor-fold>
         chkRemoveDate.setSelected(true);
+        loadTableToCombobox();
     }
 
     private void dateFormatterArrivalDate(String pattern) {
@@ -268,6 +280,38 @@ public class ChequePrintController extends AnchorPane implements Initializable {
         }
 
         return inWords;
+    }
+    
+    
+    private void loadTableToCombobox() {
+
+        cmbProfile.setItems(null);
+        ArrayList<String> professionList = null;
+        professionList = chequePrint.loadTable();
+        if (professionList != null) {
+            try {
+                ObservableList<String> List = FXCollections.observableArrayList(
+                        professionList);
+                cmbProfile.setItems(List);
+                cmbProfile.setValue(List.get(0));
+            } catch (Exception e) {
+                    e.printStackTrace();
+            }
+
+        }
+
+    }
+
+    @FXML
+    private void chkPrintOnAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void chkprintPreviewOnAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void cmbProfileOnAction(ActionEvent event) {
     }
 
 }

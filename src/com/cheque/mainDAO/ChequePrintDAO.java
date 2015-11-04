@@ -9,6 +9,8 @@ import com.cheque.main.HomeController;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 
 /**
  *
@@ -18,6 +20,48 @@ import java.sql.ResultSet;
 
 
 public class ChequePrintDAO {
+    
+    public ArrayList loadTable() {
+
+        String profile = null;
+        ArrayList profileList = new ArrayList();
+
+        if (HomeController.con == null) {
+
+             System.out.println("Database connection failiure.");
+        } else {
+            try {
+                
+                String query = "Select profile_name from cheque_design ";
+
+                PreparedStatement pre = HomeController.con.prepareStatement(query);
+                ResultSet r = pre.executeQuery();
+                while (r.next()) {
+                    profile = r.getString("profile_name");
+
+                    profileList.add(profile);
+                }
+
+            } catch (ArrayIndexOutOfBoundsException | SQLException |
+                    NullPointerException e) {
+                if (e instanceof ArrayIndexOutOfBoundsException) {
+                    System.out.println("Exception tag --> "
+                            + "Invalid entry location for list");
+                } else if (e instanceof SQLException) {
+                    System.out.println("Exception tag --> " + "Invalid sql statement "
+                            + e.getMessage());
+                } else if (e instanceof NullPointerException) {
+                    System.out.println("Exception tag --> " + "Empty entry for list");
+                }
+                return null;
+            } catch (Exception e) {
+                System.out.println("Exception tag --> " + "Error");
+                return null;
+            }
+        }
+        return profileList;
+    }
+    
     
 
     public String getBank(String bankId) {

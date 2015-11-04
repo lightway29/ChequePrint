@@ -128,7 +128,7 @@
                         </HBox>
                         <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="5.0" GridPane.columnIndex="5" GridPane.columnSpan="3" GridPane.rowIndex="5">
                            <children>
-                              <CheckBox fx:id="chkPrint" minWidth="98.0" mnemonicParsing="false" onAction="#chkPrintOnAction" text="Print" />
+                              <CheckBox fx:id="chkPrint" minWidth="98.0" mnemonicParsing="false" onAction="#chkPrintOnAction" prefHeight="20.0" prefWidth="111.0" text="Print" />
                               <CheckBox fx:id="chkprintPreview" mnemonicParsing="false" onAction="#chkprintPreviewOnAction" text="Print Preview" />
                            </children>
                            <GridPane.margin>
