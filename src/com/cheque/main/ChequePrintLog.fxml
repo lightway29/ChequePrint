@@ -90,16 +90,16 @@
                               <Insets left="10.0" />
                            </GridPane.margin>
                         </HBox>
-                        <TableView prefHeight="200.0" prefWidth="200.0" GridPane.columnSpan="8" GridPane.rowIndex="3" GridPane.rowSpan="15">
+                        <TableView fx:id="tblChequeLog" prefHeight="200.0" prefWidth="200.0" GridPane.columnSpan="8" GridPane.rowIndex="3" GridPane.rowSpan="15">
                           <columns>
-                            <TableColumn prefWidth="50.0" text="ID" />
-                            <TableColumn prefWidth="150.0" text="Description" />
-                              <TableColumn prefWidth="150.0" text="Pay" />
-                              <TableColumn prefWidth="75.0" text="Date" />
-                              <TableColumn prefWidth="100.0" text="Amount" />
-                              <TableColumn prefWidth="100.0" text="Profile" />
-                              <TableColumn text="Cross Cheque" />
-                              <TableColumn prefWidth="100.0" text="Time Stamp" />
+                            <TableColumn fx:id="tcId" prefWidth="50.0" text="ID" />
+                            <TableColumn fx:id="tcDescription" prefWidth="150.0" text="Description" />
+                              <TableColumn fx:id="tcPay" prefWidth="150.0" text="Pay" />
+                              <TableColumn fx:id="tcDate" prefWidth="75.0" text="Date" />
+                              <TableColumn fx:id="tcAmount" prefWidth="100.0" text="Amount" />
+                              <TableColumn fx:id="tcProfile" prefWidth="100.0" text="Profile" />
+                              <TableColumn fx:id="tcCrossCheque" text="Cross Cheque" />
+                              <TableColumn fx:id="tcTimeStamp" prefWidth="100.0" text="Time Stamp" />
                           </columns>
                            <GridPane.margin>
                               <Insets />
