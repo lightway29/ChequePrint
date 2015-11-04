@@ -144,6 +144,15 @@
                               <Insets left="10.0" />
                            </GridPane.margin>
                         </HBox>
+                        <HBox alignment="CENTER_LEFT" layoutX="20.0" layoutY="76.0" spacing="5.0" GridPane.columnSpan="8" GridPane.rowIndex="1">
+                           <children>
+                              <Label prefWidth="100.0" text="Description" GridPane.rowIndex="2" />
+                              <TextField fx:id="txtDescription" onAction="#txtDescriptionOnAction" prefWidth="550.0" promptText="Description" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                           </children>
+                           <GridPane.margin>
+                              <Insets left="10.0" />
+                           </GridPane.margin>
+                        </HBox>
                      </children>
                   </GridPane>
                </children>
