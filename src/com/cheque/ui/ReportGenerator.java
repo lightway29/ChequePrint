@@ -37,6 +37,8 @@ public class ReportGenerator extends JFrame {
         setBounds(180, 30, 1000, 700);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }
+    
+   
 
     
 }

@@ -45,6 +45,7 @@ import net.sf.jasperreports.engine.JRReport;
 import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperPrintManager;
 import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.design.JRDesignTextField;
 import net.sf.jasperreports.engine.design.JasperDesign;
@@ -108,8 +109,8 @@ public class ChequePrintController extends AnchorPane implements Initializable {
 
     private String defaultProfile = "SET0001";
     private String currentReportName = "HNBCheqeCross";
-    String  reportPath = ".//Reports//HNBCheqeCross.jasper";
-    
+    String reportPath = ".//Reports//HNBCheqeCross.jasper";
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         mb = SimpleMessageBoxFactory.createMessageBox();
@@ -177,7 +178,7 @@ public class ChequePrintController extends AnchorPane implements Initializable {
                 param.put("amount", Double.parseDouble(txtAmount.getText()));
                 param.put("rupees", "**" + convertToWords(txtAmount.getText())
                         + "**");
-                if (chkRemoveDate.isSelected()) {
+                if (!chkRemoveDate.isSelected()) {
                     param.put("D1", D1);
                     param.put("D2", D2);
                     param.put("M1", M1);
@@ -197,31 +198,31 @@ public class ChequePrintController extends AnchorPane implements Initializable {
                     param.put("Y4", Y4);
                 }
 
-                
-                
-                if (chkPrint.isSelected()==true) {
-                    
+                String path = new File(reportPath).getAbsolutePath();
+                if (chkPrint.isSelected() == true) {
+
                     loadProfile(chkCrossCheque.isSelected());
-           
-                String path = new File(reportPath).getAbsolutePath();
-                ReportGenerator r = new ReportGenerator(path, param);
-                r.setVisible(true);
-               
-                }else{
-                String path = new File(reportPath).getAbsolutePath();
-                JasperPrint jasperPrint;
-                    try {
-                        jasperPrint = JasperFillManager.fillReport(path, param);
-                        JRViewer jr = new JRViewer(jasperPrint);
-                        jr.setVisible(true);
-                    } catch (JRException ex) {
-                    ex.printStackTrace();
-                    }
-                    
-                
+
+                    directPrint(path, param);
+
+                } else if (chkprintPreview.isSelected() == true) {
+
+                    loadProfile(false);
+
+                    ReportGenerator r = new ReportGenerator(path, param);
+                    r.setVisible(true);
+
+                } else if (chkprintPreview.isSelected() == true && chkPrint.
+                        isSelected() == true) {
+
+                    loadProfile(chkCrossCheque.isSelected());
+                    directPrint(path, param);
+
+                    ReportGenerator r = new ReportGenerator(path, param);
+                    r.setVisible(true);
+
                 }
-                
-             
+
             }
         }
     }
@@ -350,7 +351,7 @@ public class ChequePrintController extends AnchorPane implements Initializable {
     private void loadSettings() {
 
         ArrayList<Boolean> list = null;
-        
+
         list = chequePrintDAO.loadSettings(defaultProfile);
 
         if (list != null) {
@@ -365,47 +366,55 @@ public class ChequePrintController extends AnchorPane implements Initializable {
             } catch (Exception e) {
 
             }
-            
-            
 
         }
 
     }
-    
-    
-       private void loadProfile(boolean isCrossCheque) {
+
+    private void loadProfile(boolean isCrossCheque) {
 
         ArrayList<String> list = null;
-        list = chequeDesignerDAO.loadProfileDetailFromProfileName(chequePrintDAO.loadSetting(defaultProfile));
+        list = chequeDesignerDAO.loadProfileDetailFromProfileName(
+                chequePrintDAO.loadSetting(defaultProfile));
         if (list != null) {
             try {
                 System.out.println("List item : " + list.get(0));
 
-                 manageReport.updateReport(currentReportName,
-                                Integer.parseInt(list.get(4)), Integer.
-                                parseInt(
-                                        list.get(5)),
-                                Integer.parseInt(list.get(2)), Integer.
-                                parseInt(list.get(3)),
-                                Integer.parseInt(list.get(6)), Integer.
-                                parseInt(
-                                        list.get(7)),
-                                Integer.parseInt(list.get(8)), Integer.
-                                parseInt(list.get(9)),
-                                Integer.parseInt(list.get(0)),
-                                Integer.parseInt(
-                                        list.get(1)), isCrossCheque
-                        );
-                 
-                 
-                
-                
+                manageReport.updateReport(currentReportName,
+                        Integer.parseInt(list.get(4)), Integer.
+                        parseInt(
+                                list.get(5)),
+                        Integer.parseInt(list.get(2)), Integer.
+                        parseInt(list.get(3)),
+                        Integer.parseInt(list.get(6)), Integer.
+                        parseInt(
+                                list.get(7)),
+                        Integer.parseInt(list.get(8)), Integer.
+                        parseInt(list.get(9)),
+                        Integer.parseInt(list.get(0)),
+                        Integer.parseInt(
+                                list.get(1)), isCrossCheque
+                );
 
             } catch (Exception e) {
                 e.printStackTrace();
 
             }
 
+        }
+    }
+
+    public void directPrint(String fileName, HashMap parameter) {
+
+        try {
+
+            JasperPrint print = JasperFillManager.
+                    fillReport(fileName, parameter);
+
+            JasperPrintManager.printReport(print, false);
+
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
