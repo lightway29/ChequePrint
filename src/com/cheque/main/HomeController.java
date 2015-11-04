@@ -44,7 +44,7 @@ public class HomeController extends AnchorPane implements Initializable {
     @FXML
     private Button Settings;
 //</editor-fold>
-    
+
     public static Connection con = com.cheque.database.DatabaseConnection.Connect();
     @FXML
     private ImageView imgViewChequeManager;
@@ -52,16 +52,14 @@ public class HomeController extends AnchorPane implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-       
-       
         btnLogOut.getStyleClass().add("button-clrx-darkorange");
 
-       ChequePrint.getStyleClass().add("button-clrx-red");
-       BankRegistration.getStyleClass().add("button-clrx-dodgerblue");
-       ChequeRegister.getStyleClass().add("button-clrx-coral");
-       Settings.getStyleClass().add("button-clrx-darkcyan");
-       PrinterConfig.getStyleClass().add("button-clrx-darkgray");
-       
+        ChequePrint.getStyleClass().add("button-clrx-red");
+        BankRegistration.getStyleClass().add("button-clrx-dodgerblue");
+        ChequeRegister.getStyleClass().add("button-clrx-coral");
+        Settings.getStyleClass().add("button-clrx-darkcyan");
+        PrinterConfig.getStyleClass().add("button-clrx-darkgray");
+
     }
 
     @FXML
@@ -89,7 +87,9 @@ public class HomeController extends AnchorPane implements Initializable {
 
     @FXML
     void ChequeRegisterOnAction(ActionEvent event) {
-
+        FxmlUiLauncher.launchOnNewStageWait(
+                "/com/cheque/main/ChequePrintLog.fxml",
+                "Cheque Register", null);
     }
 
     @FXML
@@ -101,8 +101,8 @@ public class HomeController extends AnchorPane implements Initializable {
 
     @FXML
     void PrinterConfigOnAction(ActionEvent event) {
-        
-           FxmlUiLauncher.launchOnNewStageWait(
+
+        FxmlUiLauncher.launchOnNewStageWait(
                 "/com/cheque/main/ChequeDesigner.fxml",
                 "Printer Config", null);
 
@@ -110,8 +110,7 @@ public class HomeController extends AnchorPane implements Initializable {
 
     @FXML
     private void imgViewChequeManagerOnDragOver(DragEvent event) {
-    
-        
+
     }
 
     @FXML
@@ -122,19 +121,16 @@ public class HomeController extends AnchorPane implements Initializable {
     @FXML
     private void imgViewChequeManagerOnDragEntered(DragEvent event) {
 
-        
     }
 
     @FXML
     private void imgViewChequeManagerOnDragDone(DragEvent event) {
-        
 
     }
 
     @FXML
     private void imgViewChequeManagerOnMouseDragged(MouseEvent event) {
-  
-        
+
     }
 
     @FXML

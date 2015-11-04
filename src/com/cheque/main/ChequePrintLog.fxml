@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="680.0" prefWidth="800.0" stylesheets="@../res/JMetroLightTheme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cheque.main.ChequePrintLogController">
+   <children>
+      <StackPane layoutX="1.0" layoutY="34.0" prefHeight="680.0" prefWidth="800.0">
+         <children>
+            <AnchorPane prefHeight="680.0" prefWidth="200.0">
+               <children>
+                  <GridPane prefHeight="680.0" prefWidth="680.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnSpan="8">
+                           <children>
+                              <Label alignment="CENTER" contentDisplay="CENTER" layoutX="11.0" prefHeight="31.0" prefWidth="779.0" styleClass="header-label" text="Cheque Register" />
+                           </children>
+                           <GridPane.margin>
+                              <Insets />
+                           </GridPane.margin>
+                           <padding>
+                              <Insets bottom="15.0" />
+                           </padding>
+                        </AnchorPane>
+                        <HBox alignment="CENTER_RIGHT" spacing="5.0" GridPane.columnIndex="6" GridPane.columnSpan="2" GridPane.rowIndex="18" GridPane.rowSpan="2">
+                           <children>
+                              <Button fx:id="btnClose" mnemonicParsing="false" onAction="#btnCloseOnAction" text="Close" textAlignment="RIGHT" GridPane.columnIndex="4" GridPane.rowIndex="9">
+                                 <graphic>
+                                    <ImageView fitHeight="22.0" fitWidth="29.333333333333332" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../res/img-close.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
+                              </Button>
+                           </children>
+                           <GridPane.margin>
+                              <Insets />
+                           </GridPane.margin>
+                           <padding>
+                              <Insets right="15.0" />
+                           </padding>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" layoutX="20.0" layoutY="76.0" spacing="5.0" GridPane.columnSpan="8" GridPane.rowIndex="1">
+                           <children>
+                              <Label prefWidth="100.0" text="Search" GridPane.rowIndex="2" />
+                              <TextField fx:id="txtSearch" onKeyReleased="#txtSearchOnKeyReleased" prefHeight="25.0" prefWidth="675.0" promptText="Search" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                           </children>
+                           <GridPane.margin>
+                              <Insets left="10.0" />
+                           </GridPane.margin>
+                        </HBox>
+                        <TableView prefHeight="200.0" prefWidth="200.0" GridPane.columnSpan="8" GridPane.rowIndex="3" GridPane.rowSpan="15">
+                          <columns>
+                            <TableColumn prefWidth="50.0" text="ID" />
+                            <TableColumn prefWidth="150.0" text="Description" />
+                              <TableColumn prefWidth="150.0" text="Pay" />
+                              <TableColumn prefWidth="75.0" text="Date" />
+                              <TableColumn prefWidth="100.0" text="Amount" />
+                              <TableColumn prefWidth="100.0" text="Profile" />
+                              <TableColumn text="Cross Cheque" />
+                              <TableColumn prefWidth="100.0" text="Time Stamp" />
+                          </columns>
+                           <GridPane.margin>
+                              <Insets />
+                           </GridPane.margin>
+                        </TableView>
+                     </children>
+                  </GridPane>
+               </children>
+            </AnchorPane>
+         </children>
+      </StackPane>
+   </children>
+</AnchorPane>
