@@ -25,6 +25,7 @@ public class ReportGenerator extends JFrame {
         try {
                 print = JasperFillManager.fillReport(fileName, parameter);
                 JRViewer jRViewer = new JRViewer(print);            
+               
 
                 Container c = getContentPane();
                 c.add(jRViewer);

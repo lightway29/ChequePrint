@@ -41,6 +41,8 @@ public class ManageReport {
                 JRElement[] field = d.getSummary().getElements();
 
                 JRElement rtxtCash = field[0];//Cash
+                
+               
 
                 //Amount In Words Field
                 JRDesignTextField rtxtAmountInWords = (JRDesignTextField) d.
@@ -57,6 +59,8 @@ public class ManageReport {
 
                 rtxtPay.setX(payX);
                 rtxtPay.setY(payY);
+                
+                
 
                 //Amount
                 JRDesignTextField rtxtAmount = (JRDesignTextField) d.

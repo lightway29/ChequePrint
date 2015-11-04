@@ -43,12 +43,14 @@ import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JRField;
 import net.sf.jasperreports.engine.JRReport;
 import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.design.JRDesignTextField;
 import net.sf.jasperreports.engine.design.JasperDesign;
 import net.sf.jasperreports.engine.util.JRLoader;
 import net.sf.jasperreports.engine.xml.JRXmlLoader;
+import net.sf.jasperreports.view.JRViewer;
 import org.controlsfx.validation.ValidationResult;
 import org.controlsfx.validation.ValidationSupport;
 import org.controlsfx.validation.Validator;
@@ -106,6 +108,7 @@ public class ChequePrintController extends AnchorPane implements Initializable {
 
     private String defaultProfile = "SET0001";
     private String currentReportName = "HNBCheqeCross";
+    String  reportPath = ".//Reports//HNBCheqeCross.jasper";
     
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -194,20 +197,28 @@ public class ChequePrintController extends AnchorPane implements Initializable {
                     param.put("Y4", Y4);
                 }
 
-                String ReportParth = null;
+                
                 
                 if (chkPrint.isSelected()==true) {
                     
-                  
-                    loadProfile();
-                    
-                    
-                       if (chkCrossCheque.isSelected()) {
-                    ReportParth = ".//Reports//HNBCheqeCross.jasper";
-                } 
-                String path = new File(ReportParth).getAbsolutePath();
+                    loadProfile(chkCrossCheque.isSelected());
+           
+                String path = new File(reportPath).getAbsolutePath();
                 ReportGenerator r = new ReportGenerator(path, param);
                 r.setVisible(true);
+               
+                }else{
+                String path = new File(reportPath).getAbsolutePath();
+                JasperPrint jasperPrint;
+                    try {
+                        jasperPrint = JasperFillManager.fillReport(path, param);
+                        JRViewer jr = new JRViewer(jasperPrint);
+                        jr.setVisible(true);
+                    } catch (JRException ex) {
+                    ex.printStackTrace();
+                    }
+                    
+                
                 }
                 
              
@@ -362,7 +373,7 @@ public class ChequePrintController extends AnchorPane implements Initializable {
     }
     
     
-       private void loadProfile() {
+       private void loadProfile(boolean isCrossCheque) {
 
         ArrayList<String> list = null;
         list = chequeDesignerDAO.loadProfileDetailFromProfileName(chequePrintDAO.loadSetting(defaultProfile));
@@ -383,7 +394,7 @@ public class ChequePrintController extends AnchorPane implements Initializable {
                                 parseInt(list.get(9)),
                                 Integer.parseInt(list.get(0)),
                                 Integer.parseInt(
-                                        list.get(1)), true
+                                        list.get(1)), isCrossCheque
                         );
                  
                  
