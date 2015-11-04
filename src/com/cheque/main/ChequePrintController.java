@@ -199,13 +199,16 @@ public class ChequePrintController extends AnchorPane implements Initializable {
                 }
 
                 String path = new File(reportPath).getAbsolutePath();
-                if (chkPrint.isSelected() == true && chkprintPreview.isSelected() == false) {
+                if (chkPrint.isSelected() == true && chkprintPreview.
+                        isSelected() == false) {
 
                     loadProfile(!chkCrossCheque.isSelected());
+                    saveInformation();
 
                     directPrint(path, param);
 
-                } else if (chkprintPreview.isSelected() == true && chkPrint.isSelected() == false) {
+                } else if (chkprintPreview.isSelected() == true && chkPrint.
+                        isSelected() == false) {
 
                     loadProfile(!chkCrossCheque.isSelected());
 
@@ -215,14 +218,13 @@ public class ChequePrintController extends AnchorPane implements Initializable {
                 } else if (chkprintPreview.isSelected() == true && chkPrint.
                         isSelected() == true) {
 
+                    saveInformation();
                     loadProfile(!chkCrossCheque.isSelected());
-                    
-//                    HashMap n = new HashMap(param);
 
                     ReportGenerator r = new ReportGenerator(path, param);
-                    
+
                     directPrint(path, param);
-                    
+
                     r.setVisible(true);
 
                 }
@@ -420,6 +422,20 @@ public class ChequePrintController extends AnchorPane implements Initializable {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public boolean saveInformation() {
+
+        boolean isSaved = chequePrintDAO.
+                insertChequeLog(txtDescription.getText(),
+                        txtPay.getText(),
+                        dtpDate.getValue().toString(),
+                        txtAmount.getText(),
+                        cmbProfile.getValue(),
+                        (chkCrossCheque.isSelected() ? "YES" : "NO")
+                );
+
+        return isSaved;
     }
 
 //</editor-fold>

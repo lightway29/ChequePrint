@@ -16,12 +16,9 @@ import java.util.ArrayList;
  *
  * @author lightway
  */
-
-
-
 public class ChequePrintDAO {
-    
-     public ArrayList<Boolean> loadSettings(String id) {
+
+    public ArrayList<Boolean> loadSettings(String id) {
 
         boolean crossCheque = false;
         boolean printPreview = false;
@@ -38,16 +35,17 @@ public class ChequePrintDAO {
 
                 String query
                         = "SELECT * FROM default_settings where id=? ";
-                PreparedStatement pstmt = HomeController.con.prepareStatement(query);
+                PreparedStatement pstmt = HomeController.con.prepareStatement(
+                        query);
                 pstmt.setString(1, id);
                 ResultSet r = pstmt.executeQuery();
 
                 while (r.next()) {
-                    crossCheque = (r.getInt("cross_cheque")==1);
-                    printPreview = (r.getInt("print_preview")==1);
-                    dateWithYear = (r.getInt("date_with_year")==1);
-                    print = (r.getInt("print")==1);
-                    
+                    crossCheque = (r.getInt("cross_cheque") == 1);
+                    printPreview = (r.getInt("print_preview") == 1);
+                    dateWithYear = (r.getInt("date_with_year") == 1);
+                    print = (r.getInt("print") == 1);
+
                     list.add(crossCheque);
                     list.add(printPreview);
                     list.add(dateWithYear);
@@ -56,19 +54,19 @@ public class ChequePrintDAO {
                 }
 
             } catch (Exception e) {
-                System.out.println("Exception tag --> " + "Invalid sql statement "
-                            + e.getMessage());
-                
-                }
+                System.out.println("Exception tag --> "
+                        + "Invalid sql statement "
+                        + e.getMessage());
+
+            }
         }
         return list;
 
     }
-     
-     
-     public String loadSetting(String id) {
 
-        String profileId=null;
+    public String loadSetting(String id) {
+
+        String profileId = null;
 
         if (HomeController.con == null) {
             System.out.println("Database connection failiure.");
@@ -79,7 +77,8 @@ public class ChequePrintDAO {
 
                 String query
                         = "SELECT * FROM default_settings where id = ? ";
-                PreparedStatement pstmt = HomeController.con.prepareStatement(query);
+                PreparedStatement pstmt = HomeController.con.prepareStatement(
+                        query);
                 pstmt.setString(1, id);
                 ResultSet r = pstmt.executeQuery();
 
@@ -88,15 +87,16 @@ public class ChequePrintDAO {
                 }
 
             } catch (Exception e) {
-                System.out.println("Exception tag --> " + "Invalid sql statement "
-                            + e.getMessage());
-                
-                }
+                System.out.println("Exception tag --> "
+                        + "Invalid sql statement "
+                        + e.getMessage());
+
+            }
         }
         return profileId;
 
     }
-    
+
     public ArrayList loadTable() {
 
         String profile = null;
@@ -104,13 +104,14 @@ public class ChequePrintDAO {
 
         if (HomeController.con == null) {
 
-             System.out.println("Database connection failiure.");
+            System.out.println("Database connection failiure.");
         } else {
             try {
-                
+
                 String query = "Select profile_name from cheque_design ";
 
-                PreparedStatement pre = HomeController.con.prepareStatement(query);
+                PreparedStatement pre = HomeController.con.prepareStatement(
+                        query);
                 ResultSet r = pre.executeQuery();
                 while (r.next()) {
                     profile = r.getString("profile_name");
@@ -124,10 +125,12 @@ public class ChequePrintDAO {
                     System.out.println("Exception tag --> "
                             + "Invalid entry location for list");
                 } else if (e instanceof SQLException) {
-                    System.out.println("Exception tag --> " + "Invalid sql statement "
+                    System.out.println("Exception tag --> "
+                            + "Invalid sql statement "
                             + e.getMessage());
                 } else if (e instanceof NullPointerException) {
-                    System.out.println("Exception tag --> " + "Empty entry for list");
+                    System.out.println("Exception tag --> "
+                            + "Empty entry for list");
                 }
                 return null;
             } catch (Exception e) {
@@ -137,24 +140,79 @@ public class ChequePrintDAO {
         }
         return profileList;
     }
-    
-    
+
+///cheque_log 
+//
+//    "description"  "pay"  "date"  "amount" 
+//            "profile"  "cross_cheque" 
+//    
+    public boolean insertChequeLog(
+            String description,
+            String pay,
+            String date,
+            String amount,
+            String profile,
+            String cross_cheque
+            ) {
+
+        if (HomeController.con == null) {
+            System.out.println("Database connection failiure.");
+            return false;
+        } else {
+            try {
+
+                PreparedStatement ps = HomeController.con.prepareStatement(
+                        "INSERT INTO `cheque_log` ("
+                        + "`description`, "
+                        + "`pay`,"
+                        + "`date`, "
+                        + "`amount`, "
+                        + "`profile`, "
+                        + "`cross_cheque` "
+                       +") "
+                        + "VALUES (?,?,?,?,?,?)");
+
+                ps.setString(1, description);
+                ps.setString(2, pay);
+                ps.setString(3, date);
+                ps.setDouble(4, Double.parseDouble(amount));
+                ps.setString(5, profile);
+                ps.setString(6, cross_cheque);
+          
+
+                int val = ps.executeUpdate();
+                if (val == 1) {
+                    return true;
+                } else {
+                    return false;
+                }
+
+            } catch (Exception e) {
+                System.out.println("Exception tag @ insertProfile --> "
+                        + "Invalid sql statement "
+                );
+                System.out.println("Exception : " + e);
+                return false;
+            }
+        }
+
+    }
 
     public String getBank(String bankId) {
-
 
         String bank = null;
 
         if (HomeController.con == null) {
             System.out.println("Databse connection failiure.");
-           
+
             return null;
         } else {
 
             try {
                 String query
                         = "SELECT bank_name FROM bank where bank_id=? ";
-                PreparedStatement pstmt = HomeController.con.prepareStatement(query);
+                PreparedStatement pstmt = HomeController.con.prepareStatement(
+                        query);
                 pstmt.setString(1, bankId);
 
                 ResultSet r = pstmt.executeQuery();
@@ -164,15 +222,15 @@ public class ChequePrintDAO {
                 }
 
             } catch (Exception e) {
-                System.out.println("Exception tag --> " + "Invalid sql statement "
-                            + e.getMessage());
-                
-                }
-                return bank;
-        
+                System.out.println("Exception tag --> "
+                        + "Invalid sql statement "
+                        + e.getMessage());
+
+            }
+            return bank;
+
         }
-      
+
     }
 
-    
 }
