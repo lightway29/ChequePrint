@@ -53,6 +53,7 @@ public class DefaultSettingsController extends AnchorPane implements
 //</editor-fold>
 
     DefaultSettingsDAO defaultSettingsDAO = new DefaultSettingsDAO();
+    private String defaultProfile = "SET0001";
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -112,7 +113,7 @@ public class DefaultSettingsController extends AnchorPane implements
     private void loadSettings() {
 
         ArrayList<Boolean> list = null;
-        list = defaultSettingsDAO.loadSettings("SET0001");
+        list = defaultSettingsDAO.loadSettings(defaultProfile);
         if (list != null) {
             try {
 
@@ -120,7 +121,7 @@ public class DefaultSettingsController extends AnchorPane implements
                 chkprintPreview.setSelected(list.get(1));
                 chkDateWithYear.setSelected(list.get(2));
                 chkPrint.setSelected(list.get(3));
-                cmbProfile.setValue(defaultSettingsDAO.loadSetting("SET0001"));
+                cmbProfile.setValue(defaultSettingsDAO.loadSetting(defaultProfile));
 
             } catch (Exception e) {
 

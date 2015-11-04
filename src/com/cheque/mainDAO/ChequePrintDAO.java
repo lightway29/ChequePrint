@@ -21,6 +21,82 @@ import java.util.ArrayList;
 
 public class ChequePrintDAO {
     
+     public ArrayList<Boolean> loadSettings(String id) {
+
+        boolean crossCheque = false;
+        boolean printPreview = false;
+        boolean dateWithYear = false;
+        boolean print = false;
+        ArrayList list = new ArrayList();
+
+        if (HomeController.con == null) {
+            System.out.println("Database connection failiure.");
+            return null;
+
+        } else {
+            try {
+
+                String query
+                        = "SELECT * FROM default_settings where id=? ";
+                PreparedStatement pstmt = HomeController.con.prepareStatement(query);
+                pstmt.setString(1, id);
+                ResultSet r = pstmt.executeQuery();
+
+                while (r.next()) {
+                    crossCheque = (r.getInt("cross_cheque")==1);
+                    printPreview = (r.getInt("print_preview")==1);
+                    dateWithYear = (r.getInt("date_with_year")==1);
+                    print = (r.getInt("print")==1);
+                    
+                    list.add(crossCheque);
+                    list.add(printPreview);
+                    list.add(dateWithYear);
+                    list.add(print);
+
+                }
+
+            } catch (Exception e) {
+                System.out.println("Exception tag --> " + "Invalid sql statement "
+                            + e.getMessage());
+                
+                }
+        }
+        return list;
+
+    }
+     
+     
+     public String loadSetting(String id) {
+
+        String profileId=null;
+
+        if (HomeController.con == null) {
+            System.out.println("Database connection failiure.");
+            return null;
+
+        } else {
+            try {
+
+                String query
+                        = "SELECT * FROM default_settings where id = ? ";
+                PreparedStatement pstmt = HomeController.con.prepareStatement(query);
+                pstmt.setString(1, id);
+                ResultSet r = pstmt.executeQuery();
+
+                while (r.next()) {
+                    profileId = r.getString("profile_name");
+                }
+
+            } catch (Exception e) {
+                System.out.println("Exception tag --> " + "Invalid sql statement "
+                            + e.getMessage());
+                
+                }
+        }
+        return profileId;
+
+    }
+    
     public ArrayList loadTable() {
 
         String profile = null;

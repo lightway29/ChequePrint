@@ -90,13 +90,17 @@ public class ChequePrintController extends AnchorPane implements Initializable {
             = new EnglishNumberToWords();
 //</editor-fold>
 
-    ChequePrintDAO chequePrint = new ChequePrintDAO();
+    ChequePrintDAO chequePrintDAO = new ChequePrintDAO();
     @FXML
     private Button btnPrint;
     @FXML
     private CheckBox chkPrint;
     @FXML
     private CheckBox chkprintPreview;
+    @FXML
+    private TextField txtDescription;
+    
+    private String defaultProfile = "SET0001";
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -123,6 +127,7 @@ public class ChequePrintController extends AnchorPane implements Initializable {
 //</editor-fold>
         chkRemoveDate.setSelected(true);
         loadTableToCombobox();
+        loadSettings();
     }
 
     private void dateFormatterArrivalDate(String pattern) {
@@ -287,7 +292,7 @@ public class ChequePrintController extends AnchorPane implements Initializable {
 
         cmbProfile.setItems(null);
         ArrayList<String> professionList = null;
-        professionList = chequePrint.loadTable();
+        professionList = chequePrintDAO.loadTable();
         if (professionList != null) {
             try {
                 ObservableList<String> List = FXCollections.observableArrayList(
@@ -296,6 +301,29 @@ public class ChequePrintController extends AnchorPane implements Initializable {
                 cmbProfile.setValue(List.get(0));
             } catch (Exception e) {
                     e.printStackTrace();
+            }
+
+        }
+
+    }
+    
+     private void loadSettings() {
+
+        ArrayList<Boolean> list = null;
+       
+        list = chequePrintDAO.loadSettings(defaultProfile);
+       
+        if (list != null) {
+            try {
+
+                chkCrossCheque.setSelected(list.get(0));
+                chkprintPreview.setSelected(list.get(1));
+                chkRemoveDate.setSelected(list.get(2));
+                chkPrint.setSelected(list.get(3));
+                cmbProfile.setValue(chequePrintDAO.loadSetting(defaultProfile));
+
+            } catch (Exception e) {
+
             }
 
         }
@@ -312,6 +340,10 @@ public class ChequePrintController extends AnchorPane implements Initializable {
 
     @FXML
     private void cmbProfileOnAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void txtDescriptionOnAction(ActionEvent event) {
     }
 
 }
