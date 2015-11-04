@@ -246,4 +246,92 @@ public class ChequeDesignerDAO {
         return list;
     }
 
+     public String generateId() {
+
+        Integer id = null;
+
+        if (HomeController.con == null) {
+
+            System.out.println("Database connection failiure.");
+            return null;
+        } else {
+
+            String eid = null;
+            String final_id = null;
+            if (HomeController.con  == null) {
+               System.out.println("Database connection failiure.");
+                return null;
+            } else {
+                try {
+
+                    String query = "SELECT MAX(0) as ID FROM cheque_design";
+
+                    PreparedStatement pstmt = HomeController.con .prepareStatement(query);
+
+                    ResultSet r = pstmt.executeQuery();
+
+                    while (r.next()) {
+                        id = r.getInt(1);
+                    }
+                    String queryCurrentId
+                            = "SELECT design_id FROM cheque_design WHERE id=?";
+
+                    PreparedStatement pstmtId = HomeController.con.prepareStatement(
+                            queryCurrentId);
+                    pstmtId.setInt(1, id);
+
+                    ResultSet rss = pstmtId.executeQuery();
+                    while (rss.next()) {
+                        eid = rss.getString("design_id");
+
+                    }
+                    if (id != 0) {
+                        String original = eid.split("G")[1];
+                        int i = Integer.parseInt(original) + 1;
+
+                        if (i < 10) {
+                            final_id = "DSG000" + i;
+                        } else if (i >= 10 && i < 100) {
+                            final_id = "DSG00" + i;
+                        } else if (i >= 100 && i < 1000) {
+                            final_id = "DSG0" + i;
+                        } else if (i >= 1000) {
+                            final_id = "DSG" + i;
+
+                        }
+                        return final_id;
+                    } else {
+                        return "DSG0001";
+                    }
+                 } catch (ArrayIndexOutOfBoundsException | SQLException |
+                    NullPointerException e) {
+
+                if (e instanceof ArrayIndexOutOfBoundsException) {
+
+                    System.out.println("Exception tag --> "
+                            + "Invalid entry location for list");
+
+                } else if (e instanceof SQLException) {
+
+                    System.out.println("Exception tag --> "
+                            + "Invalid sql statement " + e);
+
+                } else if (e instanceof NullPointerException) {
+
+                    System.out.println("Exception tag --> "
+                            + "Empty entry for list");
+
+                }
+                return null;
+            } catch (Exception e) {
+
+                System.out.println("Exception tag --> " + "Error");
+
+                return null;
+            }
+            }
+        }
+    }
+
+    
 }

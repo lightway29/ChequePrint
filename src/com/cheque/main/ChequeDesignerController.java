@@ -63,7 +63,7 @@ import org.controlsfx.control.PopOver;
  * @author lightway
  */
 public class ChequeDesignerController extends AnchorPane implements
-        Initializable ,StagePassable{
+        Initializable, StagePassable {
 
     @FXML
     private Button btnSave;
@@ -127,29 +127,26 @@ public class ChequeDesignerController extends AnchorPane implements
     private TextField txtDesignerId;
     @FXML
     private TextField txtProfileName;
-    
-     //Profile info popup---------------------------------------
+
+    //Profile info popup---------------------------------------
     private TableView profileTable = new TableView();
     private PopOver profilePop;
     private ObservableList<ReportProfilePopup> profileData = FXCollections.
             observableArrayList();
     private ReportProfilePopup reportProfilePopup = new ReportProfilePopup();
 
-
     private ChequeDesignerDAO chequeDesignerDAO = new ChequeDesignerDAO();
     private MessageBox mb;
-    
-
-    
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-         
-          //room popup------------------------
-      
+
+        //room popup------------------------
         mb = SimpleMessageBoxFactory.createMessageBox();
         currentReportName = "HNBCheqeCross";
         loadReport(currentReportName);
+        String id = chequeDesignerDAO.generateId();
+        System.out.println("Test : "+id);
 
     }
 
@@ -193,27 +190,26 @@ public class ChequeDesignerController extends AnchorPane implements
 
     @FXML
     private void btnCloseOnAction(ActionEvent event) {
-        
+
         Stage stage = (Stage) btnClose.getScene().getWindow();
         stage.close();
-        
+
     }
 
     @FXML
     private void btnSearchRoomOnAction(ActionEvent event) {
-        
+
         profileTableDataLoader();
         profileTable.setItems(profileData);
         if (!profileData.isEmpty()) {
             profilePop.show(btnSearchRoom);
         }
-        
-        
+
     }
 
     @FXML
     private void btnRefreshOnAction(ActionEvent event) {
-
+            clear();
     }
 
     @FXML
@@ -325,25 +321,53 @@ public class ChequeDesignerController extends AnchorPane implements
 
     //<editor-fold defaultstate="collapsed" desc="Methods">
     
+    private void clear() {
+
+        txtRupeesY.setText("0");
+        txtPayY.setText("0");
+        txtAmountY.setText("0");
+        txtAccountPayeeY.setText("0");
+        txtDateY.setText("0");
+        
+         txtRupeesX.setText("0");
+        txtPayX.setText("0");
+        txtAmountX.setText("0");
+        txtAccountPayeeX.setText("0");
+               
+        txtDateX.setText("0");
+        
+
+        updateReport(currentReportName,
+                0, 0,
+                0, 0,
+                0, 0,
+                0, 0,
+                0,
+                0, true
+        );
+        
+        configureSlider();
+
+    }
+
     private void loadProfile(String designId) {
 
-        
         ArrayList<String> list = null;
         list = chequeDesignerDAO.loadProfileDetail(designId);
         if (list != null) {
             try {
-                System.out.println("List item : "+list.get(0));
-             txtAccountPayeeX.setText(list.get(0));
-             txtAccountPayeeY.setText(list.get(1));
-             txtPayX.setText(list.get(2));
-             txtPayY.setText(list.get(3));
-             txtRupeesX.setText(list.get(4));
-             txtRupeesY.setText(list.get(5));
-             txtAmountX.setText(list.get(6));
-             txtAmountY.setText(list.get(7));
-             txtDateX.setText(list.get(8));
-             txtDateY.setText(list.get(9));
-             
+                System.out.println("List item : " + list.get(0));
+                txtAccountPayeeX.setText(list.get(0));
+                txtAccountPayeeY.setText(list.get(1));
+                txtPayX.setText(list.get(2));
+                txtPayY.setText(list.get(3));
+                txtRupeesX.setText(list.get(4));
+                txtRupeesY.setText(list.get(5));
+                txtAmountX.setText(list.get(6));
+                txtAmountY.setText(list.get(7));
+                txtDateX.setText(list.get(8));
+                txtDateY.setText(list.get(9));
+
             } catch (Exception e) {
                 e.printStackTrace();
 
@@ -351,14 +375,14 @@ public class ChequeDesignerController extends AnchorPane implements
 
         }
     }
-    
-     private void profileTableDataLoader() {
+
+    private void profileTableDataLoader() {
 
         profileData.clear();
         ArrayList<ArrayList<String>> profileInfo
                 = new ArrayList<ArrayList<String>>();
-        ArrayList<ArrayList<String>> list = chequeDesignerDAO.searchProfileDetailsInfo(txtDesignerId.getText());
-                
+        ArrayList<ArrayList<String>> list = chequeDesignerDAO.
+                searchProfileDetailsInfo(txtDesignerId.getText());
 
         if (list != null) {
 
@@ -370,12 +394,14 @@ public class ChequeDesignerController extends AnchorPane implements
             if (profileInfo != null && profileInfo.size() > 0) {
                 for (int i = 0; i < profileInfo.size(); i++) {
 
-                    System.out.println("Profie : "+profileInfo.get(i).get(0));
+                    System.out.println("Profie : " + profileInfo.get(i).get(0));
                     reportProfilePopup = new ReportProfilePopup();
 
-                    reportProfilePopup.colProfileId.setValue(profileInfo.get(i).get(0));
-                    reportProfilePopup.colProfileName.setValue(profileInfo.get(i).get(1));
-                    
+                    reportProfilePopup.colProfileId.setValue(profileInfo.get(i).
+                            get(0));
+                    reportProfilePopup.colProfileName.setValue(profileInfo.
+                            get(i).get(1));
+
                     profileData.add(reportProfilePopup);
                 }
             }
@@ -384,7 +410,6 @@ public class ChequeDesignerController extends AnchorPane implements
 
     }
 
-    
     private void loadReport(String reportName) {
 
         String path = ".//Reports//" + reportName + ".jasper";
@@ -453,8 +478,7 @@ public class ChequeDesignerController extends AnchorPane implements
                 JasperDesign d = JRXmlLoader.load(path);
                 JRElement[] field = d.getSummary().getElements();
 
-                
-               JRElement rtxtCash = field[0];//Cash
+                JRElement rtxtCash = field[0];//Cash
 
                 //Amount In Words Field
                 JRDesignTextField rtxtAmountInWords = (JRDesignTextField) d.
@@ -577,8 +601,7 @@ public class ChequeDesignerController extends AnchorPane implements
     }
 
     private void refreshY() {
- 
-        
+
         txtRupeesY.setText(String.valueOf(sdRupeesY.getValue()).split("\\.")[0]);
         txtPayY.setText(String.valueOf(sdPayY.getValue()).split("\\.")[0]);
         txtAmountY.setText(String.valueOf(sdAmountY.getValue()).split("\\.")[0]);
@@ -586,8 +609,6 @@ public class ChequeDesignerController extends AnchorPane implements
                 split("\\.")[0]);
         txtDateY.setText(String.valueOf(sdDateY.getValue()).split("\\.")[0]);
 
-        
-        
         updateReport(currentReportName,
                 Integer.parseInt(txtRupeesX.getText()), Integer.parseInt(
                         txtRupeesY.getText()),
@@ -601,8 +622,6 @@ public class ChequeDesignerController extends AnchorPane implements
                         txtAccountPayeeY.getText()), true
         );
 
-        
-        
     }
 
     private void refreshX() {
@@ -614,8 +633,6 @@ public class ChequeDesignerController extends AnchorPane implements
                 split("\\.")[0]);
         txtDateX.setText(String.valueOf(sdDateX.getValue()).split("\\.")[0]);
 
-        
-        
         updateReport(currentReportName,
                 Integer.parseInt(txtRupeesX.getText()), Integer.parseInt(
                         txtRupeesY.getText()),
@@ -630,39 +647,36 @@ public class ChequeDesignerController extends AnchorPane implements
         );
 
     }
-    
-    private void configureSlider(){
-    
-    
-    sdPayeeY.setValue(Double.parseDouble(txtAccountPayeeY.getText()));
-    
-    sdPayeeX.setValue(Double.parseDouble(txtAccountPayeeX.getText()));
-    
-    sdPayY.setValue(Double.parseDouble(txtPayY.getText()));
-    
-    sdPayX.setValue(Double.parseDouble(txtPayX.getText()));
-    
-    sdDateY.setValue(Double.parseDouble(txtDateY.getText()));
-    
-    sdDateX.setValue(Double.parseDouble(txtDateX.getText()));
-    
-    sdAmountY.setValue(Double.parseDouble(txtAmountY.getText()));
-    
-    sdAmountX.setValue(Double.parseDouble(txtAmountX.getText()));
-    
-    sdRupeesY.setValue(Double.parseDouble(txtRupeesY.getText()));
-    
-    sdRupeesX.setValue(Double.parseDouble(txtRupeesX.getText()));
-    
-    
-    
+
+    private void configureSlider() {
+
+        sdPayeeY.setValue(Double.parseDouble(txtAccountPayeeY.getText()));
+
+        sdPayeeX.setValue(Double.parseDouble(txtAccountPayeeX.getText()));
+
+        sdPayY.setValue(Double.parseDouble(txtPayY.getText()));
+
+        sdPayX.setValue(Double.parseDouble(txtPayX.getText()));
+
+        sdDateY.setValue(Double.parseDouble(txtDateY.getText()));
+
+        sdDateX.setValue(Double.parseDouble(txtDateX.getText()));
+
+        sdAmountY.setValue(Double.parseDouble(txtAmountY.getText()));
+
+        sdAmountX.setValue(Double.parseDouble(txtAmountX.getText()));
+
+        sdRupeesY.setValue(Double.parseDouble(txtRupeesY.getText()));
+
+        sdRupeesX.setValue(Double.parseDouble(txtRupeesX.getText()));
+
     }
-    
+
     @Override
     public void setStage(Stage stage, Object[] obj) {
         this.stage = stage;
-        
-         profileTable = reportProfilePopup.tableViewLoader(profileData);
+
+        profileTable = reportProfilePopup.tableViewLoader(profileData);
 
         profileTable.setOnMouseClicked(e -> {
             if (e.getClickCount() == 2) {
@@ -672,29 +686,33 @@ public class ChequeDesignerController extends AnchorPane implements
                             getSelectedItem();
 
                     if (p.getColProfileId() != null) {
-                   
-                        
+
                         txtDesignerId.setText(p.getColProfileId());
                         txtProfileName.setText(p.getColProfileName());
+
                         //loading Part Here.
                         loadProfile(p.getColProfileId());
-                        
-                          updateReport(currentReportName,
-                Integer.parseInt(txtRupeesX.getText()), Integer.parseInt(
-                        txtRupeesY.getText()),
-                Integer.parseInt(txtPayX.getText()), Integer.parseInt(txtPayY.
-                        getText()),
-                Integer.parseInt(txtAmountX.getText()), Integer.parseInt(
-                        txtAmountY.getText()),
-                Integer.parseInt(txtDateX.getText()), Integer.parseInt(txtDateY.
-                        getText()),
-                Integer.parseInt(txtAccountPayeeX.getText()), Integer.parseInt(
-                        txtAccountPayeeY.getText()), true
-        );
-                          
-                          configureSlider();
 
-                        
+                        updateReport(currentReportName,
+                                Integer.parseInt(txtRupeesX.getText()), Integer.
+                                parseInt(
+                                        txtRupeesY.getText()),
+                                Integer.parseInt(txtPayX.getText()), Integer.
+                                parseInt(txtPayY.
+                                        getText()),
+                                Integer.parseInt(txtAmountX.getText()), Integer.
+                                parseInt(
+                                        txtAmountY.getText()),
+                                Integer.parseInt(txtDateX.getText()), Integer.
+                                parseInt(txtDateY.
+                                        getText()),
+                                Integer.parseInt(txtAccountPayeeX.getText()),
+                                Integer.parseInt(
+                                        txtAccountPayeeY.getText()), true
+                        );
+
+                        configureSlider();
+
                     }
 
                 } catch (NullPointerException n) {
@@ -702,40 +720,34 @@ public class ChequeDesignerController extends AnchorPane implements
                 }
 
                 profilePop.hide();
-                
 
             }
 
         });
-        
+
         profileTable.setOnMousePressed(e -> {
 
             if (e.getButton() == MouseButton.SECONDARY) {
 
                 profilePop.hide();
-                
 
             }
 
         });
-        
-         profilePop = new PopOver(profileTable);
+
+        profilePop = new PopOver(profileTable);
 
         stage.setOnCloseRequest(e -> {
 
-            if (profilePop.isShowing() ) {
+            if (profilePop.isShowing()) {
 
                 e.consume();
                 profilePop.hide();
-                
 
             }
         });
-        
-        
+
     }
 
 //</editor-fold>
-
-    
 }
