@@ -60,7 +60,7 @@ public class ChequePrintController extends AnchorPane implements Initializable {
     //<editor-fold defaultstate="collapsed" desc="initcomponents">
     @FXML
     private Button btnCancel;
-    
+
     @FXML
     private ComboBox<String> cmbProfile;
 
@@ -99,7 +99,7 @@ public class ChequePrintController extends AnchorPane implements Initializable {
     private CheckBox chkprintPreview;
     @FXML
     private TextField txtDescription;
-    
+
     private String defaultProfile = "SET0001";
 
     @Override
@@ -128,33 +128,6 @@ public class ChequePrintController extends AnchorPane implements Initializable {
         chkRemoveDate.setSelected(true);
         loadTableToCombobox();
         loadSettings();
-    }
-
-    private void dateFormatterArrivalDate(String pattern) {
-
-        dtpDate.setConverter(new StringConverter<LocalDate>() {
-            DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern(
-                    pattern);
-
-            @Override
-            public String toString(LocalDate date) {
-                if (date != null) {
-                    return dateFormatter.format(date);
-                } else {
-                    return "";
-                }
-            }
-
-            @Override
-            public LocalDate fromString(String string) {
-                if (string != null && !string.isEmpty()) {
-                    return LocalDate.parse(string, dateFormatter);
-                } else {
-                    return null;
-                }
-            }
-        });
-
     }
 
     @FXML
@@ -246,6 +219,50 @@ public class ChequePrintController extends AnchorPane implements Initializable {
 
     }
 
+    @FXML
+    private void chkPrintOnAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void chkprintPreviewOnAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void cmbProfileOnAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void txtDescriptionOnAction(ActionEvent event) {
+    }
+
+    //<editor-fold defaultstate="collapsed" desc="Methods">
+    private void dateFormatterArrivalDate(String pattern) {
+
+        dtpDate.setConverter(new StringConverter<LocalDate>() {
+            DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern(
+                    pattern);
+
+            @Override
+            public String toString(LocalDate date) {
+                if (date != null) {
+                    return dateFormatter.format(date);
+                } else {
+                    return "";
+                }
+            }
+
+            @Override
+            public LocalDate fromString(String string) {
+                if (string != null && !string.isEmpty()) {
+                    return LocalDate.parse(string, dateFormatter);
+                } else {
+                    return null;
+                }
+            }
+        });
+
+    }
+
     private String convertToWords(String value) {
 
         double amount = 0;
@@ -286,8 +303,7 @@ public class ChequePrintController extends AnchorPane implements Initializable {
 
         return inWords;
     }
-    
-    
+
     private void loadTableToCombobox() {
 
         cmbProfile.setItems(null);
@@ -300,19 +316,19 @@ public class ChequePrintController extends AnchorPane implements Initializable {
                 cmbProfile.setItems(List);
                 cmbProfile.setValue(List.get(0));
             } catch (Exception e) {
-                    e.printStackTrace();
+                e.printStackTrace();
             }
 
         }
 
     }
-    
-     private void loadSettings() {
+
+    private void loadSettings() {
 
         ArrayList<Boolean> list = null;
-       
+
         list = chequePrintDAO.loadSettings(defaultProfile);
-       
+
         if (list != null) {
             try {
 
@@ -330,20 +346,5 @@ public class ChequePrintController extends AnchorPane implements Initializable {
 
     }
 
-    @FXML
-    private void chkPrintOnAction(ActionEvent event) {
-    }
-
-    @FXML
-    private void chkprintPreviewOnAction(ActionEvent event) {
-    }
-
-    @FXML
-    private void cmbProfileOnAction(ActionEvent event) {
-    }
-
-    @FXML
-    private void txtDescriptionOnAction(ActionEvent event) {
-    }
-
+//</editor-fold>
 }

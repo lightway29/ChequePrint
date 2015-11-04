@@ -274,7 +274,7 @@ public class ChequeDesignerDAO {
                         id = r.getInt(1);
                     }
                     String queryCurrentId
-                            = "SELECT design_id FROM cheque_design WHERE id=?";
+                            = "SELECT design_id FROM cheque_design WHERE rowid=?";
 
                     PreparedStatement pstmtId = HomeController.con.prepareStatement(
                             queryCurrentId);

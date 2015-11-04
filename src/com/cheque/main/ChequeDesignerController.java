@@ -146,7 +146,8 @@ public class ChequeDesignerController extends AnchorPane implements
         currentReportName = "HNBCheqeCross";
         loadReport(currentReportName);
         String id = chequeDesignerDAO.generateId();
-        System.out.println("Test : "+id);
+        
+        txtDesignerId.setText(id);
 
     }
 
