@@ -199,15 +199,15 @@ public class ChequePrintController extends AnchorPane implements Initializable {
                 }
 
                 String path = new File(reportPath).getAbsolutePath();
-                if (chkPrint.isSelected() == true) {
+                if (chkPrint.isSelected() == true && chkprintPreview.isSelected() == false) {
 
-                    loadProfile(chkCrossCheque.isSelected());
+                    loadProfile(!chkCrossCheque.isSelected());
 
                     directPrint(path, param);
 
-                } else if (chkprintPreview.isSelected() == true) {
+                } else if (chkprintPreview.isSelected() == true && chkPrint.isSelected() == false) {
 
-                    loadProfile(false);
+                    loadProfile(!chkCrossCheque.isSelected());
 
                     ReportGenerator r = new ReportGenerator(path, param);
                     r.setVisible(true);
@@ -215,10 +215,14 @@ public class ChequePrintController extends AnchorPane implements Initializable {
                 } else if (chkprintPreview.isSelected() == true && chkPrint.
                         isSelected() == true) {
 
-                    loadProfile(chkCrossCheque.isSelected());
-                    directPrint(path, param);
+                    loadProfile(!chkCrossCheque.isSelected());
+                    
+//                    HashMap n = new HashMap(param);
 
                     ReportGenerator r = new ReportGenerator(path, param);
+                    
+                    directPrint(path, param);
+                    
                     r.setVisible(true);
 
                 }

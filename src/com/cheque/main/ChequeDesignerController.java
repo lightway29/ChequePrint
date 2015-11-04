@@ -141,6 +141,7 @@ public class ChequeDesignerController extends AnchorPane implements
     private ChequeDesignerDAO chequeDesignerDAO = new ChequeDesignerDAO();
     private ManageReport manageReport = new ManageReport();
     private MessageBox mb;
+    private boolean accountPayeeState = false;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -348,7 +349,7 @@ public class ChequeDesignerController extends AnchorPane implements
                 0, 0,
                 0, 0,
                 0,
-                0, true
+                0, accountPayeeState
         );
         
         loadReport(currentReportName);
@@ -487,7 +488,7 @@ public class ChequeDesignerController extends AnchorPane implements
                 Integer.parseInt(txtDateX.getText()), Integer.parseInt(txtDateY.
                         getText()),
                 Integer.parseInt(txtAccountPayeeX.getText()), Integer.parseInt(
-                        txtAccountPayeeY.getText()), true
+                        txtAccountPayeeY.getText()), accountPayeeState
         );
         
         loadReport(currentReportName);
@@ -513,7 +514,7 @@ public class ChequeDesignerController extends AnchorPane implements
                 Integer.parseInt(txtDateX.getText()), Integer.parseInt(txtDateY.
                         getText()),
                 Integer.parseInt(txtAccountPayeeX.getText()), Integer.parseInt(
-                        txtAccountPayeeY.getText()), true
+                        txtAccountPayeeY.getText()), accountPayeeState
         );
         loadReport(currentReportName);
 
@@ -580,7 +581,7 @@ public class ChequeDesignerController extends AnchorPane implements
                                         getText()),
                                 Integer.parseInt(txtAccountPayeeX.getText()),
                                 Integer.parseInt(
-                                        txtAccountPayeeY.getText()), true
+                                        txtAccountPayeeY.getText()), accountPayeeState
                         );
                         
                         loadReport(currentReportName);

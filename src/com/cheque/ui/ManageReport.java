@@ -22,9 +22,8 @@ import net.sf.jasperreports.engine.xml.JRXmlLoader;
  * @author lightway
  */
 public class ManageReport {
-    
-    
-      public void updateReport(String reportName, int amountInWordsX,
+
+    public void updateReport(String reportName, int amountInWordsX,
             int amountInWordsY,
             int payX, int payY,
             int amountX, int amountY,
@@ -41,8 +40,6 @@ public class ManageReport {
                 JRElement[] field = d.getSummary().getElements();
 
                 JRElement rtxtCash = field[0];//Cash
-                
-               
 
                 //Amount In Words Field
                 JRDesignTextField rtxtAmountInWords = (JRDesignTextField) d.
@@ -59,8 +56,6 @@ public class ManageReport {
 
                 rtxtPay.setX(payX);
                 rtxtPay.setY(payY);
-                
-                
 
                 //Amount
                 JRDesignTextField rtxtAmount = (JRDesignTextField) d.
@@ -128,19 +123,20 @@ public class ManageReport {
                 rtxtYearFour.setX(dateX + 126);
                 rtxtYearFour.setY(dateY);
 
+                //Account Payee 
+                JRDesignElement rtxtPayee = (JRDesignStaticText) d.
+                        getSummary().getElementByKey(
+                                "rtxtPayee");
+
+                JRDesignElement lineTop = (JRDesignLine) d.
+                        getSummary().getElementByKey(
+                                "lineTop");
+
+                JRDesignElement lineBottom = (JRDesignLine) d.
+                        getSummary().getElementByKey(
+                                "lineBottom");
+
                 if (enablePayee == true) {
-                    //Account Payee 
-                    JRDesignElement rtxtPayee = (JRDesignStaticText) d.
-                            getSummary().getElementByKey(
-                                    "rtxtPayee");
-
-                    JRDesignElement lineTop = (JRDesignLine) d.
-                            getSummary().getElementByKey(
-                                    "lineTop");
-
-                    JRDesignElement lineBottom = (JRDesignLine) d.
-                            getSummary().getElementByKey(
-                                    "lineBottom");
 
                     rtxtPayee.setX(payeeX);
                     rtxtPayee.setY(payeeY);
@@ -150,6 +146,28 @@ public class ManageReport {
 
                     lineBottom.setX(payeeX);
                     lineBottom.setY(payeeY + 13);
+
+                    //Hide the Cross cheque
+                    rtxtPayee.setWidth(0);
+                    rtxtPayee.setHeight(0);
+                    lineTop.setWidth(0);
+                    lineTop.setHeight(0);
+
+                    lineBottom.setWidth(0);
+                    lineBottom.setHeight(0);
+
+                } else {
+
+                    //Show the Cross cheque
+                    rtxtPayee.setWidth(97);
+                    rtxtPayee.setHeight(16);
+
+                    lineTop.setWidth(97);
+                    lineTop.setHeight(1);
+
+                    lineBottom.setWidth(97);
+                    lineBottom.setHeight(1);
+
                 }
 
                 JRReport jRReport = d;
@@ -158,15 +176,11 @@ public class ManageReport {
                 JasperCompileManager.compileReportToFile(path);
 
 //                loadReport(reportName);
-
             } catch (JRException ex) {
                 ex.printStackTrace();
             }
         }
 
     }
-      
-      
-    
-    
+
 }

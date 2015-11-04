@@ -98,13 +98,13 @@
 				<textFieldExpression><![CDATA[$P{Y4}]]></textFieldExpression>
 			</textField>
 			<line>
-				<reportElement key="lineBottom" x="247" y="23" width="97" height="1" forecolor="#000000" uuid="5a1aa73b-9b4f-4ae5-96d0-1fe0249d1974"/>
+				<reportElement key="lineBottom" x="0" y="69" width="97" height="1" forecolor="#000000" uuid="5a1aa73b-9b4f-4ae5-96d0-1fe0249d1974"/>
 			</line>
 			<line>
-				<reportElement key="lineTop" x="247" y="11" width="97" height="1" forecolor="#000000" uuid="f0a68f87-e982-44c7-a1a4-aca5c54d116b"/>
+				<reportElement key="lineTop" x="0" y="57" width="97" height="1" forecolor="#000000" uuid="f0a68f87-e982-44c7-a1a4-aca5c54d116b"/>
 			</line>
 			<staticText>
-				<reportElement key="rtxtPayee" x="247" y="10" width="97" height="16" forecolor="#000000" uuid="393574ba-b83f-49dd-80ce-2d0909ac9b29"/>
+				<reportElement key="rtxtPayee" x="0" y="56" width="97" height="16" forecolor="#000000" uuid="393574ba-b83f-49dd-80ce-2d0909ac9b29"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None"/>
 				<text><![CDATA[A/C PAYEE ONLY]]></text>
 			</staticText>
