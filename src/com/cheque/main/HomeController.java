@@ -6,7 +6,11 @@
 package com.cheque.main;
 
 import com.cheque.ui.FxmlUiLauncher;
+import java.net.InetAddress;
+import java.net.NetworkInterface;
+import java.net.SocketException;
 import java.net.URL;
+import java.net.UnknownHostException;
 import java.sql.Connection;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -52,6 +56,8 @@ public class HomeController extends AnchorPane implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
+        getmac();//Getting mac of the current Device.
+        
         btnLogOut.getStyleClass().add("button-clrx-darkorange");
 
         ChequePrint.getStyleClass().add("button-clrx-red");
@@ -59,6 +65,8 @@ public class HomeController extends AnchorPane implements Initializable {
         ChequeRegister.getStyleClass().add("button-clrx-coral");
         Settings.getStyleClass().add("button-clrx-darkcyan");
         PrinterConfig.getStyleClass().add("button-clrx-darkgray");
+        
+        
 
     }
 
@@ -66,6 +74,10 @@ public class HomeController extends AnchorPane implements Initializable {
     void btnLogOutOnAction(ActionEvent event) {
 
         System.exit(1);
+       
+	    
+
+
 
     }
 
@@ -136,6 +148,44 @@ public class HomeController extends AnchorPane implements Initializable {
     @FXML
     private void ChequePrintOnMouseDragged(MouseEvent event) {
 
+    }
+    
+    
+    
+    private void getmac(){
+    
+     
+        
+        InetAddress ip;
+	try {
+			         
+		ip = InetAddress.getLocalHost();
+		System.out.println("Current IP address : " + ip.getHostAddress());
+		
+		NetworkInterface network = NetworkInterface.getByInetAddress(ip);
+			
+		byte[] mac = network.getHardwareAddress();
+			
+		System.out.print("Current MAC address : ");
+			
+		StringBuilder sb = new StringBuilder();
+		for (int i = 0; i < mac.length; i++) {
+			sb.append(String.format("%02X%s", mac[i], (i < mac.length - 1) ? "-" : ""));		
+		}
+		System.out.println(sb.toString());
+			
+	} catch (UnknownHostException e) {
+		
+		e.printStackTrace();
+		
+	} catch (SocketException e){
+			
+		e.printStackTrace();
+			
+	}
+    
+    
+    
     }
 
 }
