@@ -20,14 +20,14 @@
 	<summary>
 		<band height="252" splitType="Stretch">
 			<textField>
-				<reportElement key="rtxtPay" x="30" y="37" width="444" height="20" forecolor="#000000" uuid="4ef59fd1-1eb1-47c1-842f-f7f16121ba27"/>
+				<reportElement key="rtxtPay" x="0" y="0" width="444" height="20" forecolor="#000000" uuid="4ef59fd1-1eb1-47c1-842f-f7f16121ba27"/>
 				<textElement verticalAlignment="Bottom">
 					<font fontName="Times New Roman" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{pay}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement key="rtxtAmountInWords" x="32" y="64" width="257" height="72" uuid="43152769-5030-48bd-a471-020806c64792"/>
+				<reportElement key="rtxtAmountInWords" x="0" y="107" width="257" height="72" uuid="43152769-5030-48bd-a471-020806c64792"/>
 				<textElement>
 					<font fontName="Times New Roman" size="12"/>
 					<paragraph lineSpacing="Fixed" lineSpacingSize="20.0"/>
@@ -35,63 +35,63 @@
 				<textFieldExpression><![CDATA[$P{rupees}]]></textFieldExpression>
 			</textField>
 			<textField pattern="**#,##0.00**">
-				<reportElement key="rtxtAmount" x="413" y="74" width="146" height="43" uuid="9f7493d4-187b-4d86-833d-de91b88dfa79"/>
+				<reportElement key="rtxtAmount" x="0" y="0" width="146" height="43" uuid="9f7493d4-187b-4d86-833d-de91b88dfa79"/>
 				<textElement verticalAlignment="Middle">
 					<font size="12" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{amount}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement key="rtxtDateOne" x="408" y="14" width="18" height="20" forecolor="#000000" uuid="12d4128c-0156-4a9e-8d52-05400e9e7441"/>
+				<reportElement key="rtxtDateOne" x="0" y="0" width="18" height="20" forecolor="#000000" uuid="12d4128c-0156-4a9e-8d52-05400e9e7441"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{D1}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement key="rtxtDateTwo" x="426" y="14" width="18" height="20" forecolor="#000000" uuid="2b5729bc-9547-4580-83f8-96ff44642dce"/>
+				<reportElement key="rtxtDateTwo" x="18" y="0" width="18" height="20" forecolor="#000000" uuid="2b5729bc-9547-4580-83f8-96ff44642dce"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{D2}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement key="rtxtMonthOne" x="444" y="14" width="18" height="20" forecolor="#000000" uuid="a8e08069-027f-4f1e-93a0-39fa129720b1"/>
+				<reportElement key="rtxtMonthOne" x="36" y="0" width="18" height="20" forecolor="#000000" uuid="a8e08069-027f-4f1e-93a0-39fa129720b1"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{M1}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement key="rtxtMonthTwo" x="462" y="14" width="18" height="20" forecolor="#000000" uuid="617bef71-6d98-481f-bf34-db34b37f47bd"/>
+				<reportElement key="rtxtMonthTwo" x="54" y="0" width="18" height="20" forecolor="#000000" uuid="617bef71-6d98-481f-bf34-db34b37f47bd"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{M2}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement key="rtxtYearOne" x="480" y="14" width="18" height="20" forecolor="#000000" uuid="c7594447-d4d7-41e1-90f2-fd376bbd60fd"/>
+				<reportElement key="rtxtYearOne" x="72" y="0" width="18" height="20" forecolor="#000000" uuid="c7594447-d4d7-41e1-90f2-fd376bbd60fd"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{Y1}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement key="rtxtYearTwo" x="498" y="14" width="18" height="20" forecolor="#000000" uuid="eaaa56c8-a35c-4a17-9133-a03fcfec789a"/>
+				<reportElement key="rtxtYearTwo" x="90" y="0" width="18" height="20" forecolor="#000000" uuid="eaaa56c8-a35c-4a17-9133-a03fcfec789a"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{Y2}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement key="rtxtYearThree" x="516" y="14" width="18" height="20" forecolor="#000000" uuid="518d8133-e526-4efa-a916-934cb6013535"/>
+				<reportElement key="rtxtYearThree" x="108" y="0" width="18" height="20" forecolor="#000000" uuid="518d8133-e526-4efa-a916-934cb6013535"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{Y3}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement key="rtxtYearFour" x="534" y="14" width="18" height="20" forecolor="#000000" uuid="0ce7b890-37e2-4cfa-959d-ecf65a6650b0"/>
+				<reportElement key="rtxtYearFour" x="126" y="0" width="18" height="20" forecolor="#000000" uuid="0ce7b890-37e2-4cfa-959d-ecf65a6650b0"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="12"/>
 				</textElement>
