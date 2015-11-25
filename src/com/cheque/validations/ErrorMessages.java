@@ -338,5 +338,6 @@ public class ErrorMessages {
     public static final String newUpdateFound = "New update found.";
     
     public static final String InvalidAccNo = "Account number already exist.";
+    public static final String MACFail = "License failed. Please re-enter license credentials again.";
 
 }

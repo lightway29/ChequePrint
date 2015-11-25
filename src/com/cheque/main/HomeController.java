@@ -55,8 +55,6 @@ public class HomeController extends AnchorPane implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
-        getmac();//Getting mac of the current Device.
         
         btnLogOut.getStyleClass().add("button-clrx-darkorange");
 
@@ -72,13 +70,7 @@ public class HomeController extends AnchorPane implements Initializable {
 
     @FXML
     void btnLogOutOnAction(ActionEvent event) {
-
         System.exit(1);
-       
-	    
-
-
-
     }
 
     @FXML
@@ -149,43 +141,4 @@ public class HomeController extends AnchorPane implements Initializable {
     private void ChequePrintOnMouseDragged(MouseEvent event) {
 
     }
-    
-    
-    
-    private void getmac(){
-    
-     
-        
-        InetAddress ip;
-	try {
-			         
-		ip = InetAddress.getLocalHost();
-		System.out.println("Current IP address : " + ip.getHostAddress());
-		
-		NetworkInterface network = NetworkInterface.getByInetAddress(ip);
-			
-		byte[] mac = network.getHardwareAddress();
-			
-		System.out.print("Current MAC address : ");
-			
-		StringBuilder sb = new StringBuilder();
-		for (int i = 0; i < mac.length; i++) {
-			sb.append(String.format("%02X%s", mac[i], (i < mac.length - 1) ? "-" : ""));		
-		}
-		System.out.println(sb.toString());
-			
-	} catch (UnknownHostException e) {
-		
-		e.printStackTrace();
-		
-	} catch (SocketException e){
-			
-		e.printStackTrace();
-			
-	}
-    
-    
-    
-    }
-
 }
